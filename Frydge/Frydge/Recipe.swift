@@ -19,11 +19,14 @@ class Recipe {
     var notes: String?
     var image: UIImage?
     
-    init(id: Int, title: String, ingredientList: [Ingredient], process: String) {
+    init(id: Int, title: String, ingredientList: [Ingredient], process: String, image: String?) {
         self.id = id
         self.title = title
         self.ingredientList = ingredientList
         self.process = process
+        if image != nil {
+            self.setImage(byUrl: image!)
+        }
     }
     
     func setImage(byUrl url: String) {
