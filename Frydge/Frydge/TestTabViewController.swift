@@ -21,7 +21,7 @@ class TestTabViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        recipe.setImage(byName: "sonoma")
+        recipe.setImage(byUrl: "http://assets.kraftfoods.com/recipe_images/opendeploy/193146_640x428.jpg")
         guard let recipeView = recipe.recipePreview() else { return }
         view.backgroundColor = .white
         
