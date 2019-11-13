@@ -27,8 +27,15 @@ class Recipe {
     }
     
     func setImage(byUrl url: String) {
-//        Implement
+        let url = URL(string: url)
+        let data = try? Data(contentsOf: url!)
+
+        if let imageData = data {
+            let image = UIImage(data: imageData)
+            self.image = image
+        }
     }
+    
     func setImage(byName name: String) {
         self.image = UIImage(named: name)
     }
