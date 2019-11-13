@@ -17,6 +17,7 @@
 		4F5EEEAD2373E30A000319CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F5EEEAC2373E30A000319CE /* Main.storyboard */; };
 		4F99AB9D2374ED160065FE7D /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F99AB9C2374ED160065FE7D /* Recipe.swift */; };
 		4F99AB9F2374FB420065FE7D /* TestTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F99AB9E2374FB420065FE7D /* TestTabViewController.swift */; };
+		6EEC67CC237C934C0050B605 /* RecipeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC67CB237C934C0050B605 /* RecipeSearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		4F5EEEAC2373E30A000319CE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4F99AB9C2374ED160065FE7D /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		4F99AB9E2374FB420065FE7D /* TestTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabViewController.swift; sourceTree = "<group>"; };
+		6EEC67CB237C934C0050B605 /* RecipeSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				4F5EEEAA2373E19F000319CE /* MainTabBarController.swift */,
 				4F99AB9E2374FB420065FE7D /* TestTabViewController.swift */,
 				4F5EEE952373E0E5000319CE /* SceneDelegate.swift */,
+				6EEC67CB237C934C0050B605 /* RecipeSearchViewController.swift */,
 				4F5EEE972373E0E5000319CE /* ViewController.swift */,
 				4F5EEE9F2373E0E9000319CE /* Assets.xcassets */,
 				4F99AB9C2374ED160065FE7D /* Recipe.swift */,
@@ -150,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EEC67CC237C934C0050B605 /* RecipeSearchViewController.swift in Sources */,
 				4F5EEE9E2373E0E5000319CE /* Frydge.xcdatamodeld in Sources */,
 				4F5EEE982373E0E5000319CE /* ViewController.swift in Sources */,
 				4F99AB9F2374FB420065FE7D /* TestTabViewController.swift in Sources */,
