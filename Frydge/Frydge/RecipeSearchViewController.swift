@@ -24,8 +24,13 @@ class RecipeSearchViewController: UIViewController {
 
     let recipes = [
         Recipe(id: 0, title: "Grilled Chicken Sonoma Flatbread", ingredientList: ingredients, process: process),
-        Recipe(id: 1, title: "Grilled Chicken Sonoma Flatbread 2", ingredientList: ingredients2, process: process2)
+        Recipe(id: 1, title: "Untitled Thing 2", ingredientList: ingredients2, process: process2)
+    ]
     
+    let images = [
+        "https://assets.kraftfoods.com/recipe_images/opendeploy/193146_640x428.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg"
+        
     ]
     
     override func viewDidLoad() {
@@ -38,13 +43,15 @@ class RecipeSearchViewController: UIViewController {
         
         var recipeViews: [UIView] = []
 
+        var i = 0
         for recipe in recipes {
-            recipe.setImage(byName: "sonoma")
+            recipe.setImage(byUrl: images[i])
             guard let recipeView = recipe.recipePreview() else { return }
-            view.backgroundColor = .white
             recipeViews.append(recipeView)
+            i = i + 1
         }
 
+        view.backgroundColor = .white
         view.addSubview(backgroundImage)
         
         var list = [backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
@@ -53,11 +60,11 @@ class RecipeSearchViewController: UIViewController {
                 backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ]
         
-        var i = 0
+        i = 0
         for recipeView in recipeViews {
             view.addSubview(recipeView)
             
-            let top = (200 * i) + 50
+            let top = (220 * i) + 50
         
             list.append(recipeView.topAnchor.constraint(equalTo: view.topAnchor, constant: CGFloat(top)))
             list.append(recipeView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
