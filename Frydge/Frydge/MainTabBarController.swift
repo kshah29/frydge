@@ -15,7 +15,7 @@ class MainTabBarController: UITabBarController {
         // Setup our custom view controllers
         
         tabBar.barTintColor = UIColor(named: "Blue")
-        let testVC = TestTabViewController()
+        let testVC = RecipeSearchViewController()
         testVC.tabBarItem.title = "Search"
         testVC.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)], for: .normal)
         testVC.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
