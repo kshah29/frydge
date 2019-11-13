@@ -15,7 +15,11 @@ class MainTabBarController: UITabBarController {
         // Setup our custom view controllers
         
         tabBar.barTintColor = UIColor(named: "Blue")
-        viewControllers = [createDummyNavControllerWithTitle(title: "Search", imageName: nil), createDummyNavControllerWithTitle(title: "Cookbook", imageName: nil), createDummyNavControllerWithTitle(title: "Pantry", imageName: nil), createDummyNavControllerWithTitle(title: "Profile", imageName: nil)]
+        let testVC = TestTabViewController()
+        testVC.tabBarItem.title = "Search"
+        testVC.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)], for: .normal)
+        testVC.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        viewControllers = [testVC, createDummyNavControllerWithTitle(title: "Cookbook", imageName: nil), createDummyNavControllerWithTitle(title: "Pantry", imageName: nil), createDummyNavControllerWithTitle(title: "Profile", imageName: nil)]
     }
     
     private func createDummyNavControllerWithTitle(title: String, imageName: String?) -> UINavigationController {

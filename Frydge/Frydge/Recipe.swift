@@ -9,15 +9,22 @@
 import Foundation
 import UIKit
 
+
+// MARK:- Recipe Class
 class Recipe {
     var id: Int = 0
     var title: String = ""
     var ingredientList: [Ingredient] = []
     var process: String = ""
-    var notes: String = ""
+    var notes: String?
     var image: UIImage?
     
-    
+    init(id: Int, title: String, ingredientList: [Ingredient], process: String) {
+        self.id = id
+        self.title = title
+        self.ingredientList = ingredientList
+        self.process = process
+    }
     
     func setImage(byUrl url: String) {
 //        Implement
@@ -25,49 +32,127 @@ class Recipe {
     func setImage(byName name: String) {
         self.image = UIImage(named: name)
     }
-    
-    private func recipePreview() -> UIView {
-        let view = UIView()
-        
-        let titleLabel: UILabel = {
-            let label = UILabel()
-            label.text = title
-            label.font = .systemFont(ofSize: 24, weight: .heavy)
-            label.adjustsFontSizeToFitWidth = true
-            label.translatesAutoresizingMaskIntoConstraints = false
-            return label
-        }()
-        view.addSubview(titleLabel)
-        
-        let recipeImage: UIImageView = {
-            let iv = UIImageView(image: image)
-            return iv
-        }()
-        view.addSubview(recipeImage)
-        
-        let titleLabelHeightConstraint1 = titleLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 92)
-        let titleLabelHeightConstraint2 = titleLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2, constant: -8)
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 4),
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -8),
-            titleLabelHeightConstraint1,
-            titleLabelHeightConstraint2,
-            
-            recipeImage.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
-            recipeImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            recipeImage.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -8),
-            recipeImage.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -4)
-        ])
-        titleLabelHeightConstraint1.priority = UILayoutPriority.init(1000)
-        titleLabelHeightConstraint2.priority = UILayoutPriority.init(750)
-        
+    func recipePreview() -> UIView? {
+        guard let image = image else { return nil }
+        let view = RecipeView(title: title, image: image)
+        view.setupViews()
         return view
     }
 }
 
-// Will likely pull out to own file later down the line; feels unnecessary for now. -Ian
+
+
+
+
+// MARK:- RecipeView Class
+class RecipeView: UIView {
+    private var image: UIImage?
+    private var recipeImage: UIImageView?
+    private func setRecipeImage(image: UIImage) {
+        let iv = UIImageView(image: image)
+        iv.clipsToBounds = true
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.contentMode = .scaleAspectFill
+        recipeImage = iv
+    }
+    
+    private var title: String?
+    private var titleLabel: UILabel?
+    private func setTitleLabel(title: String) {
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.text = title
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 24, weight: .semibold)
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel = label
+    }
+    
+    private var gradientView = UIView()
+    
+    init(title: String, image: UIImage) {
+        super.init(frame: .zero)
+        
+        self.title = title
+        self.image = image
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupViews() {
+        guard let image = image, let title = title else { return }
+        setRecipeImage(image: image)
+        setTitleLabel(title: title)
+        guard let recipeImage = recipeImage, let titleLabel = titleLabel else { return }
+        
+        addSubview(recipeImage)
+        addSubview(gradientView)
+        addSubview(titleLabel)
+        
+        gradientView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            recipeImage.topAnchor.constraint(equalTo: topAnchor),
+            recipeImage.leftAnchor.constraint(equalTo: leftAnchor),
+            recipeImage.rightAnchor.constraint(equalTo: rightAnchor),
+            recipeImage.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            gradientView.leftAnchor.constraint(equalTo: leftAnchor),
+            gradientView.rightAnchor.constraint(equalTo: rightAnchor),
+            gradientView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            gradientView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
+            
+            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
+            titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            titleLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
+        ])
+        
+
+        translatesAutoresizingMaskIntoConstraints = false
+        clipsToBounds = true
+        layer.cornerRadius = CGFloat(10)
+    }
+    
+    // For some reason the gradient layer must be positioned in this function. It doesn't get along well with AutoLayout otherwise.
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let gradientColors: [CGColor] = [UIColor.clear.cgColor, UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.35).cgColor, UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.7).cgColor]
+        gradientView.setGradientBackground(colors: gradientColors, locations: [0.0, 0.2, 0.5])
+    }
+}
+
+
+
+
+
+
+// MARK:- Ingredient Class
 struct Ingredient {
     var name: String = ""
     var amount: Int = 0
+    
+    init(name: String, amount: Int) {
+        self.name = name
+        self.amount = amount
+    }
+}
+
+
+
+
+
+// MARK:- UIView extension
+extension UIView {
+    func setGradientBackground(colors: [CGColor], locations: [NSNumber]) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = bounds
+        gradientLayer.colors = colors
+        gradientLayer.locations = locations
+        
+        layer.insertSublayer(gradientLayer, at: 0)
+    }
 }
