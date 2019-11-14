@@ -51,8 +51,8 @@ class RecipeSearchViewController: UIViewController {
                 RecipeStore.add(addRecipe: recipe)
             }
         }
-        print(RecipeStore.getRecipeList())
-        self.viewDidLoad()
+        sender.setTitle("★", for: .normal)
+        sender.addTarget(self, action: #selector(buttonDelRecipe), for: .touchUpInside)
     }
     
     @objc func buttonDelRecipe(sender: UIButton!) {
@@ -61,8 +61,8 @@ class RecipeSearchViewController: UIViewController {
                 RecipeStore.delete(delRecipe: recipe)
             }
         }
-        print(RecipeStore.getRecipeList())
-        self.viewDidLoad()
+        sender.setTitle("☆", for: .normal)
+        sender.addTarget(self, action: #selector(buttonAddRecipe), for: .touchUpInside)
     }
 
     override func viewDidLoad() {
