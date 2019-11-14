@@ -52,8 +52,6 @@
 		4F5EEE872373E0E5000319CE = {
 			isa = PBXGroup;
 			children = (
-				9E60AF30237CD27D00FB7D44 /* PersonalData.swift */,
-				9E60AF32237CD2D500FB7D44 /* RecipeStore.swift */,
 				4F5EEE922373E0E5000319CE /* Frydge */,
 				4F5EEE912373E0E5000319CE /* Products */,
 			);
@@ -74,6 +72,8 @@
 				4F5EEEAC2373E30A000319CE /* Main.storyboard */,
 				4F5EEEAA2373E19F000319CE /* MainTabBarController.swift */,
 				4F5EEE952373E0E5000319CE /* SceneDelegate.swift */,
+				9E60AF32237CD2D500FB7D44 /* RecipeStore.swift */,
+				9E60AF30237CD27D00FB7D44 /* PersonalData.swift */,
 				6EEC67CB237C934C0050B605 /* RecipeSearchViewController.swift */,
 				4F5EEE972373E0E5000319CE /* ViewController.swift */,
 				4F5EEE9F2373E0E9000319CE /* Assets.xcassets */,
