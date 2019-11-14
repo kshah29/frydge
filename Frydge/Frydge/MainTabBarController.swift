@@ -25,7 +25,12 @@ class MainTabBarController: UITabBarController {
         cb.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)], for: .normal)
         cb.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         
-        viewControllers = [testVC, cb, createDummyNavControllerWithTitle(title: "Pantry", imageName: nil), createDummyNavControllerWithTitle(title: "Profile", imageName: nil)]
+        let pantryVC = PantryViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        pantryVC.tabBarItem.title = "Search"
+        pantryVC.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)], for: .normal)
+        pantryVC.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        
+        viewControllers = [testVC, cb, pantryVC, createDummyNavControllerWithTitle(title: "Profile", imageName: nil)]
     }
     
     private func createDummyNavControllerWithTitle(title: String, imageName: String?) -> UINavigationController {
