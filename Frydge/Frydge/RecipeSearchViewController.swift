@@ -9,12 +9,9 @@
 import Foundation
 import UIKit
 
-
-
-
 class RecipeSearchViewController: UIViewController {
     
-    let searchbar = UISearchBar(frame: CGRect(x: 10, y: 50, width: 400.0, height: 50.0))
+    let searchbar = UISearchBar(frame: CGRect(x: 10, y: 50, width: 390.0, height: 50.0))
     let current_query: String? = nil
     var recipes: [Recipe]? = nil
     
@@ -27,21 +24,30 @@ class RecipeSearchViewController: UIViewController {
             4. Plate.
             """
         
+
+        
         let ingredients2: [Ingredient] = []
         let process2 = ""
 
-        let recipes = [
+        var recipes = [
             Recipe(id: 0, title: "Grilled Chicken Sonoma Flatbread", ingredientList: ingredients, process: process,
                    image: "https://assets.kraftfoods.com/recipe_images/opendeploy/193146_640x428.jpg"),
             Recipe(id: 1, title: "Untitled Thing 2", ingredientList: ingredients2, process: process2,
                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg")
         ]
-
+        
+        for i in 2...10 {
+            recipes.append(
+                Recipe(id: i, title: "Another Thing", ingredientList: ingredients2, process: process2,
+                   image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg")
+            )
+        }
+            
         self.recipes = recipes
     }
     
     @objc func buttonAction(sender: UIButton!) {
-      print("Button tapped")
+        print(sender.tag)
     }
 
     
@@ -69,34 +75,55 @@ class RecipeSearchViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(backgroundImage)
         
+        let scrollView: UIScrollView = {
+            let v = UIScrollView()
+            v.translatesAutoresizingMaskIntoConstraints = false
+            v.backgroundColor = .white
+            v.addSubview(backgroundImage)
+            return v
+        }()
+        
+        view.addSubview(scrollView)
+        scrollView.alwaysBounceVertical = true
+        
         var list = [
             backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundImage.leftAnchor.constraint(equalTo: view.leftAnchor),
             backgroundImage.rightAnchor.constraint(equalTo: view.rightAnchor),
             backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
+            scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ]
 
         var i = 0
         for recipeView in recipeViews {
-            view.addSubview(recipeView)
-
-            let top = (220 * i) + 120
-
-            list.append(recipeView.topAnchor.constraint(equalTo: view.topAnchor, constant: CGFloat(top)))
-            list.append(recipeView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
-            list.append(recipeView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9))
+            
+            // add the recipe to the view
+            scrollView.addSubview(recipeView)
+            let top = (220 * i)
+            list.append(recipeView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: CGFloat(top)))
+            list.append(recipeView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor))
+            list.append(recipeView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.9))
             list.append(recipeView.heightAnchor.constraint(equalToConstant: 200))
+            
+            // add the favorite button to the view, tagged with the recipe's id
+            
+            let current_recipe = (self.recipes)![i]
+            let y_coord = (220 * i) + 10
+            let button = UIButton(frame: CGRect(x: 355, y: y_coord, width: 30, height: 30))
+            button.tag = current_recipe.id
+            button.backgroundColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.5)
+            button.setTitle("★", for: .normal)
+            button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
 
+            scrollView.addSubview(button)
+            
             i = i + 1
         }
 
         NSLayoutConstraint.activate(list)
-        
-        let button = UIButton(frame: CGRect(x: 50, y: 200, width: 100, height: 50))
-        button.backgroundColor = .green
-        button.setTitle("Test Button", for: .normal)
-        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-
-        view.addSubview(button)
     }
 }
