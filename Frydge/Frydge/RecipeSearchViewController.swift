@@ -9,9 +9,16 @@
 import Foundation
 import UIKit
 
+
+
+
 class RecipeSearchViewController: UIViewController {
- 
-    public func getRecipes() -> [Recipe] {
+    
+    let searchbar = UISearchBar(frame: CGRect(x: 10, y: 50, width: 400.0, height: 50.0))
+    let current_query: String? = nil
+    var recipes: [Recipe]? = nil
+    
+    public func getRecipes() {
         let ingredients = [Ingredient(name: "some kind of dough", amount: 1), Ingredient(name: "roasted red grapes", amount: 1), Ingredient(name: "double cream Brie", amount: 1), Ingredient(name: "caramelized onions", amount: 1), Ingredient(name: "Parmesan", amount: 1), Ingredient(name: "fresh wild arugula", amount: 1)]
         let process = """
             1. Prepare dough.
@@ -30,11 +37,14 @@ class RecipeSearchViewController: UIViewController {
                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg")
         ]
 
-        return recipes
+        self.recipes = recipes
     }
     
-    let searchbar = UISearchBar(frame: CGRect(x: 10, y: 50, width: 400.0, height: 50.0))
+    @objc func buttonAction(sender: UIButton!) {
+      print("Button tapped")
+    }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,12 +56,14 @@ class RecipeSearchViewController: UIViewController {
         backgroundImage.alpha = 0.5
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
         
-        let recipes = getRecipes()
         var recipeViews: [UIView] = []
 
-        for recipe in recipes {
-            guard let recipeView = recipe.recipePreview() else { return }
-            recipeViews.append(recipeView)
+        getRecipes()
+        if self.recipes != nil {
+            for recipe in self.recipes! {
+                guard let recipeView = recipe.recipePreview() else { return }
+                recipeViews.append(recipeView)
+            }
         }
 
         view.backgroundColor = .white
@@ -63,21 +75,28 @@ class RecipeSearchViewController: UIViewController {
             backgroundImage.rightAnchor.constraint(equalTo: view.rightAnchor),
             backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ]
-        
+
         var i = 0
         for recipeView in recipeViews {
             view.addSubview(recipeView)
-            
+
             let top = (220 * i) + 120
-        
+
             list.append(recipeView.topAnchor.constraint(equalTo: view.topAnchor, constant: CGFloat(top)))
             list.append(recipeView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
             list.append(recipeView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9))
             list.append(recipeView.heightAnchor.constraint(equalToConstant: 200))
-            
+
             i = i + 1
         }
 
         NSLayoutConstraint.activate(list)
+        
+        let button = UIButton(frame: CGRect(x: 50, y: 200, width: 100, height: 50))
+        button.backgroundColor = .green
+        button.setTitle("Test Button", for: .normal)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+
+        view.addSubview(button)
     }
 }
