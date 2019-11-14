@@ -29,7 +29,6 @@ class RecipeSearchViewController: UIViewController {
             Recipe(id: 1, title: "Untitled Thing 2", ingredientList: ingredients2, process: process2,
                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg")
         ]
-
         return recipes
     }
     
@@ -44,7 +43,7 @@ class RecipeSearchViewController: UIViewController {
             if ingredientString == ""{
                 ingredientString = ingredient
             } else {
-                ingredientString = ingredientString + "," + ingredient
+                ingredientString = ingredientString + ",+" + ingredient
             }
                 
         }
@@ -63,7 +62,10 @@ class RecipeSearchViewController: UIViewController {
         
         let queryNumber = "2"
         
-        let urlWithParams = foodAPIURL + "?apiKey=" + apiKey + "&query=" + ingredientString + dietParam + intoleranceParam + "&number=" + queryNumber
+        let procedureParam = "&instructionsRequired=true"
+        let recipeInfo = "&addRecipeInformation=true"
+        
+        let urlWithParams = foodAPIURL + "?apiKey=" + apiKey  + dietParam + intoleranceParam + "&includeIngredients=" + ingredientString + procedureParam + recipeInfo + "&number=" + queryNumber
         print(urlWithParams)
         
         var dataStr : String = ""
