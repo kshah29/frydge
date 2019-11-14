@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class RecipeSearchViewController: UIViewController {
+class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
  
     public func getRecipes() -> [Recipe] {
         let ingredients = [Ingredient(name: "some kind of dough", amount: 1), Ingredient(name: "roasted red grapes", amount: 1), Ingredient(name: "double cream Brie", amount: 1), Ingredient(name: "caramelized onions", amount: 1), Ingredient(name: "Parmesan", amount: 1), Ingredient(name: "fresh wild arugula", amount: 1)]
@@ -95,6 +95,7 @@ class RecipeSearchViewController: UIViewController {
         super.viewDidLoad()
         
         searchbar.barTintColor = UIColor(named: "blue")
+        searchbar.delegate = self
         view.addSubview(searchbar)
         
         let backgroundImage = UIImageView(image: #imageLiteral(resourceName: "marble"))
@@ -135,5 +136,13 @@ class RecipeSearchViewController: UIViewController {
         }
 
         NSLayoutConstraint.activate(list)
+        
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        print("Handle search")
     }
 }
