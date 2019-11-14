@@ -21,6 +21,8 @@ class ProfileViewController: UIViewController {
     lazy var headerContainerView: UIView = {
         let view = UIView()
         
+//        view.backgroundColor = .blue
+        
         view.addSubview(profileImageView)
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         profileImageView.anchor(top: view.topAnchor, paddingTop: 88, width: 150, height: 150)
@@ -63,6 +65,52 @@ class ProfileViewController: UIViewController {
         label.textColor = .black
         return label
     }()
+    
+    lazy var dietContainerView: UIView = {
+        let view = UIView()
+        
+//        view.backgroundColor = .red
+        
+        view.addSubview(dietTitleLabel)
+        dietTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        dietTitleLabel.anchor(top: view.topAnchor, paddingTop: 15)
+        
+        // Add dietary restrictions + connection to personal data
+        
+        return view
+    }()
+    
+    lazy var allergyContainerView: UIView = {
+        let view = UIView()
+        
+//        view.backgroundColor = .white
+        
+        view.addSubview(allergyTitleLabel)
+        allergyTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        allergyTitleLabel.anchor(top: view.topAnchor, paddingTop: 15)
+        
+        // Add dietary restrictions + connection to personal data
+        
+        return view
+    }()
+    
+    let dietTitleLabel: UILabel = {
+       let label = UILabel()
+        label.textAlignment = .left
+        label.text = "Dietary Restrictions"
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textColor = .black
+        return label
+    }()
+    
+    let allergyTitleLabel: UILabel = {
+       let label = UILabel()
+        label.textAlignment = .left
+        label.text = "Allergies"
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textColor = .black
+        return label
+    }()
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +118,6 @@ class ProfileViewController: UIViewController {
         let backgroundImage = UIImageView(image: #imageLiteral(resourceName: "marble2"))
         backgroundImage.contentMode = .scaleAspectFill
         backgroundImage.alpha = 0.5
-        
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
         
         view.backgroundColor = .white
@@ -78,8 +125,14 @@ class ProfileViewController: UIViewController {
         backgroundImage.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
         
         view.addSubview(headerContainerView)
-        headerContainerView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, height: 300)
+        headerContainerView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, height: 400)
         
+        view.addSubview(dietContainerView)
+        dietContainerView.anchor(top: headerContainerView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, height: 200)
+        
+        view.addSubview(allergyContainerView)
+        allergyContainerView.anchor(top: dietContainerView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, height: 200)
+
     }
 }
 
