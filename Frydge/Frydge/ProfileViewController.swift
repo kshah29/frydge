@@ -71,7 +71,7 @@ class ProfileViewController: UIViewController {
         
 //        view.backgroundColor = .red
         
-        view.layer.borderColor = UIColor.gray.cgColor
+        view.layer.borderColor = UIColor.opaqueSeparator.cgColor
         view.layer.borderWidth = 1.0
         
         view.addSubview(dietTitleLabel)
