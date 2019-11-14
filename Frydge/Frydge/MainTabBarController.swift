@@ -26,7 +26,7 @@ class MainTabBarController: UITabBarController {
         cb.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         
         let pantryVC = PantryViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        pantryVC.tabBarItem.title = "Search"
+        pantryVC.tabBarItem.title = "Pantry"
         pantryVC.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)], for: .normal)
         pantryVC.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         
