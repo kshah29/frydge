@@ -37,10 +37,11 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         return ingredients.count
     }
     
+    //show all cells
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ListCell
         listCell.nameLabel.text = ingredients[indexPath.item]
+        listCell.pantryViewController = self
         return listCell
     }
     
@@ -64,6 +65,11 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         collectionView?.reloadData()
     }
     
+    func removeIngredient(ingredientName: String){
+        ingredients.removeAll { $0 == ingredientName }
+        collectionView?.reloadData()
+    }
+    
 }
 
 
@@ -81,7 +87,7 @@ class ListHeader: BaseCell {
     
     let addIngredientButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Add Ingredient", for: .normal)
+        button.setTitle("Add", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     } ()
@@ -105,6 +111,8 @@ class ListHeader: BaseCell {
 
 
 class ListCell: BaseCell {
+    
+    var pantryViewController: PantryViewController?
 
     let nameLabel: UILabel = {
         let label = UILabel()
@@ -114,10 +122,28 @@ class ListCell: BaseCell {
         return label
     }()
     
+    let addRemoveIngredientButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Remove", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    } ()
+    
+    
     override func setupViews(){
         addSubview(nameLabel)
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-8-[v0]-8-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel]))
+        addSubview(addRemoveIngredientButton)
+        
+        addRemoveIngredientButton.addTarget(self, action: #selector(ListCell.removeIngredient(_:)), for: .touchUpInside)
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-8-[v0]-[v1(80)]-8-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel, "v1":addRemoveIngredientButton]))
+        
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[v0]-8-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel]))
+        
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[v0]-8-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":addRemoveIngredientButton]))
+    }
+    
+    @objc func removeIngredient(_ sender:UIButton!){
+        pantryViewController?.removeIngredient(ingredientName: nameLabel.text!)
     }
 }
 
