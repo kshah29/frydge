@@ -20,9 +20,9 @@
 		9E60AF31237CD27D00FB7D44 /* PersonalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60AF30237CD27D00FB7D44 /* PersonalData.swift */; };
 		9E60AF33237CD2D500FB7D44 /* RecipeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60AF32237CD2D500FB7D44 /* RecipeStore.swift */; };
 		A705FA9A237CC1B300C7520F /* CookbookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A705FA98237CBDA600C7520F /* CookbookViewController.swift */; };
-		A705FAA0237CC85D00C7520F /* Comfortaa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A705FA9D237CC4A700C7520F /* Comfortaa.ttf */; };
 		A705FAA8237CFC5300C7520F /* FrydgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A705FAA7237CFC5300C7520F /* FrydgeTests.swift */; };
 		A705FAB2237D013000C7520F /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A705FAB1237D013000C7520F /* HeaderView.xib */; };
+		A705FAB7237DDC6700C7520F /* Comfortaa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A705FAB6237DDC6700C7520F /* Comfortaa.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,11 +52,11 @@
 		9E60AF32237CD2D500FB7D44 /* RecipeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStore.swift; sourceTree = "<group>"; };
 		A705FA98237CBDA600C7520F /* CookbookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookbookViewController.swift; sourceTree = "<group>"; };
 		A705FA9B237CC48700C7520F /* Frydge */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Frydge; sourceTree = "<group>"; };
-		A705FA9D237CC4A700C7520F /* Comfortaa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Comfortaa.ttf; path = ../../../../Downloads/Comfortaa/Comfortaa.ttf; sourceTree = "<group>"; };
 		A705FAA5237CFC5300C7520F /* FrydgeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrydgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A705FAA7237CFC5300C7520F /* FrydgeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrydgeTests.swift; sourceTree = "<group>"; };
 		A705FAA9237CFC5300C7520F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A705FAB1237D013000C7520F /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		A705FAB6237DDC6700C7520F /* Comfortaa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Comfortaa.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +98,7 @@
 		4F5EEE922373E0E5000319CE /* Frydge */ = {
 			isa = PBXGroup;
 			children = (
+				A705FAB6237DDC6700C7520F /* Comfortaa.ttf */,
 				A705FAB1237D013000C7520F /* HeaderView.xib */,
 				4F5EEE932373E0E5000319CE /* AppDelegate.swift */,
 				4F5EEEAC2373E30A000319CE /* Main.storyboard */,
@@ -109,7 +110,6 @@
 				A705FA98237CBDA600C7520F /* CookbookViewController.swift */,
 				4F5EEE972373E0E5000319CE /* ViewController.swift */,
 				4F5EEE9F2373E0E9000319CE /* Assets.xcassets */,
-				A705FA9D237CC4A700C7520F /* Comfortaa.ttf */,
 				4F99AB9C2374ED160065FE7D /* Recipe.swift */,
 				A705FA9B237CC48700C7520F /* Frydge */,
 				4F5EEEA12373E0E9000319CE /* LaunchScreen.storyboard */,
@@ -210,11 +210,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A705FAA0237CC85D00C7520F /* Comfortaa.ttf in Resources */,
 				A705FAB2237D013000C7520F /* HeaderView.xib in Resources */,
 				4F5EEEAD2373E30A000319CE /* Main.storyboard in Resources */,
 				4F5EEEA32373E0E9000319CE /* LaunchScreen.storyboard in Resources */,
 				4F5EEEA02373E0E9000319CE /* Assets.xcassets in Resources */,
+				A705FAB7237DDC6700C7520F /* Comfortaa.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
