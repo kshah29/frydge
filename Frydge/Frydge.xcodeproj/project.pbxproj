@@ -19,7 +19,21 @@
 		6EEC67CC237C934C0050B605 /* RecipeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC67CB237C934C0050B605 /* RecipeSearchViewController.swift */; };
 		9E60AF31237CD27D00FB7D44 /* PersonalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60AF30237CD27D00FB7D44 /* PersonalData.swift */; };
 		9E60AF33237CD2D500FB7D44 /* RecipeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60AF32237CD2D500FB7D44 /* RecipeStore.swift */; };
+		A705FA9A237CC1B300C7520F /* CookbookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A705FA98237CBDA600C7520F /* CookbookViewController.swift */; };
+		A705FAA0237CC85D00C7520F /* Comfortaa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A705FA9D237CC4A700C7520F /* Comfortaa.ttf */; };
+		A705FAA8237CFC5300C7520F /* FrydgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A705FAA7237CFC5300C7520F /* FrydgeTests.swift */; };
+		A705FAB2237D013000C7520F /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A705FAB1237D013000C7520F /* HeaderView.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A705FAAA237CFC5300C7520F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F5EEE882373E0E5000319CE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F5EEE8F2373E0E5000319CE;
+			remoteInfo = Frydge;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4F5EEE902373E0E5000319CE /* Frydge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frydge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,10 +50,24 @@
 		6EEC67CB237C934C0050B605 /* RecipeSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchViewController.swift; sourceTree = "<group>"; };
 		9E60AF30237CD27D00FB7D44 /* PersonalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalData.swift; sourceTree = "<group>"; };
 		9E60AF32237CD2D500FB7D44 /* RecipeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStore.swift; sourceTree = "<group>"; };
+		A705FA98237CBDA600C7520F /* CookbookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookbookViewController.swift; sourceTree = "<group>"; };
+		A705FA9B237CC48700C7520F /* Frydge */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Frydge; sourceTree = "<group>"; };
+		A705FA9D237CC4A700C7520F /* Comfortaa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Comfortaa.ttf; path = ../../../../Downloads/Comfortaa/Comfortaa.ttf; sourceTree = "<group>"; };
+		A705FAA5237CFC5300C7520F /* FrydgeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrydgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A705FAA7237CFC5300C7520F /* FrydgeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrydgeTests.swift; sourceTree = "<group>"; };
+		A705FAA9237CFC5300C7520F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A705FAB1237D013000C7520F /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4F5EEE8D2373E0E5000319CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A705FAA2237CFC5300C7520F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -53,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				4F5EEE922373E0E5000319CE /* Frydge */,
+				A705FAA6237CFC5300C7520F /* FrydgeTests */,
 				4F5EEE912373E0E5000319CE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				4F5EEE902373E0E5000319CE /* Frydge.app */,
+				A705FAA5237CFC5300C7520F /* FrydgeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -68,6 +98,7 @@
 		4F5EEE922373E0E5000319CE /* Frydge */ = {
 			isa = PBXGroup;
 			children = (
+				A705FAB1237D013000C7520F /* HeaderView.xib */,
 				4F5EEE932373E0E5000319CE /* AppDelegate.swift */,
 				4F5EEEAC2373E30A000319CE /* Main.storyboard */,
 				4F5EEEAA2373E19F000319CE /* MainTabBarController.swift */,
@@ -75,14 +106,26 @@
 				9E60AF32237CD2D500FB7D44 /* RecipeStore.swift */,
 				9E60AF30237CD27D00FB7D44 /* PersonalData.swift */,
 				6EEC67CB237C934C0050B605 /* RecipeSearchViewController.swift */,
+				A705FA98237CBDA600C7520F /* CookbookViewController.swift */,
 				4F5EEE972373E0E5000319CE /* ViewController.swift */,
 				4F5EEE9F2373E0E9000319CE /* Assets.xcassets */,
+				A705FA9D237CC4A700C7520F /* Comfortaa.ttf */,
 				4F99AB9C2374ED160065FE7D /* Recipe.swift */,
+				A705FA9B237CC48700C7520F /* Frydge */,
 				4F5EEEA12373E0E9000319CE /* LaunchScreen.storyboard */,
 				4F5EEEA42373E0E9000319CE /* Info.plist */,
 				4F5EEE9C2373E0E5000319CE /* Frydge.xcdatamodeld */,
 			);
 			path = Frydge;
+			sourceTree = "<group>";
+		};
+		A705FAA6237CFC5300C7520F /* FrydgeTests */ = {
+			isa = PBXGroup;
+			children = (
+				A705FAA7237CFC5300C7520F /* FrydgeTests.swift */,
+				A705FAA9237CFC5300C7520F /* Info.plist */,
+			);
+			path = FrydgeTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,18 +148,41 @@
 			productReference = 4F5EEE902373E0E5000319CE /* Frydge.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A705FAA4237CFC5300C7520F /* FrydgeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A705FAAE237CFC5300C7520F /* Build configuration list for PBXNativeTarget "FrydgeTests" */;
+			buildPhases = (
+				A705FAA1237CFC5300C7520F /* Sources */,
+				A705FAA2237CFC5300C7520F /* Frameworks */,
+				A705FAA3237CFC5300C7520F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A705FAAB237CFC5300C7520F /* PBXTargetDependency */,
+			);
+			name = FrydgeTests;
+			productName = FrydgeTests;
+			productReference = A705FAA5237CFC5300C7520F /* FrydgeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		4F5EEE882373E0E5000319CE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
+				DefaultBuildSystemTypeForWorkspace = Original;
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Frydge Co.";
 				TargetAttributes = {
 					4F5EEE8F2373E0E5000319CE = {
 						CreatedOnToolsVersion = 11.0;
+					};
+					A705FAA4237CFC5300C7520F = {
+						CreatedOnToolsVersion = 11.2;
+						TestTargetID = 4F5EEE8F2373E0E5000319CE;
 					};
 				};
 			};
@@ -134,6 +200,7 @@
 			projectRoot = "";
 			targets = (
 				4F5EEE8F2373E0E5000319CE /* Frydge */,
+				A705FAA4237CFC5300C7520F /* FrydgeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -143,9 +210,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A705FAA0237CC85D00C7520F /* Comfortaa.ttf in Resources */,
+				A705FAB2237D013000C7520F /* HeaderView.xib in Resources */,
 				4F5EEEAD2373E30A000319CE /* Main.storyboard in Resources */,
 				4F5EEEA32373E0E9000319CE /* LaunchScreen.storyboard in Resources */,
 				4F5EEEA02373E0E9000319CE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A705FAA3237CFC5300C7520F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,13 +238,30 @@
 				9E60AF31237CD27D00FB7D44 /* PersonalData.swift in Sources */,
 				4F5EEEAB2373E19F000319CE /* MainTabBarController.swift in Sources */,
 				4F99AB9D2374ED160065FE7D /* Recipe.swift in Sources */,
+				A705FA9A237CC1B300C7520F /* CookbookViewController.swift in Sources */,
 				4F5EEE942373E0E5000319CE /* AppDelegate.swift in Sources */,
 				4F5EEE962373E0E5000319CE /* SceneDelegate.swift in Sources */,
 				9E60AF33237CD2D500FB7D44 /* RecipeStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A705FAA1237CFC5300C7520F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A705FAA8237CFC5300C7520F /* FrydgeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A705FAAB237CFC5300C7520F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4F5EEE8F2373E0E5000319CE /* Frydge */;
+			targetProxy = A705FAAA237CFC5300C7520F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4F5EEEA12373E0E9000319CE /* LaunchScreen.storyboard */ = {
@@ -330,6 +423,46 @@
 			};
 			name = Release;
 		};
+		A705FAAC237CFC5300C7520F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FrydgeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Frydge.FrydgeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Frydge.app/Frydge";
+			};
+			name = Debug;
+		};
+		A705FAAD237CFC5300C7520F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FrydgeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Frydge.FrydgeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Frydge.app/Frydge";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -347,6 +480,15 @@
 			buildConfigurations = (
 				4F5EEEA82373E0E9000319CE /* Debug */,
 				4F5EEEA92373E0E9000319CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A705FAAE237CFC5300C7520F /* Build configuration list for PBXNativeTarget "FrydgeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A705FAAC237CFC5300C7520F /* Debug */,
+				A705FAAD237CFC5300C7520F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

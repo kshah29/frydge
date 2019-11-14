@@ -72,8 +72,8 @@ class RecipeView: UIView {
         let label = UILabel()
         label.numberOfLines = 2
         label.text = title
-        label.textColor = .white
-        label.font = .systemFont(ofSize: 24, weight: .semibold)
+        label.textColor = .black
+        label.font = UIFont(name: "Comfortaa", size: 28)
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         titleLabel = label
@@ -123,14 +123,14 @@ class RecipeView: UIView {
 
         translatesAutoresizingMaskIntoConstraints = false
         clipsToBounds = true
-        layer.cornerRadius = CGFloat(10)
+        layer.cornerRadius = CGFloat(5)
     }
     
     // For some reason the gradient layer must be positioned in this function. It doesn't get along well with AutoLayout otherwise.
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let gradientColors: [CGColor] = [UIColor.clear.cgColor, UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.35).cgColor, UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.7).cgColor]
+        let gradientColors: [CGColor] = [UIColor.clear.cgColor, UIColor(hue: 0, saturation: 0, brightness: 1.0, alpha: 0.35).cgColor, UIColor(hue: 0, saturation: 0, brightness: 1.0, alpha: 0.7).cgColor]
         gradientView.setGradientBackground(colors: gradientColors, locations: [0.0, 0.2, 0.5])
     }
 }
