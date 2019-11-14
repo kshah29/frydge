@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
         return iv
     }()
     
+    // First part of profile (picture, name, membership)
     lazy var headerContainerView: UIView = {
         let view = UIView()
         
@@ -66,6 +67,7 @@ class ProfileViewController: UIViewController {
         return label
     }()
     
+    // Second part of profile (dietary restrictions)
     lazy var dietContainerView: UIView = {
         let view = UIView()
         
@@ -77,26 +79,13 @@ class ProfileViewController: UIViewController {
         view.addSubview(dietTitleLabel)
         dietTitleLabel.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 15)
         
-        view.addSubview(checkboxButton)
-        checkboxButton.anchor(top: dietTitleLabel.bottomAnchor, paddingTop: 10, paddingLeft: 10, width: 32, height: 32)
+        view.addSubview(checkboxButton1)
+        checkboxButton1.anchor(top: dietTitleLabel.bottomAnchor, paddingTop: 10, paddingLeft: 10, width: 32, height: 32)
         
-        view.addSubview(dietX)
-        dietX.anchor(top: dietTitleLabel.bottomAnchor, left: checkboxButton.rightAnchor, paddingTop: 10, paddingLeft: 15)
+        view.addSubview(dietVegetarian)
+        dietVegetarian.anchor(top: dietTitleLabel.bottomAnchor, left: checkboxButton1.rightAnchor, paddingTop: 10, paddingLeft: 15)
         
         // Add dietary restrictions + connection to personal data
-        
-        return view
-    }()
-    
-    lazy var allergyContainerView: UIView = {
-        let view = UIView()
-        
-//        view.backgroundColor = .white
-        
-        view.addSubview(allergyTitleLabel)
-        allergyTitleLabel.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 25)
-        
-        // Add allergies + connection to personal data
         
         return view
     }()
@@ -110,6 +99,35 @@ class ProfileViewController: UIViewController {
         return label
     }()
     
+    let checkboxButton1: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "unchecked-1").withRenderingMode(.alwaysOriginal), for: .normal)
+        return button
+    }()
+    
+    let dietVegetarian: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.text = "Vegetarian"
+        label.font = UIFont.systemFont(ofSize: 25)
+        label.textColor = .black
+        return label
+    }()
+    
+    // Third part of profile (allergies)
+    lazy var allergyContainerView: UIView = {
+        let view = UIView()
+        
+//        view.backgroundColor = .white
+        
+        view.addSubview(allergyTitleLabel)
+        allergyTitleLabel.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 25)
+        
+        // Add allergies + connection to personal data
+        
+        return view
+    }()
+    
     let allergyTitleLabel: UILabel = {
        let label = UILabel()
         label.textAlignment = .left
@@ -119,21 +137,7 @@ class ProfileViewController: UIViewController {
         return label
     }()
     
-    let checkboxButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "unchecked-1").withRenderingMode(.alwaysOriginal), for: .normal)
-        return button
-    }()
-    
-    let dietX: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.text = "X"
-        label.font = UIFont.systemFont(ofSize: 25)
-        label.textColor = .black
-        return label
-    }()
-        
+    // viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
