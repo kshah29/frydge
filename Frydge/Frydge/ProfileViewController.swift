@@ -77,6 +77,12 @@ class ProfileViewController: UIViewController {
         view.addSubview(dietTitleLabel)
         dietTitleLabel.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 15)
         
+        view.addSubview(checkboxButton)
+        checkboxButton.anchor(top: dietTitleLabel.bottomAnchor, paddingTop: 10, paddingLeft: 10, width: 32, height: 32)
+        
+        view.addSubview(dietX)
+        dietX.anchor(top: dietTitleLabel.bottomAnchor, left: checkboxButton.rightAnchor, paddingTop: 10, paddingLeft: 15)
+        
         // Add dietary restrictions + connection to personal data
         
         return view
@@ -88,9 +94,9 @@ class ProfileViewController: UIViewController {
 //        view.backgroundColor = .white
         
         view.addSubview(allergyTitleLabel)
-        allergyTitleLabel.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 15)
+        allergyTitleLabel.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 25)
         
-        // Add dietary restrictions + connection to personal data
+        // Add allergies + connection to personal data
         
         return view
     }()
@@ -108,6 +114,21 @@ class ProfileViewController: UIViewController {
        let label = UILabel()
         label.textAlignment = .left
         label.text = "Allergies"
+        label.font = UIFont.systemFont(ofSize: 25)
+        label.textColor = .black
+        return label
+    }()
+    
+    let checkboxButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "unchecked-1").withRenderingMode(.alwaysOriginal), for: .normal)
+        return button
+    }()
+    
+    let dietX: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.text = "X"
         label.font = UIFont.systemFont(ofSize: 25)
         label.textColor = .black
         return label
