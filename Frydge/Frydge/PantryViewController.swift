@@ -9,6 +9,19 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let header: UILabel = {
+            let label = UILabel()
+            label.textAlignment = .center
+            label.text = "Ingredients"
+            label.font = UIFont(name: "Comfortaa", size: 42)
+            label.textColor = .black
+            return label
+        }()
+        view.addSubview(header)
+        header.translatesAutoresizingMaskIntoConstraints = false
+        header.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
+        header.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 64.0).isActive = true
     
         //background image setup
         let backgroundImage = UIImageView(image: #imageLiteral(resourceName: "marble"))
@@ -57,7 +70,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: 100)
+        return CGSize(width: view.frame.width, height: 120)
     }
     
     func addNewIngredient(ingredientName: String){
@@ -68,6 +81,10 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     func removeIngredient(ingredientName: String){
         ingredients.removeAll { $0 == ingredientName }
         collectionView?.reloadData()
+    }
+    
+    func getIngredients(inputArray:Array<String>) -> Array<String> {
+        return ingredients
     }
     
 }
@@ -98,9 +115,8 @@ class ListHeader: BaseCell {
         
         addIngredientButton.addTarget(self, action: #selector(ListHeader.addIngredient(_:)), for: .touchUpInside)
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-8-[v0]-[v1(80)]-8-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":ingredientNameTextField, "v1":addIngredientButton]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-24-[v0]-24-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":ingredientNameTextField]))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[v0]-8-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":addIngredientButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-80-[v0]-0-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":ingredientNameTextField]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-80-[v0]-0-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":addIngredientButton]))
     }
     
     @objc func addIngredient(_ sender:UIButton!){
@@ -137,9 +153,9 @@ class ListCell: BaseCell {
         addRemoveIngredientButton.addTarget(self, action: #selector(ListCell.removeIngredient(_:)), for: .touchUpInside)
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-8-[v0]-[v1(80)]-8-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel, "v1":addRemoveIngredientButton]))
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[v0]-8-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-40-[v0]-0-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel]))
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-8-[v0]-8-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":addRemoveIngredientButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-40-[v0]-0-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":addRemoveIngredientButton]))
     }
     
     @objc func removeIngredient(_ sender:UIButton!){
