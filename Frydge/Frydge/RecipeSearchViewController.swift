@@ -24,8 +24,6 @@ class RecipeSearchViewController: UIViewController {
             4. Plate.
             """
         
-
-        
         let ingredients2: [Ingredient] = []
         let process2 = ""
 
@@ -46,11 +44,27 @@ class RecipeSearchViewController: UIViewController {
         self.recipes = recipes
     }
     
-    @objc func buttonAction(sender: UIButton!) {
-        print(sender.tag)
+    @objc func buttonAddRecipe(sender: UIButton!) {
+        for recipe in self.recipes! {
+            if sender.tag == recipe.id {
+                RecipeStore.delete(delRecipe: recipe)
+                RecipeStore.add(addRecipe: recipe)
+            }
+        }
+        print(RecipeStore.getRecipeList())
+        self.viewDidLoad()
+    }
+    
+    @objc func buttonDelRecipe(sender: UIButton!) {
+        for recipe in self.recipes! {
+            if sender.tag == recipe.id {
+                RecipeStore.delete(delRecipe: recipe)
+            }
+        }
+        print(RecipeStore.getRecipeList())
+        self.viewDidLoad()
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -110,20 +124,35 @@ class RecipeSearchViewController: UIViewController {
             list.append(recipeView.heightAnchor.constraint(equalToConstant: 200))
             
             // add the favorite button to the view, tagged with the recipe's id
-            
             let current_recipe = (self.recipes)![i]
             let y_coord = (220 * i) + 10
             let button = UIButton(frame: CGRect(x: 355, y: y_coord, width: 30, height: 30))
             button.tag = current_recipe.id
             button.backgroundColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.5)
-            button.setTitle("★", for: .normal)
-            button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-
+            
+            let current_favorites = RecipeStore.getRecipeList()
+            var in_favorites = false
+            for favorite in current_favorites {
+                if favorite.id == current_recipe.id {
+                    // this recipe is already in favorites, clicking on the button should remove it
+                    button.setTitle("★", for: .normal)
+                    button.addTarget(self, action: #selector(buttonDelRecipe), for: .touchUpInside)
+                    in_favorites = true
+                }
+            }
+            
+            if !in_favorites {
+                button.setTitle("☆", for: .normal)
+                button.addTarget(self, action: #selector(buttonAddRecipe), for: .touchUpInside)
+            }
             scrollView.addSubview(button)
+            
+            let scrollContentHeight = CGFloat(220 * recipeViews.count)
+            scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: scrollContentHeight)
             
             i = i + 1
         }
-
+    
         NSLayoutConstraint.activate(list)
     }
 }
