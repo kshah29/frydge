@@ -75,8 +75,7 @@ class ProfileViewController: UIViewController {
         view.layer.borderWidth = 2.0
         
         view.addSubview(dietTitleLabel)
-        dietTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        dietTitleLabel.anchor(top: view.topAnchor, paddingTop: 15)
+        dietTitleLabel.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 15)
         
         // Add dietary restrictions + connection to personal data
         
@@ -89,8 +88,7 @@ class ProfileViewController: UIViewController {
 //        view.backgroundColor = .white
         
         view.addSubview(allergyTitleLabel)
-        allergyTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        allergyTitleLabel.anchor(top: view.topAnchor, paddingTop: 15)
+        allergyTitleLabel.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 15)
         
         // Add dietary restrictions + connection to personal data
         
@@ -101,7 +99,7 @@ class ProfileViewController: UIViewController {
        let label = UILabel()
         label.textAlignment = .left
         label.text = "Dietary Restrictions"
-        label.font = UIFont.systemFont(ofSize: 20)
+        label.font = UIFont.systemFont(ofSize: 25)
         label.textColor = .black
         return label
     }()
@@ -110,7 +108,7 @@ class ProfileViewController: UIViewController {
        let label = UILabel()
         label.textAlignment = .left
         label.text = "Allergies"
-        label.font = UIFont.systemFont(ofSize: 20)
+        label.font = UIFont.systemFont(ofSize: 25)
         label.textColor = .black
         return label
     }()
