@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A05489A237D54F700B44E35 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A054899237D54F700B44E35 /* ProfileViewController.swift */; };
+		3A05489C237E150B00B44E35 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A05489B237E150B00B44E35 /* Roboto-Black.ttf */; };
 		4F5EEE942373E0E5000319CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EEE932373E0E5000319CE /* AppDelegate.swift */; };
 		4F5EEE962373E0E5000319CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EEE952373E0E5000319CE /* SceneDelegate.swift */; };
 		4F5EEE982373E0E5000319CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EEE972373E0E5000319CE /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		3A054899237D54F700B44E35 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		3A05489B237E150B00B44E35 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Black.ttf"; path = "../../../../../Downloads/Roboto-Black.ttf"; sourceTree = "<group>"; };
 		4F5EEE902373E0E5000319CE /* Frydge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frydge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F5EEE932373E0E5000319CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F5EEE952373E0E5000319CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				A705FAB6237DDC6700C7520F /* Comfortaa.ttf */,
+				3A05489B237E150B00B44E35 /* Roboto-Black.ttf */,
 				A705FAB1237D013000C7520F /* HeaderView.xib */,
 				4F5EEE932373E0E5000319CE /* AppDelegate.swift */,
 				4F5EEEAC2373E30A000319CE /* Main.storyboard */,
@@ -218,6 +221,7 @@
 				4F5EEEA32373E0E9000319CE /* LaunchScreen.storyboard in Resources */,
 				4F5EEEA02373E0E9000319CE /* Assets.xcassets in Resources */,
 				A705FAB7237DDC6700C7520F /* Comfortaa.ttf in Resources */,
+				3A05489C237E150B00B44E35 /* Roboto-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

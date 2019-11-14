@@ -52,8 +52,8 @@ class ProfileViewController: UIViewController {
     let nameLabel: UILabel = {
        let label = UILabel()
         label.textAlignment = .center
-        label.text = "User 1234"
-        label.font = UIFont.systemFont(ofSize: 32)
+        label.text = "User"
+        label.font = UIFont(name: "Comfortaa", size: 32)
         label.textColor = .black
         return label
     }()
@@ -62,7 +62,7 @@ class ProfileViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.text = "member since Nov. 2019"
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont(name: "Comfortaa", size: 16)
         label.textColor = .black
         return label
     }()
@@ -80,10 +80,22 @@ class ProfileViewController: UIViewController {
         dietTitleLabel.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 15)
         
         view.addSubview(checkboxButton1)
-        checkboxButton1.anchor(top: dietTitleLabel.bottomAnchor, paddingTop: 10, paddingLeft: 10, width: 32, height: 32)
+        checkboxButton1.anchor(top: dietTitleLabel.bottomAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 10, width: 24, height: 24)
         
         view.addSubview(dietVegetarian)
-        dietVegetarian.anchor(top: dietTitleLabel.bottomAnchor, left: checkboxButton1.rightAnchor, paddingTop: 10, paddingLeft: 15)
+        dietVegetarian.anchor(top: dietTitleLabel.bottomAnchor, left: checkboxButton1.rightAnchor, paddingTop: 20, paddingLeft: 15)
+        
+        view.addSubview(checkboxButton2)
+        checkboxButton2.anchor(top: checkboxButton1.bottomAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 10, width: 24, height: 24)
+        
+        view.addSubview(dietVegan)
+        dietVegan.anchor(top: dietVegetarian.bottomAnchor, left: checkboxButton2.rightAnchor, paddingTop: 20, paddingLeft: 15)
+        
+        view.addSubview(checkboxButton3)
+        checkboxButton3.anchor(top: checkboxButton2.bottomAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 10, width: 24, height: 24)
+        
+        view.addSubview(dietPaleo)
+        dietPaleo.anchor(top: dietVegan.bottomAnchor, left: checkboxButton3.rightAnchor, paddingTop: 20, paddingLeft: 15)
         
         // Add dietary restrictions + connection to personal data
         
@@ -94,22 +106,52 @@ class ProfileViewController: UIViewController {
        let label = UILabel()
         label.textAlignment = .left
         label.text = "Dietary Restrictions"
-        label.font = UIFont.systemFont(ofSize: 25)
+        label.font = UIFont(name: "Comfortaa", size: 24)
         label.textColor = .black
         return label
     }()
     
     let checkboxButton1: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "unchecked-1").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
         return button
     }()
     
     let dietVegetarian: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.text = "Vegetarian"
-        label.font = UIFont.systemFont(ofSize: 25)
+        label.text = "VEGETARIAN"
+        label.font = UIFont(name: "Roboto-Black", size: 15)
+        label.textColor = .black
+        return label
+    }()
+    
+    let checkboxButton2: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        return button
+    }()
+    
+    let dietVegan: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.text = "VEGAN"
+        label.font = UIFont(name: "Roboto-Black", size: 15)
+        label.textColor = .black
+        return label
+    }()
+    
+    let checkboxButton3: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        return button
+    }()
+    
+    let dietPaleo: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.text = "PALEO"
+        label.font = UIFont(name: "Roboto-Black", size: 15)
         label.textColor = .black
         return label
     }()
@@ -121,7 +163,7 @@ class ProfileViewController: UIViewController {
 //        view.backgroundColor = .white
         
         view.addSubview(allergyTitleLabel)
-        allergyTitleLabel.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 25)
+        allergyTitleLabel.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 15)
         
         // Add allergies + connection to personal data
         
@@ -132,7 +174,7 @@ class ProfileViewController: UIViewController {
        let label = UILabel()
         label.textAlignment = .left
         label.text = "Allergies"
-        label.font = UIFont.systemFont(ofSize: 25)
+        label.font = UIFont(name: "Comfortaa", size: 24)
         label.textColor = .black
         return label
     }()
