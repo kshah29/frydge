@@ -9,13 +9,13 @@
 import Foundation
 
 class RecipeStore{
-    var recipeList: [Recipe] = [] // List of Recipes
+    static var recipeList: [Recipe] = [] // List of Recipes
     
-    public func add(addRecipe : Recipe){
+    static public func add(addRecipe : Recipe){
         recipeList.append(addRecipe)
     }
     
-    public func delete(delRecipe : Recipe){
+    static public func delete(delRecipe : Recipe){
         for (index, element) in recipeList.enumerated(){
             if element.id == delRecipe.id{
                 recipeList.remove(at: index)
