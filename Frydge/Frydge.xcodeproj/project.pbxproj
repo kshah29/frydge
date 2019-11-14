@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A05489A237D54F700B44E35 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A054899237D54F700B44E35 /* ProfileViewController.swift */; };
 		4F5EEE942373E0E5000319CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EEE932373E0E5000319CE /* AppDelegate.swift */; };
 		4F5EEE962373E0E5000319CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EEE952373E0E5000319CE /* SceneDelegate.swift */; };
 		4F5EEE982373E0E5000319CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EEE972373E0E5000319CE /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A054899237D54F700B44E35 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		4F5EEE902373E0E5000319CE /* Frydge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frydge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F5EEE932373E0E5000319CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F5EEE952373E0E5000319CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				4F5EEEAA2373E19F000319CE /* MainTabBarController.swift */,
 				4F5EEE952373E0E5000319CE /* SceneDelegate.swift */,
 				6EEC67CB237C934C0050B605 /* RecipeSearchViewController.swift */,
+				3A054899237D54F700B44E35 /* ProfileViewController.swift */,
 				4F5EEE972373E0E5000319CE /* ViewController.swift */,
 				4F5EEE9F2373E0E9000319CE /* Assets.xcassets */,
 				4F99AB9C2374ED160065FE7D /* Recipe.swift */,
@@ -156,6 +159,7 @@
 				4F5EEEAB2373E19F000319CE /* MainTabBarController.swift in Sources */,
 				4F99AB9D2374ED160065FE7D /* Recipe.swift in Sources */,
 				4F5EEE942373E0E5000319CE /* AppDelegate.swift in Sources */,
+				3A05489A237D54F700B44E35 /* ProfileViewController.swift in Sources */,
 				4F5EEE962373E0E5000319CE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
