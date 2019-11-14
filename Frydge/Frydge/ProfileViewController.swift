@@ -71,6 +71,9 @@ class ProfileViewController: UIViewController {
         
 //        view.backgroundColor = .red
         
+        view.layer.borderColor = UIColor.gray.cgColor
+        view.layer.borderWidth = 1.0
+        
         view.addSubview(dietTitleLabel)
         dietTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         dietTitleLabel.anchor(top: view.topAnchor, paddingTop: 15)
