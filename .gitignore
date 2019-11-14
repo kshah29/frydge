@@ -1,4 +1,11 @@
+# Mac OS X
+*.DS_Store
 
-.DS_Store
-Frydge/Frydge.xcodeproj/xcuserdata/davidlee.xcuserdatad/xcschemes/xcschememanagement.plist
-Frydge/Frydge.xcodeproj/project.xcworkspace/xcuserdata/davidlee.xcuserdatad/UserInterfaceState.xcuserstate
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
