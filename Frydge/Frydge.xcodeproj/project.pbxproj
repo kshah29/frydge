@@ -19,6 +19,8 @@
 		6EEC67CC237C934C0050B605 /* RecipeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC67CB237C934C0050B605 /* RecipeSearchViewController.swift */; };
 		A705FA9A237CC1B300C7520F /* CookbookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A705FA98237CBDA600C7520F /* CookbookViewController.swift */; };
 		A705FAA0237CC85D00C7520F /* Comfortaa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A705FA9D237CC4A700C7520F /* Comfortaa.ttf */; };
+		9E60AF31237CD27D00FB7D44 /* PersonalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60AF30237CD27D00FB7D44 /* PersonalData.swift */; };
+		9E60AF33237CD2D500FB7D44 /* RecipeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60AF32237CD2D500FB7D44 /* RecipeStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		A705FA98237CBDA600C7520F /* CookbookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookbookViewController.swift; sourceTree = "<group>"; };
 		A705FA9B237CC48700C7520F /* Frydge */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Frydge; sourceTree = "<group>"; };
 		A705FA9D237CC4A700C7520F /* Comfortaa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Comfortaa.ttf; path = ../../../../Downloads/Comfortaa/Comfortaa.ttf; sourceTree = "<group>"; };
+		9E60AF30237CD27D00FB7D44 /* PersonalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalData.swift; sourceTree = "<group>"; };
+		9E60AF32237CD2D500FB7D44 /* RecipeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 				4F5EEEAC2373E30A000319CE /* Main.storyboard */,
 				4F5EEEAA2373E19F000319CE /* MainTabBarController.swift */,
 				4F5EEE952373E0E5000319CE /* SceneDelegate.swift */,
+				9E60AF32237CD2D500FB7D44 /* RecipeStore.swift */,
+				9E60AF30237CD27D00FB7D44 /* PersonalData.swift */,
 				6EEC67CB237C934C0050B605 /* RecipeSearchViewController.swift */,
 				A705FA98237CBDA600C7520F /* CookbookViewController.swift */,
 				4F5EEE972373E0E5000319CE /* ViewController.swift */,
@@ -162,11 +168,13 @@
 				6EEC67CC237C934C0050B605 /* RecipeSearchViewController.swift in Sources */,
 				4F5EEE9E2373E0E5000319CE /* Frydge.xcdatamodeld in Sources */,
 				4F5EEE982373E0E5000319CE /* ViewController.swift in Sources */,
+				9E60AF31237CD27D00FB7D44 /* PersonalData.swift in Sources */,
 				4F5EEEAB2373E19F000319CE /* MainTabBarController.swift in Sources */,
 				4F99AB9D2374ED160065FE7D /* Recipe.swift in Sources */,
 				A705FA9A237CC1B300C7520F /* CookbookViewController.swift in Sources */,
 				4F5EEE942373E0E5000319CE /* AppDelegate.swift in Sources */,
 				4F5EEE962373E0E5000319CE /* SceneDelegate.swift in Sources */,
+				9E60AF33237CD2D500FB7D44 /* RecipeStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
