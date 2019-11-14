@@ -10,8 +10,14 @@ import Foundation
 import UIKit
 
 class CookbookViewController: UIViewController {
+    
+    var headerView = UIView()
+    var recipeStore = RecipeStore()
  
-    public func getRecipe() -> [Recipe] {
+    public func getFavoriteRecipe() -> [Recipe] {
+        // return recipeStore.getRecipeList()
+        
+        // test code since recipeStore isn't populated yet
         let ingredients = [Ingredient(name: "some kind of dough", amount: 1), Ingredient(name: "roasted red grapes", amount: 1), Ingredient(name: "double cream Brie", amount: 1), Ingredient(name: "caramelized onions", amount: 1), Ingredient(name: "Parmesan", amount: 1), Ingredient(name: "fresh wild arugula", amount: 1)]
         let process = """
             1. Prepare dough.
@@ -49,7 +55,7 @@ class CookbookViewController: UIViewController {
             backgroundImage.alpha = 0.5
             backgroundImage.translatesAutoresizingMaskIntoConstraints = false
             
-            let recipes = getRecipe()
+            let recipes = getFavoriteRecipe()
             var recipeViews: [UIView] = []
 
             for recipe in recipes {
