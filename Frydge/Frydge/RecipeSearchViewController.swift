@@ -35,6 +35,60 @@ class RecipeSearchViewController: UIViewController {
     
     let searchbar = UISearchBar(frame: CGRect(x: 10, y: 50, width: 400.0, height: 50.0))
 
+    private func makeRequest (ingredientList : [String]) -> String {
+        let foodAPIURL = "https://api.spoonacular.com/recipes/complexSearch"
+        let apiKey : String = "1369e5b47d744efa9885c6ecae9f9be4"
+        var ingredientString : String = ""
+        
+        for ingredient in ingredientList {
+            if ingredientString == ""{
+                ingredientString = ingredient
+            } else {
+                ingredientString = ingredientString + "," + ingredient
+            }
+                
+        }
+        
+        let diet = PersonalData.getDietaryRestrictions()
+        var dietParam = ""
+        if (diet != ""){
+            dietParam = "&diet=" + diet
+        }
+        
+        let intolerance = PersonalData.getIntoleranceString()
+        var intoleranceParam = ""
+        if (intolerance != ""){
+            intoleranceParam += "&intolerances" + intolerance
+        }
+        
+        let queryNumber = "2"
+        
+        let urlWithParams = foodAPIURL + "?apiKey=" + apiKey + "&query=" + ingredientString + dietParam + intoleranceParam + "&number=" + queryNumber
+        print(urlWithParams)
+        
+        var dataStr : String = ""
+        
+        // Excute HTTP Request
+        let url = URL(string: urlWithParams)!
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                print("error: \(error)")
+            } else {
+                if let response = response as? HTTPURLResponse {
+                    print("statusCode: \(response.statusCode)")
+                }
+                if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                    print("data: \(dataString)")
+                    dataStr = dataString
+                }
+            }
+        }
+        task.resume()
+        
+        return dataStr
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
