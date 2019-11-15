@@ -42,7 +42,7 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         sender.addTarget(self, action: #selector(buttonAddRecipe), for: .touchUpInside)
     }
     
-    private func dummyMakeRequest() {
+    public func dummyMakeRequest() {
         let ingredients = [Ingredient(name: "some kind of dough", amount: 1), Ingredient(name: "roasted red grapes", amount: 1), Ingredient(name: "double cream Brie", amount: 1), Ingredient(name: "caramelized onions", amount: 1), Ingredient(name: "Parmesan", amount: 1), Ingredient(name: "fresh wild arugula", amount: 1)]
         let process = """
             1. Prepare dough.
