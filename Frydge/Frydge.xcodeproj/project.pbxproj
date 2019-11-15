@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A05489A237D54F700B44E35 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A054899237D54F700B44E35 /* ProfileViewController.swift */; };
+		4F04DBA9237E2F4E0047083F /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F04DBA8237E2F4E0047083F /* RecipeViewController.swift */; };
 		3A0F9041237E379D00CF6A1B /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A0F9040237E379D00CF6A1B /* Roboto-Black.ttf */; };
 		4F5EEE942373E0E5000319CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EEE932373E0E5000319CE /* AppDelegate.swift */; };
 		4F5EEE962373E0E5000319CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EEE952373E0E5000319CE /* SceneDelegate.swift */; };
@@ -18,6 +19,8 @@
 		4F5EEEAB2373E19F000319CE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EEEAA2373E19F000319CE /* MainTabBarController.swift */; };
 		4F5EEEAD2373E30A000319CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F5EEEAC2373E30A000319CE /* Main.storyboard */; };
 		4F99AB9D2374ED160065FE7D /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F99AB9C2374ED160065FE7D /* Recipe.swift */; };
+		4FE83E6A237E4627007D6A0A /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F067FAF237E457A00941713 /* Roboto-Black.ttf */; };
+		6EEC67CC237C934C0050B605 /* RecipeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC67CB237C934C0050B605 /* RecipeSearchViewController.swift */; };
 		82621005237E41A800C1D3ED /* PantryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82621004237E41A800C1D3ED /* PantryViewController.swift */; };
 		9E60AF31237CD27D00FB7D44 /* PersonalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60AF30237CD27D00FB7D44 /* PersonalData.swift */; };
 		9E60AF33237CD2D500FB7D44 /* RecipeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60AF32237CD2D500FB7D44 /* RecipeStore.swift */; };
@@ -40,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		3A054899237D54F700B44E35 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		4F04DBA8237E2F4E0047083F /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		3A0F9040237E379D00CF6A1B /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		4F5EEE902373E0E5000319CE /* Frydge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frydge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F5EEE932373E0E5000319CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 				9E60AF30237CD27D00FB7D44 /* PersonalData.swift */,
 				6EEC67CB237C934C0050B605 /* RecipeSearchViewController.swift */,
 				3A054899237D54F700B44E35 /* ProfileViewController.swift */,
+				4F04DBA8237E2F4E0047083F /* RecipeViewController.swift */,
 				A705FA98237CBDA600C7520F /* CookbookViewController.swift */,
 				4F5EEE972373E0E5000319CE /* ViewController.swift */,
 				4F5EEE9F2373E0E9000319CE /* Assets.xcassets */,
@@ -251,6 +256,7 @@
 				82621005237E41A800C1D3ED /* PantryViewController.swift in Sources */,
 				A705FA9A237CC1B300C7520F /* CookbookViewController.swift in Sources */,
 				4F5EEE942373E0E5000319CE /* AppDelegate.swift in Sources */,
+				4F04DBA9237E2F4E0047083F /* RecipeViewController.swift in Sources */,
 				3A05489A237D54F700B44E35 /* ProfileViewController.swift in Sources */,
 				4F5EEE962373E0E5000319CE /* SceneDelegate.swift in Sources */,
 				9E60AF33237CD2D500FB7D44 /* RecipeStore.swift in Sources */,
