@@ -9,13 +9,15 @@
 import Foundation
 import UIKit
 
-class RecipeSearchViewController: UIViewController {
+
+class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     
     let searchbar = UISearchBar(frame: CGRect(x: 10, y: 50, width: 390.0, height: 50.0))
     let current_query: String? = nil
     var recipes: [Recipe]? = nil
     
     public func getRecipes() {
+
         let ingredients = [Ingredient(name: "some kind of dough", amount: 1), Ingredient(name: "roasted red grapes", amount: 1), Ingredient(name: "double cream Brie", amount: 1), Ingredient(name: "caramelized onions", amount: 1), Ingredient(name: "Parmesan", amount: 1), Ingredient(name: "fresh wild arugula", amount: 1)]
         let process = """
             1. Prepare dough.
@@ -65,10 +67,68 @@ class RecipeSearchViewController: UIViewController {
         sender.addTarget(self, action: #selector(buttonAddRecipe), for: .touchUpInside)
     }
 
+    private func makeRequest (ingredientList : [String]) -> String {
+        let foodAPIURL = "https://api.spoonacular.com/recipes/complexSearch"
+        let apiKey : String = "1369e5b47d744efa9885c6ecae9f9be4"
+        var ingredientString : String = ""
+        
+        for ingredient in ingredientList {
+            if ingredientString == ""{
+                ingredientString = ingredient
+            } else {
+                ingredientString = ingredientString + ",+" + ingredient
+            }
+                
+        }
+        
+        let diet = PersonalData.getDietaryRestrictions()
+        var dietParam = ""
+        if (diet != ""){
+            dietParam = "&diet=" + diet
+        }
+        
+        let intolerance = PersonalData.getIntoleranceString()
+        var intoleranceParam = ""
+        if (intolerance != ""){
+            intoleranceParam += "&intolerances" + intolerance
+        }
+        
+        let queryNumber = "2"
+        
+        let procedureParam = "&instructionsRequired=true"
+        let recipeInfo = "&addRecipeInformation=true"
+        
+        let urlWithParams = foodAPIURL + "?apiKey=" + apiKey  + dietParam + intoleranceParam + "&includeIngredients=" + ingredientString + procedureParam + recipeInfo + "&number=" + queryNumber
+        print(urlWithParams)
+        
+        var dataStr : String = ""
+        
+        // Excute HTTP Request
+        let url = URL(string: urlWithParams)!
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                print("error: \(error)")
+            } else {
+                if let response = response as? HTTPURLResponse {
+                    print("statusCode: \(response.statusCode)")
+                }
+                if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                    print("data: \(dataString)")
+                    dataStr = dataString
+                }
+            }
+        }
+        task.resume()
+        
+        return dataStr
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchbar.barTintColor = UIColor(named: "blue")
+        searchbar.delegate = self
         view.addSubview(searchbar)
         
         let backgroundImage = UIImageView(image: #imageLiteral(resourceName: "marble"))
@@ -154,5 +214,13 @@ class RecipeSearchViewController: UIViewController {
         }
     
         NSLayoutConstraint.activate(list)
+        
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        print("Handle search")
     }
 }
