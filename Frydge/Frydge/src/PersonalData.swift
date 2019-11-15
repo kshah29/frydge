@@ -12,7 +12,7 @@ class PersonalData{
     static var name : String = ""
     static var email : String = ""
     static var isVegan : Bool = false
-    static var isVegeterian : Bool = false
+    static var isVegetarian : Bool = false
     static var isPaleo : Bool = false
     static var isDairyFree : Bool = false
     static var isGlutenFree : Bool = false
@@ -32,8 +32,8 @@ class PersonalData{
         isVegan = vegan
     }
     
-    static public func setVegeterian(vegeterian: Bool){
-        isVegeterian = vegeterian
+    static public func setVegetarian(vegetarian: Bool){
+        isVegetarian = vegetarian
     }
     
     static public func setPaleo(paleo: Bool){
@@ -143,8 +143,8 @@ class PersonalData{
         var diet : String = ""
        
 
-        if (isVegeterian){
-            diet = "Vegeterian"
+        if (isVegetarian){
+            diet = "Vegetarian"
         }
         if (isVegan){
             diet = "Vegan"

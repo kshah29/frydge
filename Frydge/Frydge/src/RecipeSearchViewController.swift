@@ -13,11 +13,72 @@ import UIKit
 class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     
     let searchbar = UISearchBar(frame: CGRect(x: 10, y: 50, width: 390.0, height: 50.0))
-    let current_query: String? = nil
     var recipes: [Recipe]? = nil
+    var recipeViews: [UIView] = []
+    var backgroundImage = UIImageView(image: #imageLiteral(resourceName: "marble"))
     
-    public func getRecipes() {
-
+    public func getRecipes(query: String) {
+        dummyMakeRequest()
+        populateRecipes()
+    }
+    
+    @objc func buttonAddRecipe(sender: UIButton!) {
+        for recipe in self.recipes! {
+            if sender.tag == recipe.id {
+                RecipeStore.delete(delRecipe: recipe)
+                RecipeStore.add(addRecipe: recipe)
+            }
+        }
+        sender.setTitle("★", for: .normal)
+        sender.addTarget(self, action: #selector(buttonDelRecipe), for: .touchUpInside)
+        
+        // FIXME:- I did this really janky hack to update the Cookbook view controller, but it's probably pretty bad for performance.
+        if let tabController = self.tabBarController {
+            for (index, vc) in tabController.viewControllers?.enumerated() ?? [].enumerated() {
+                if let _ = vc as? CookbookViewController {
+                    let cb = CookbookViewController()
+                    cb.tabBarItem.title = "Cookbook"
+                    cb.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)], for: .normal)
+                    cb.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+                    tabController.viewControllers?[index] = cb
+                }
+            }
+        }
+    }
+    
+    @objc func buttonDelRecipe(sender: UIButton!) {
+        for recipe in self.recipes! {
+            if sender.tag == recipe.id {
+                RecipeStore.delete(delRecipe: recipe)
+            }
+        }
+        sender.setTitle("☆", for: .normal)
+        sender.addTarget(self, action: #selector(buttonAddRecipe), for: .touchUpInside)
+        
+        // FIXME:- I did this really janky hack to update the Cookbook view controller, but it's probably pretty bad for performance.
+        if let tabController = self.tabBarController {
+            for (index, vc) in tabController.viewControllers?.enumerated() ?? [].enumerated() {
+                if let _ = vc as? CookbookViewController {
+                    let cb = CookbookViewController()
+                    cb.tabBarItem.title = "Cookbook"
+                    cb.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)], for: .normal)
+                    cb.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+                    tabController.viewControllers?[index] = cb
+                }
+            }
+        }
+    }
+    
+    @objc func showRecipeViewController(_ sender: UITapGestureRecognizer) {
+        for recipe in self.recipes! {
+            if sender.view?.tag == recipe.id {
+                let recipeVC = RecipeViewController(forRecipe: recipe)
+                present(recipeVC, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    private func dummyMakeRequest() {
         let ingredients = [Ingredient(name: "some kind of dough", amount: 1), Ingredient(name: "roasted red grapes", amount: 1), Ingredient(name: "double cream Brie", amount: 1), Ingredient(name: "caramelized onions", amount: 1), Ingredient(name: "Parmesan", amount: 1), Ingredient(name: "fresh wild arugula", amount: 1)]
         let process = """
             1. Prepare dough.
@@ -44,27 +105,6 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         }
             
         self.recipes = recipes
-    }
-    
-    @objc func buttonAddRecipe(sender: UIButton!) {
-        for recipe in self.recipes! {
-            if sender.tag == recipe.id {
-                RecipeStore.delete(delRecipe: recipe)
-                RecipeStore.add(addRecipe: recipe)
-            }
-        }
-        sender.setTitle("★", for: .normal)
-        sender.addTarget(self, action: #selector(buttonDelRecipe), for: .touchUpInside)
-    }
-    
-    @objc func buttonDelRecipe(sender: UIButton!) {
-        for recipe in self.recipes! {
-            if sender.tag == recipe.id {
-                RecipeStore.delete(delRecipe: recipe)
-            }
-        }
-        sender.setTitle("☆", for: .normal)
-        sender.addTarget(self, action: #selector(buttonAddRecipe), for: .touchUpInside)
     }
 
     private func parseRecipeJSON (recipeJSON : [String: Any]){
@@ -121,7 +161,6 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
             } else {
                 ingredientString = ingredientString + ",+" + ingredient
             }
-                
         }
         
         let diet = PersonalData.getDietaryRestrictions()
@@ -170,31 +209,16 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         task.resume()
     }
     
-    
-    override func viewDidLoad() {
+    func populateRecipes() {
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
+        
         super.viewDidLoad()
         
         searchbar.barTintColor = UIColor(named: "blue")
         searchbar.delegate = self
         view.addSubview(searchbar)
-        
-        let backgroundImage = UIImageView(image: #imageLiteral(resourceName: "marble"))
-        backgroundImage.contentMode = .scaleAspectFill
-        backgroundImage.alpha = 0.5
-        backgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        
-        var recipeViews: [UIView] = []
-
-        getRecipes()
-        if self.recipes != nil {
-            for recipe in self.recipes! {
-                guard let recipeView = recipe.recipePreview() else { return }
-                recipeViews.append(recipeView)
-            }
-        }
-
-        view.backgroundColor = .white
-        view.addSubview(backgroundImage)
         
         let scrollView: UIScrollView = {
             let v = UIScrollView()
@@ -219,6 +243,13 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ]
 
+        if self.recipes != nil {
+            self.recipeViews = []
+            for recipe in self.recipes! {
+                guard let recipeView = recipe.recipePreview() else { return }
+                recipeViews.append(recipeView)
+            }
+        }
         var i = 0
         for recipeView in recipeViews {
             
@@ -236,6 +267,10 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
             let button = UIButton(frame: CGRect(x: 355, y: y_coord, width: 30, height: 30))
             button.tag = current_recipe.id
             button.backgroundColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.5)
+            
+            recipeView.tag = current_recipe.id
+            let tapRecipeGesture = UITapGestureRecognizer(target: self, action: #selector(self.showRecipeViewController(_:)))
+            recipeView.addGestureRecognizer(tapRecipeGesture)
             
             let current_favorites = RecipeStore.getRecipeList()
             var in_favorites = false
@@ -261,6 +296,24 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         }
     
         NSLayoutConstraint.activate(list)
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        searchbar.barTintColor = UIColor(named: "blue")
+        searchbar.delegate = self
+        view.addSubview(searchbar)
+        
+        backgroundImage.contentMode = .scaleAspectFill
+        backgroundImage.alpha = 0.5
+        backgroundImage.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.backgroundColor = .white
+        view.addSubview(backgroundImage)
+        
+        getRecipes(query: "")
         
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
@@ -268,6 +321,8 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        print("Handle search")
+        if searchBar.text != nil {
+            getRecipes(query: searchBar.text!)
+        }
     }
 }
