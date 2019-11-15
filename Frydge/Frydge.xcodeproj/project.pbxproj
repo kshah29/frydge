@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A05489A237D54F700B44E35 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A054899237D54F700B44E35 /* ProfileViewController.swift */; };
 		3A05489C237E150B00B44E35 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A05489B237E150B00B44E35 /* Roboto-Black.ttf */; };
+		4F04DBA9237E2F4E0047083F /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F04DBA8237E2F4E0047083F /* RecipeViewController.swift */; };
 		4F5EEE942373E0E5000319CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EEE932373E0E5000319CE /* AppDelegate.swift */; };
 		4F5EEE962373E0E5000319CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EEE952373E0E5000319CE /* SceneDelegate.swift */; };
 		4F5EEE982373E0E5000319CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EEE972373E0E5000319CE /* ViewController.swift */; };
@@ -39,7 +40,8 @@
 
 /* Begin PBXFileReference section */
 		3A054899237D54F700B44E35 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		3A05489B237E150B00B44E35 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Black.ttf"; path = "../../../../../Downloads/Roboto-Black.ttf"; sourceTree = "<group>"; };
+		3A05489B237E150B00B44E35 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Black.ttf"; path = "Frydge/Roboto-Black.ttf"; sourceTree = SOURCE_ROOT; };
+		4F04DBA8237E2F4E0047083F /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		4F5EEE902373E0E5000319CE /* Frydge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frydge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F5EEE932373E0E5000319CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F5EEE952373E0E5000319CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				9E60AF30237CD27D00FB7D44 /* PersonalData.swift */,
 				6EEC67CB237C934C0050B605 /* RecipeSearchViewController.swift */,
 				3A054899237D54F700B44E35 /* ProfileViewController.swift */,
+				4F04DBA8237E2F4E0047083F /* RecipeViewController.swift */,
 				A705FA98237CBDA600C7520F /* CookbookViewController.swift */,
 				4F5EEE972373E0E5000319CE /* ViewController.swift */,
 				4F5EEE9F2373E0E9000319CE /* Assets.xcassets */,
@@ -247,6 +250,7 @@
 				4F99AB9D2374ED160065FE7D /* Recipe.swift in Sources */,
 				A705FA9A237CC1B300C7520F /* CookbookViewController.swift in Sources */,
 				4F5EEE942373E0E5000319CE /* AppDelegate.swift in Sources */,
+				4F04DBA9237E2F4E0047083F /* RecipeViewController.swift in Sources */,
 				3A05489A237D54F700B44E35 /* ProfileViewController.swift in Sources */,
 				4F5EEE962373E0E5000319CE /* SceneDelegate.swift in Sources */,
 				9E60AF33237CD2D500FB7D44 /* RecipeStore.swift in Sources */,
