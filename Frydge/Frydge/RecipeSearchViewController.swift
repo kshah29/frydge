@@ -43,7 +43,6 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         sender.addTarget(self, action: #selector(buttonAddRecipe), for: .touchUpInside)
     }
     
-    public func dummyMakeRequest() {
     @objc func showRecipeViewController(_ sender: UITapGestureRecognizer) {
         for recipe in self.recipes! {
             if sender.view?.tag == recipe.id {
