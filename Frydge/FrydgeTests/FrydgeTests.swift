@@ -14,6 +14,8 @@ class FrydgeTests: XCTestCase {
     private var recipe1 : Recipe!
     private var recipe2 : Recipe!
     private var recipe3 : Recipe!
+    private var recipeStore : RecipeStore!
+    private var recipeSearchViewController = RecipeSearchViewController()
 
     override func setUp() {
         recipe1 = Recipe(id: 100, title: "Recipe Title 1", ingredientList: [Ingredient(name: "i1", amount: 1), Ingredient(name: "i2", amount: 2)], process: "process1", image: "imageUrl1");
@@ -25,9 +27,29 @@ class FrydgeTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    fun testCase {
+    func testAddRecipesToRecipeStore() {
+        RecipeStore.add(addRecipe: recipe1)
+        RecipeStore.add(addRecipe: recipe2)
+        RecipeStore.add(addRecipe: recipe3)
         
+        XCTAssertEqual(RecipeStore.getRecipeList()[0].id, recipe1.id)
+        XCTAssertEqual(RecipeStore.getRecipeList()[1].id, recipe2.id)
+        XCTAssertEqual(RecipeStore.getRecipeList()[2].id, recipe3.id)
+    }
+    
+    func testDeleteRecipesInRecipeStore() {
+        RecipeStore.delete(delRecipe: recipe1)
+        RecipeStore.delete(delRecipe: recipe2)
+        RecipeStore.delete(delRecipe: recipe3)
+        
+        XCTAssertTrue(RecipeStore.getRecipeList().count == 0)
     }
 
-    
+    func testDummyMakeRequest() {
+        recipeSearchViewController.dummyMakeRequest()
+        let populatedRecipes = recipeSearchViewController.recipes
+        
+        XCTAssertEqual(populatedRecipes![0].title, "Grilled Chicken Sonoma Flatbread")
+        XCTAssertEqual(populatedRecipes![8].title, "Another Thing")
+    }
 }

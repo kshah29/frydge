@@ -24,9 +24,10 @@
 		9E60AF31237CD27D00FB7D44 /* PersonalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60AF30237CD27D00FB7D44 /* PersonalData.swift */; };
 		9E60AF33237CD2D500FB7D44 /* RecipeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60AF32237CD2D500FB7D44 /* RecipeStore.swift */; };
 		A705FA9A237CC1B300C7520F /* CookbookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A705FA98237CBDA600C7520F /* CookbookViewController.swift */; };
-		A705FAA8237CFC5300C7520F /* FrydgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A705FAA7237CFC5300C7520F /* FrydgeTests.swift */; };
 		A705FAB2237D013000C7520F /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A705FAB1237D013000C7520F /* HeaderView.xib */; };
 		A705FAB7237DDC6700C7520F /* Comfortaa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A705FAB6237DDC6700C7520F /* Comfortaa.ttf */; };
+		A705FABD237E491300C7520F /* FrydgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A705FAA7237CFC5300C7520F /* FrydgeTests.swift */; };
+		A705FABE237E492C00C7520F /* RecipeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC67CB237C934C0050B605 /* RecipeSearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -247,7 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EEC67CC237C934C0050B605 /* RecipeSearchViewController.swift in Sources */,
+				A705FABE237E492C00C7520F /* RecipeSearchViewController.swift in Sources */,
 				4F5EEE9E2373E0E5000319CE /* Frydge.xcdatamodeld in Sources */,
 				4F5EEE982373E0E5000319CE /* ViewController.swift in Sources */,
 				9E60AF31237CD27D00FB7D44 /* PersonalData.swift in Sources */,
@@ -267,7 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A705FAA8237CFC5300C7520F /* FrydgeTests.swift in Sources */,
+				A705FABD237E491300C7520F /* FrydgeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
