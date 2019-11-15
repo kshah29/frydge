@@ -8,7 +8,7 @@ import UIKit
 class PantryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     var isShoppingList = true;
-    var ingredients: [String] = []
+    var ingredients: [String] = ["test"]
     var shoppingList: [String] = []
     var pantryList: [String] = []
     
@@ -201,6 +201,7 @@ class ListHeader: BaseCell {
 class ListCell: BaseCell {
     
     var pantryViewController: PantryViewController?
+    private var isToggledOn: Bool = false
 
     let nameLabel: UILabel = {
         let label = UILabel()
@@ -210,9 +211,17 @@ class ListCell: BaseCell {
         return label
     }()
     
-    let addRemoveIngredientButton: UIButton = {
+    let removeIngredientButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Remove", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    } ()
+    
+    let selectIngredientButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.black.cgColor
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     } ()
@@ -220,19 +229,33 @@ class ListCell: BaseCell {
     
     override func setupViews(){
         addSubview(nameLabel)
-        addSubview(addRemoveIngredientButton)
+        addSubview(removeIngredientButton)
+        addSubview(selectIngredientButton)
         
-        addRemoveIngredientButton.addTarget(self, action: #selector(ListCell.removeIngredient(_:)), for: .touchUpInside)
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-[v1(80)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel, "v1":addRemoveIngredientButton]))
+        removeIngredientButton.addTarget(self, action: #selector(ListCell.removeIngredient(_:)), for: .touchUpInside)
+        selectIngredientButton.addTarget(self, action: #selector(ListCell.selectIngredient(_:)), for: .touchUpInside)
         
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v2(30)]-[v0]-[v1(80)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel, "v1":removeIngredientButton, "v2":selectIngredientButton]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel]))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":addRemoveIngredientButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":removeIngredientButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":selectIngredientButton]))
     }
     
     @objc func removeIngredient(_ sender:UIButton!){
         pantryViewController?.removeIngredient(ingredientName: nameLabel.text!)
     }
+    @objc func selectIngredient(_ sender:UIButton!){
+        if(!isToggledOn){
+            isToggledOn = true
+            selectIngredientButton.backgroundColor = UIColor.blue
+        }
+        else{
+            isToggledOn = false
+            selectIngredientButton.backgroundColor = UIColor.clear
+        }
+        //pantryViewController?.selectIngredient(ingredientName: nameLabel.text!)
+    }
+    
 }
 
 
