@@ -114,6 +114,7 @@ class ProfileViewController: UIViewController {
     let checkboxButton1: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleSetVegetarian(sender:)), for: .touchUpInside)
         return button
     }()
     
@@ -129,6 +130,7 @@ class ProfileViewController: UIViewController {
     let checkboxButton2: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleSetVegan(sender:)), for: .touchUpInside)
         return button
     }()
     
@@ -144,6 +146,7 @@ class ProfileViewController: UIViewController {
     let checkboxButton3: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleSetPaleo(sender:)), for: .touchUpInside)
         return button
     }()
     
@@ -167,6 +170,24 @@ class ProfileViewController: UIViewController {
         
         // Add allergies + connection to personal data
         
+        view.addSubview(checkboxButton4)
+        checkboxButton4.anchor(top: allergyTitleLabel.bottomAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 10, width: 24, height: 24)
+        
+        view.addSubview(allergyNut)
+        allergyNut.anchor(top: allergyTitleLabel.bottomAnchor, left: checkboxButton4.rightAnchor, paddingTop: 20, paddingLeft: 15)
+        
+        view.addSubview(checkboxButton5)
+        checkboxButton5.anchor(top: checkboxButton4.bottomAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 10, width: 24, height: 24)
+        
+        view.addSubview(allergyGluten)
+        allergyGluten.anchor(top: allergyNut.bottomAnchor, left: checkboxButton4.rightAnchor, paddingTop: 20, paddingLeft: 15)
+        
+        view.addSubview(checkboxButton6)
+        checkboxButton6.anchor(top: checkboxButton5.bottomAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 10, width: 24, height: 24)
+        
+        view.addSubview(allergyFat)
+        allergyFat.anchor(top: allergyGluten.bottomAnchor, left: checkboxButton6.rightAnchor, paddingTop: 20, paddingLeft: 15)
+        
         return view
     }()
     
@@ -178,6 +199,80 @@ class ProfileViewController: UIViewController {
         label.textColor = .black
         return label
     }()
+    
+    let checkboxButton4: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleSetNut(sender:)), for: .touchUpInside)
+        return button
+    }()
+    
+    let allergyNut: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.text = "NUT"
+        label.font = UIFont(name: "Roboto-Black", size: 15)
+        label.textColor = .black
+        return label
+    }()
+    
+    let checkboxButton5: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleSetGluten(sender:)), for: .touchUpInside)
+        return button
+    }()
+    
+    let allergyGluten: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.text = "GLUTEN"
+        label.font = UIFont(name: "Roboto-Black", size: 15)
+        label.textColor = .black
+        return label
+    }()
+    
+    let checkboxButton6: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleSetFat(sender:)), for: .touchUpInside)
+        return button
+    }()
+    
+    let allergyFat: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.text = "FAT"
+        label.font = UIFont(name: "Roboto-Black", size: 15)
+        label.textColor = .black
+        return label
+    }()
+    
+    // Selectors
+    
+    @objc func handleSetVegetarian(sender: UIButton) {
+        sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+    }
+    
+    @objc func handleSetVegan(sender: UIButton) {
+        sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+    }
+    
+    @objc func handleSetPaleo(sender: UIButton) {
+        sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+    }
+    
+    @objc func handleSetNut(sender: UIButton) {
+        sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+    }
+    
+    @objc func handleSetGluten(sender: UIButton) {
+        sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+    }
+    
+    @objc func handleSetFat(sender: UIButton) {
+        sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+    }
     
     // viewDidLoad
     override func viewDidLoad() {
@@ -245,5 +340,12 @@ extension UIView {
         if let height = height {
             heightAnchor.constraint(equalToConstant: height).isActive = true
         }
+    }
+}
+
+extension UIImage {
+    
+    func isEqualToImage(_ image: UIImage) -> Bool {
+        return self.pngData() == image.pngData()
     }
 }
