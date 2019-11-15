@@ -12,7 +12,7 @@ class PersonalData{
     static var name : String = ""
     static var email : String = ""
     static var isVegan : Bool = false
-    static var isVegeterian : Bool = false
+    static var isVegetarian : Bool = false
     static var isPaleo : Bool = false
     static var isDairyFree : Bool = false
     static var isGlutenFree : Bool = false
@@ -32,8 +32,8 @@ class PersonalData{
         isVegan = vegan
     }
     
-    static public func setVegeterian(vegeterian: Bool){
-        isVegeterian = vegeterian
+    static public func setVegetarian(vegetarian: Bool){
+        isVegetarian = vegetarian
     }
     
     static public func setPaleo(paleo: Bool){
@@ -72,44 +72,87 @@ class PersonalData{
         isFishFree = fishFree
     }
     
-    static public func getDietaryRestrictions() -> [String]{
+    static public func getIntoleranceString() -> String{
+        var intolerances : String = ""
         
-        var restrictions : [String] = []
-        
-        if (isVegan){
-            restrictions.append("")
-        }
-        if (isVegeterian){
-            restrictions.append("")
-        }
-        if (isPaleo){
-            restrictions.append("")
-        }
         if (isDairyFree){
-            restrictions.append("")
+            intolerances = "Dairy"
         }
         if (isGlutenFree){
-            restrictions.append("")
+            if intolerances == "" {
+                intolerances = "Gluten"
+            }
+            else {
+                intolerances += ",Gluten"
+            }
         }
         if (isWheatFree){
-            restrictions.append("")
+            if intolerances == "" {
+                intolerances = "Wheat"
+            }
+            else {
+                intolerances += ",Wheat"
+            }
         }
         if (isLowSugar){
-            restrictions.append("")
+            if intolerances == "" {
+                intolerances = "Sugar"
+            }
+            else {
+                intolerances += ",Sugar"
+            }
         }
         if (isEggFree){
-            restrictions.append("")
+            if intolerances == "" {
+                intolerances = "Egg"
+            }
+            else {
+                intolerances += ",Egg"
+            }
         }
         if (isPeanutFree){
-            restrictions.append("")
+            if intolerances == "" {
+                intolerances = "Peanut"
+            }
+            else {
+                intolerances += ",Peanut"
+            }
         }
         if (isTreeNutFree){
-            restrictions.append("")
+            if intolerances == "" {
+                intolerances = "Tree Nut"
+            }
+            else {
+                intolerances += ",Tree Nut"
+            }
         }
         if (isFishFree){
-            restrictions.append("")
+            if intolerances == "" {
+                intolerances = "ShellFish"
+            }
+            else {
+                intolerances += ",ShellFish"
+            }
         }
         
-        return restrictions
+        return intolerances
+    }
+    
+    static public func getDietaryRestrictions() -> String{
+        
+        var diet : String = ""
+       
+
+        if (isVegetarian){
+            diet = "Vegetarian"
+        }
+        if (isVegan){
+            diet = "Vegan"
+        }
+        if (isPaleo){
+            diet = "Paleo"
+        }
+        
+        return diet
     }
 }
