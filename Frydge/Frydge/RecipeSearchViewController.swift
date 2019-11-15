@@ -67,7 +67,50 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         sender.addTarget(self, action: #selector(buttonAddRecipe), for: .touchUpInside)
     }
 
-    private func makeRequest (ingredientList : [String]) -> String {
+    private func parseRecipeJSON (recipeJSON : [String: Any]){
+        let results = recipeJSON["results"] as? [Any]
+        
+        for element in results! {
+            
+            if let element = element as? [String:Any] {
+                let title = element["title"]
+                print("TITLE")
+                print(title)
+                
+                let nid = element["id"] as? Int
+                print(nid)
+                
+                let prepTime = element["preparationMinutes"]
+                print(prepTime)
+                let cookTime = element["cookingMinutes"]
+                print(cookTime)
+                
+                let imageURL = element["image"]
+                print(imageURL)
+                
+                let instruction = element["analyzedInstructions"] as? [Any]
+                let procedure = instruction?[0] as? [String:Any]
+                
+                let steps = procedure?["steps"] as? [Any] ?? []
+                var num : Int = 1
+                var process : String = ""
+                for eachStep in steps{
+                    if let eachStep = eachStep as? [String:Any]{
+                        let step = eachStep["step"] as? String
+                        let pre = String(num) + ". "
+                        let end = step! + "\n"
+                        process = process + pre + end
+                    }
+                    num = num + 1
+                }
+                print(process)
+                
+                self.recipes?.append(Recipe(id: nid ?? 0, title: title as! String, ingredientList: [], process: process, image: imageURL as! String))
+            }
+        }
+    }
+    
+    private func makeRequest (ingredientList : [String]) -> Void {
         let foodAPIURL = "https://api.spoonacular.com/recipes/complexSearch"
         let apiKey : String = "1369e5b47d744efa9885c6ecae9f9be4"
         var ingredientString : String = ""
@@ -101,7 +144,6 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         let urlWithParams = foodAPIURL + "?apiKey=" + apiKey  + dietParam + intoleranceParam + "&includeIngredients=" + ingredientString + procedureParam + recipeInfo + "&number=" + queryNumber
         print(urlWithParams)
         
-        var dataStr : String = ""
         
         // Excute HTTP Request
         let url = URL(string: urlWithParams)!
@@ -113,14 +155,19 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
                     print("statusCode: \(response.statusCode)")
                 }
                 if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                    print("data: \(dataString)")
-                    dataStr = dataString
+
+                    do {
+                        let parsedData = try JSONSerialization.jsonObject(with: data, options: []) as! [String:Any]
+
+                        self.parseRecipeJSON(recipeJSON: parsedData)
+                        
+                    } catch let error as NSError {
+                              print("Error Parsing Json \(error)" )
+                    }
                 }
             }
         }
         task.resume()
-        
-        return dataStr
     }
     
     

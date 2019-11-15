@@ -18,6 +18,8 @@ class Recipe {
     var process: String = ""
     var notes: String?
     var image: UIImage?
+    var preppingTime: Int? = 10
+    var cookingTime: Int? = 10
     
     init(id: Int, title: String, ingredientList: [Ingredient], process: String, image: String?) {
         self.id = id
@@ -27,6 +29,13 @@ class Recipe {
         if image != nil {
             self.setImage(byUrl: image!)
         }
+//        if prepTime != nil {
+//            self.preppingTime = prepTime
+//        }
+//        if cookTime != nil {
+//            self.cookingTime = cookTime
+//        }
+        
     }
     
     func setImage(byUrl url: String) {
