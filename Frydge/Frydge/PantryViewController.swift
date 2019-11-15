@@ -7,6 +7,11 @@ import UIKit
 
 class PantryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    var isShoppingList = true;
+    var ingredients: [String] = []
+    var shoppingList: [String] = []
+    var pantryList: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,13 +49,11 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
          
     }
     
-    var ingredients: [String] = []
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ingredients.count
     }
     
-    //show all cells
+    //display list
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ListCell
         listCell.nameLabel.text = ingredients[indexPath.item]
@@ -62,29 +65,59 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         return CGSize(width: view.frame.width, height: 50)
     }
     
+    //display header
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! ListHeader
         header.pantryViewController = self
         return header
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: 120)
+        return CGSize(width: view.frame.width, height: 200)
     }
     
+    //change lists
     func addNewIngredient(ingredientName: String){
-        ingredients.append(ingredientName)
+        if(isShoppingList){
+            shoppingList.append(ingredientName)
+            ingredients = shoppingList
+        }
+        else{
+            pantryList.append(ingredientName)
+            ingredients = pantryList
+        }
         collectionView?.reloadData()
     }
     
     func removeIngredient(ingredientName: String){
-        ingredients.removeAll { $0 == ingredientName }
+        if(isShoppingList){
+            shoppingList.removeAll { $0 == ingredientName }
+            ingredients = shoppingList
+        }
+        else{
+            pantryList.removeAll { $0 == ingredientName }
+            ingredients = pantryList
+        }
         collectionView?.reloadData()
     }
     
-    func getIngredients(inputArray:Array<String>) -> Array<String> {
-        return ingredients
+    func showShoppingList(){
+        ingredients = shoppingList
+        isShoppingList = true
+        collectionView?.reloadData()
+    }
+    
+    func showPantryList(){
+        ingredients = pantryList
+        isShoppingList = false
+        collectionView?.reloadData()
+    }
+    
+    func getPantryList(inputArray:Array<String>) -> Array<String> {
+        return pantryList
+    }
+    func getShoppingList(inputArray:Array<String>) -> Array<String> {
+        return shoppingList
     }
     
 }
@@ -109,19 +142,58 @@ class ListHeader: BaseCell {
         return button
     } ()
     
+    let shoppingListButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.white.cgColor
+        button.setTitle("Shopping List", for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    } ()
+    
+    let pantryListButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.layer.borderWidth = 1
+        button.setTitle("Pantry List", for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    } ()
+    
     override func setupViews(){
+        addSubview(shoppingListButton)
+        addSubview(pantryListButton)
         addSubview(ingredientNameTextField)
         addSubview(addIngredientButton)
         
+        shoppingListButton.addTarget(self, action: #selector(ListHeader.showShoppingList(_:)), for: .touchUpInside)
+        pantryListButton.addTarget(self, action: #selector(ListHeader.showPantryList(_:)), for: .touchUpInside)
         addIngredientButton.addTarget(self, action: #selector(ListHeader.addIngredient(_:)), for: .touchUpInside)
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-8-[v0]-[v1(80)]-8-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":ingredientNameTextField, "v1":addIngredientButton]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-80-[v0]-0-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":ingredientNameTextField]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-80-[v0]-0-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":addIngredientButton]))
+        
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-[v1(80)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":ingredientNameTextField, "v1":addIngredientButton]))
+        
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-40-[v0(150)]-[v1(150)]-40-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":shoppingListButton, "v1":pantryListButton]))
+        
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-85-[v0(50)]-20-[v1]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":pantryListButton, "v1":ingredientNameTextField]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-85-[v0(50)]-20-[v1]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":shoppingListButton, "v1":addIngredientButton]))
     }
     
     @objc func addIngredient(_ sender:UIButton!){
         pantryViewController?.addNewIngredient(ingredientName: ingredientNameTextField.text!)
         ingredientNameTextField.text = ""
+    }
+    
+    @objc func showShoppingList(_ sender:UIButton!){
+        shoppingListButton.layer.borderColor = UIColor.black.cgColor
+        pantryListButton.layer.borderColor = UIColor.white.cgColor
+        pantryViewController?.showShoppingList()
+    }
+    
+    @objc func showPantryList(_ sender:UIButton!){
+        pantryListButton.layer.borderColor = UIColor.black.cgColor
+        shoppingListButton.layer.borderColor = UIColor.white.cgColor
+        pantryViewController?.showPantryList()
     }
 }
 
@@ -153,9 +225,9 @@ class ListCell: BaseCell {
         addRemoveIngredientButton.addTarget(self, action: #selector(ListCell.removeIngredient(_:)), for: .touchUpInside)
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-[v1(80)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel, "v1":addRemoveIngredientButton]))
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-40-[v0]-0-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel]))
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-40-[v0]-0-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":addRemoveIngredientButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":addRemoveIngredientButton]))
     }
     
     @objc func removeIngredient(_ sender:UIButton!){
