@@ -20,31 +20,8 @@ class CookbookViewController: UIViewController {
         return label
     }()
     
-    var recipeStore = RecipeStore()
- 
     public func getFavoriteRecipe() -> [Recipe] {
-        // return recipeStore.getRecipeList()
-        
-        // test code since recipeStore isn't populated yet
-        let ingredients = [Ingredient(name: "some kind of dough", amount: 1), Ingredient(name: "roasted red grapes", amount: 1), Ingredient(name: "double cream Brie", amount: 1), Ingredient(name: "caramelized onions", amount: 1), Ingredient(name: "Parmesan", amount: 1), Ingredient(name: "fresh wild arugula", amount: 1)]
-        let process = """
-            1. Prepare dough.
-            2. Assemble ingredients.
-            3. Cook.
-            4. Plate.
-            """
-        
-        let ingredients2: [Ingredient] = []
-        let process2 = ""
-
-        let recipes = [
-            Recipe(id: 0, title: "Pumpkin Spice Baked French Toast Sticks", ingredientList: ingredients, process: process,
-                   image: "https://purelyelizabeth.com/wp-content/uploads/Pumpkin-Spice-Baked-French-Toast-Sticks.jpg"),
-            Recipe(id: 1, title: "Peach and Mozerella Cauliflower Pizza", ingredientList: ingredients2, process: process2,
-                   image: "https://purelyelizabeth.com/wp-content/uploads/0-3.jpg")
-        ]
-
-        return recipes
+        return RecipeStore.getRecipeList()
     }
     
     @objc func showRecipeViewController(_ sender: UITapGestureRecognizer) {
