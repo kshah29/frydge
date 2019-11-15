@@ -15,7 +15,7 @@ class FrydgeTests: XCTestCase {
     private var recipe2 : Recipe!
     private var recipe3 : Recipe!
     private var recipeStore : RecipeStore!
-    private var recipeSearchViewController : RecipeSearchViewController!
+    private var recipeSearchViewController = RecipeSearchViewController()
 
     override func setUp() {
         recipe1 = Recipe(id: 100, title: "Recipe Title 1", ingredientList: [Ingredient(name: "i1", amount: 1), Ingredient(name: "i2", amount: 2)], process: "process1", image: "imageUrl1");
@@ -44,15 +44,12 @@ class FrydgeTests: XCTestCase {
         
         XCTAssertTrue(RecipeStore.getRecipeList().count == 0)
     }
-    
+
     func testDummyMakeRequest() {
         recipeSearchViewController.dummyMakeRequest()
         let populatedRecipes = recipeSearchViewController.recipes
+        
         XCTAssertEqual(populatedRecipes![0].title, "Grilled Chicken Sonoma Flatbread")
+        XCTAssertEqual(populatedRecipes![8].title, "Another Thing")
     }
-    
-    
-
-    
-    
 }
