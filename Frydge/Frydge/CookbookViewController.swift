@@ -46,6 +46,16 @@ class CookbookViewController: UIViewController {
 
         return recipes
     }
+    
+    @objc func showRecipeViewController(_ sender: UITapGestureRecognizer) {
+        let recipes = getFavoriteRecipe()
+        for recipe in recipes {
+            if sender.view?.tag == recipe.id {
+                let recipeVC = RecipeViewController(forRecipe: recipe)
+                present(recipeVC, animated: true, completion: nil)
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,32 +73,37 @@ class CookbookViewController: UIViewController {
             recipeViews.append(recipeView)
         }
 
-        view.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        view.backgroundColor = UIColor(white: 1, alpha: 1)
         
         view.addSubview(backgroundImage)
 
-            var list = [
-                backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
-                backgroundImage.leftAnchor.constraint(equalTo: view.leftAnchor),
-                backgroundImage.rightAnchor.constraint(equalTo: view.rightAnchor),
-                backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            ]
+        var list = [
+            backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundImage.leftAnchor.constraint(equalTo: view.leftAnchor),
+            backgroundImage.rightAnchor.constraint(equalTo: view.rightAnchor),
+            backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ]
 
-            var i = 0
-            for recipeView in recipeViews {
-                view.addSubview(recipeView)
+        var i = 0
+        for (index, recipeView) in recipeViews.enumerated() {
+            view.addSubview(recipeView)
 
-                let top = (220 * i) + 120
+            let top = (220 * i) + 120
 
-                list.append(recipeView.topAnchor.constraint(equalTo: view.topAnchor, constant: CGFloat(top)))
-                list.append(recipeView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
-                list.append(recipeView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9))
-                list.append(recipeView.heightAnchor.constraint(equalToConstant: 200))
+            list.append(recipeView.topAnchor.constraint(equalTo: view.topAnchor, constant: CGFloat(top)))
+            list.append(recipeView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
+            list.append(recipeView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9))
+            list.append(recipeView.heightAnchor.constraint(equalToConstant: 200))
 
-                i = i + 1
-            }
+            i = i + 1
+            
 
-            NSLayoutConstraint.activate(list)
+            recipeView.tag = recipes[index].id
+            let tapRecipeGesture = UITapGestureRecognizer(target: self, action: #selector(self.showRecipeViewController(_:)))
+            recipeView.addGestureRecognizer(tapRecipeGesture)
+        }
+    
+        NSLayoutConstraint.activate(list)
         
         view.addSubview(header)
         header.translatesAutoresizingMaskIntoConstraints = false

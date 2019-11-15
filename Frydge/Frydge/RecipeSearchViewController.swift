@@ -14,6 +14,7 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     
     let searchbar = UISearchBar(frame: CGRect(x: 10, y: 50, width: 390.0, height: 50.0))
     var recipes: [Recipe]? = nil
+    var recipeViews: [UIView] = []
     var backgroundImage = UIImageView(image: #imageLiteral(resourceName: "marble"))
     
     public func getRecipes(query: String) {
@@ -40,6 +41,15 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         }
         sender.setTitle("☆", for: .normal)
         sender.addTarget(self, action: #selector(buttonAddRecipe), for: .touchUpInside)
+    }
+    
+    @objc func showRecipeViewController(_ sender: UITapGestureRecognizer) {
+        for recipe in self.recipes! {
+            if sender.view?.tag == recipe.id {
+                let recipeVC = RecipeViewController(forRecipe: recipe)
+                present(recipeVC, animated: true, completion: nil)
+            }
+        }
     }
     
     private func dummyMakeRequest() {
@@ -137,8 +147,6 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         searchbar.delegate = self
         view.addSubview(searchbar)
         
-        var recipeViews: [UIView] = []
-        
         let scrollView: UIScrollView = {
             let v = UIScrollView()
             v.translatesAutoresizingMaskIntoConstraints = false
@@ -163,6 +171,7 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         ]
 
         if self.recipes != nil {
+            self.recipeViews = []
             for recipe in self.recipes! {
                 guard let recipeView = recipe.recipePreview() else { return }
                 recipeViews.append(recipeView)
@@ -185,6 +194,10 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
             let button = UIButton(frame: CGRect(x: 355, y: y_coord, width: 30, height: 30))
             button.tag = current_recipe.id
             button.backgroundColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.5)
+            
+            recipeView.tag = current_recipe.id
+            let tapRecipeGesture = UITapGestureRecognizer(target: self, action: #selector(self.showRecipeViewController(_:)))
+            recipeView.addGestureRecognizer(tapRecipeGesture)
             
             let current_favorites = RecipeStore.getRecipeList()
             var in_favorites = false
