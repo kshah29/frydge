@@ -251,27 +251,69 @@ class ProfileViewController: UIViewController {
     // Selectors
     
     @objc func handleSetVegetarian(sender: UIButton) {
-        sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+        {
+            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
     }
     
     @objc func handleSetVegan(sender: UIButton) {
-        sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+        {
+            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
     }
     
     @objc func handleSetPaleo(sender: UIButton) {
-        sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+        {
+            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
     }
     
     @objc func handleSetNut(sender: UIButton) {
-        sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+        {
+            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
     }
     
     @objc func handleSetGluten(sender: UIButton) {
-        sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+        {
+            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
     }
     
     @objc func handleSetFat(sender: UIButton) {
-        sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+        {
+            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
     }
     
     // viewDidLoad
