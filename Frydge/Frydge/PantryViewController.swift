@@ -8,7 +8,7 @@ import UIKit
 class PantryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     var isShoppingList = true;
-    var ingredients: [String] = ["test"]
+    var ingredients: [String] = []
     var shoppingList: [String] = []
     var pantryList: [String] = []
     
