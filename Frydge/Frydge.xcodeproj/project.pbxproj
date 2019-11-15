@@ -105,7 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				A705FAB6237DDC6700C7520F /* Comfortaa.ttf */,
-				3A05489B237E150B00B44E35 /* Roboto-Black.ttf */,
+				3A0F9040237E379D00CF6A1B /* Roboto-Black.ttf */,
 				A705FAB1237D013000C7520F /* HeaderView.xib */,
 				4F5EEE932373E0E5000319CE /* AppDelegate.swift */,
 				4F5EEEAC2373E30A000319CE /* Main.storyboard */,
@@ -224,7 +224,7 @@
 				4F5EEEA32373E0E9000319CE /* LaunchScreen.storyboard in Resources */,
 				4F5EEEA02373E0E9000319CE /* Assets.xcassets in Resources */,
 				A705FAB7237DDC6700C7520F /* Comfortaa.ttf in Resources */,
-				3A05489C237E150B00B44E35 /* Roboto-Black.ttf in Resources */,
+				3A0F9041237E379D00CF6A1B /* Roboto-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
