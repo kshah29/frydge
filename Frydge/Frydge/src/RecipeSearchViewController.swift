@@ -31,6 +31,19 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         }
         sender.setTitle("★", for: .normal)
         sender.addTarget(self, action: #selector(buttonDelRecipe), for: .touchUpInside)
+        
+        // FIXME:- I did this really janky hack to update the Cookbook view controller, but it's probably pretty bad for performance.
+        if let tabController = self.tabBarController {
+            for (index, vc) in tabController.viewControllers?.enumerated() ?? [].enumerated() {
+                if let _ = vc as? CookbookViewController {
+                    let cb = CookbookViewController()
+                    cb.tabBarItem.title = "Cookbook"
+                    cb.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)], for: .normal)
+                    cb.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+                    tabController.viewControllers?[index] = cb
+                }
+            }
+        }
     }
     
     @objc func buttonDelRecipe(sender: UIButton!) {
@@ -41,6 +54,19 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         }
         sender.setTitle("☆", for: .normal)
         sender.addTarget(self, action: #selector(buttonAddRecipe), for: .touchUpInside)
+        
+        // FIXME:- I did this really janky hack to update the Cookbook view controller, but it's probably pretty bad for performance.
+        if let tabController = self.tabBarController {
+            for (index, vc) in tabController.viewControllers?.enumerated() ?? [].enumerated() {
+                if let _ = vc as? CookbookViewController {
+                    let cb = CookbookViewController()
+                    cb.tabBarItem.title = "Cookbook"
+                    cb.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)], for: .normal)
+                    cb.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+                    tabController.viewControllers?[index] = cb
+                }
+            }
+        }
     }
     
     @objc func showRecipeViewController(_ sender: UITapGestureRecognizer) {
