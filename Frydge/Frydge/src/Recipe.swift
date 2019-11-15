@@ -22,6 +22,8 @@ class Recipe {
     var process: String = ""
     var notes: String?
     var image: UIImage?
+    var preppingTime: Int? = 10
+    var cookingTime: Int? = 10
     
     /**
     Initializes a new recipe from the title, ingredients, process, and optionally image specified.
@@ -44,6 +46,13 @@ class Recipe {
         if image != nil {
             self.setImage(byUrl: image!)
         }
+//        if prepTime != nil {
+//            self.preppingTime = prepTime
+//        }
+//        if cookTime != nil {
+//            self.cookingTime = cookTime
+//        }
+        
     }
     
     /**
