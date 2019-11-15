@@ -11,6 +11,10 @@ import Foundation
 class RecipeStore{
     static var recipeList: [Recipe] = [] // List of Recipes
     
+    static public func getRecipeList() -> [Recipe] {
+        return recipeList
+    }
+    
     static public func add(addRecipe : Recipe){
         recipeList.append(addRecipe)
     }

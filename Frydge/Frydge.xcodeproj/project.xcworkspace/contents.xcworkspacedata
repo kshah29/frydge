@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Frydge.xcodeproj">
+      location = "group:/Users/meganhong/Documents/frydge/Frydge/Frydge/Comfortaa.ttf">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>
