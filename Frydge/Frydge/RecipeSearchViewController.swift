@@ -82,7 +82,6 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
             } else {
                 ingredientString = ingredientString + ",+" + ingredient
             }
-                
         }
         
         let diet = PersonalData.getDietaryRestrictions()
@@ -128,6 +127,16 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     }
     
     func populateRecipes() {
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
+        
+        super.viewDidLoad()
+        
+        searchbar.barTintColor = UIColor(named: "blue")
+        searchbar.delegate = self
+        view.addSubview(searchbar)
+        
         var recipeViews: [UIView] = []
         
         let scrollView: UIScrollView = {
@@ -226,7 +235,6 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        print(searchBar.text)
         if searchBar.text != nil {
             getRecipes(query: searchBar.text!)
         }
