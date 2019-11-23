@@ -5,12 +5,13 @@
 
 import UIKit
 
+var shoppingList = IngredientList()
+var pantryList = IngredientList()
+
 class PantryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var isShoppingList = true;
     var ingredients = IngredientList()
-    var shoppingList = IngredientList()
-    var pantryList = IngredientList()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +59,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ListCell
         listCell.nameLabel.text = ingredients.getIngredient(index:indexPath.item)
         listCell.pantryViewController = self
+        listCell.listIndex = indexPath.item
         return listCell
     }
     
@@ -90,16 +92,14 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         collectionView?.reloadData()
     }
     
-    func removeIngredient(ingredientName: String){
+    func removeIngredient(index: Int){
         if(isShoppingList){
-            print("is shopping list")
-            //shoppingList.removeAll { $0 == ingredientName }
-            //ingredients = shoppingList
+            shoppingList.removeIngredient(index: index)
+            ingredients.copy(other: shoppingList)
         }
         else{
-            print("is pantry list")
-            //pantryList.removeAll { $0 == ingredientName }
-            //ingredients = pantryList
+            pantryList.removeIngredient(index: index)
+            ingredients.copy(other: pantryList)
         }
         collectionView?.reloadData()
     }
@@ -206,6 +206,8 @@ class ListCell: BaseCell {
     
     var pantryViewController: PantryViewController?
     private var isToggledOn: Bool = false
+    
+    var listIndex: Int = 0
 
     let nameLabel: UILabel = {
         let label = UILabel()
@@ -246,7 +248,7 @@ class ListCell: BaseCell {
     }
     
     @objc func removeIngredient(_ sender:UIButton!){
-        pantryViewController?.removeIngredient(ingredientName: nameLabel.text!)
+        pantryViewController?.removeIngredient(index: listIndex)
     }
     @objc func selectIngredient(_ sender:UIButton!){
         if(!isToggledOn){
@@ -294,6 +296,10 @@ class IngredientList {
     func addIngredient(ingredient: Ingredient){
         ingredientList.append(ingredient)
         selectedList.append(false)
+    }
+    
+    func removeIngredient(index: Int){
+        ingredientList.remove(at: index)
     }
     
     func ingredientListCount() -> Int{
