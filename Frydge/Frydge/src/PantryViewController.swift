@@ -6,11 +6,11 @@
 import UIKit
 
 class PantryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-
+    
     var isShoppingList = true;
-    var ingredients: [String] = []
-    var shoppingList: [String] = []
-    var pantryList: [String] = []
+    var ingredients = IngredientList()
+    var shoppingList = IngredientList()
+    var pantryList = IngredientList()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,13 +50,13 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ingredients.count
+        return ingredients.ingredientListCount()
     }
     
     //display list
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ListCell
-        listCell.nameLabel.text = ingredients[indexPath.item]
+        listCell.nameLabel.text = ingredients.getIngredient(index:indexPath.item)
         listCell.pantryViewController = self
         return listCell
     }
@@ -78,47 +78,51 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     
     //change lists
     func addNewIngredient(ingredientName: String){
+        let ingredient = Ingredient(name: ingredientName, amount: 1)
         if(isShoppingList){
-            shoppingList.append(ingredientName)
-            ingredients = shoppingList
+            shoppingList.addIngredient(ingredient: ingredient)
+            ingredients.copy(other: shoppingList)
         }
         else{
-            pantryList.append(ingredientName)
-            ingredients = pantryList
+            pantryList.addIngredient(ingredient: ingredient)
+            ingredients.copy(other: pantryList)
         }
         collectionView?.reloadData()
     }
     
     func removeIngredient(ingredientName: String){
         if(isShoppingList){
-            shoppingList.removeAll { $0 == ingredientName }
-            ingredients = shoppingList
+            print("is shopping list")
+            //shoppingList.removeAll { $0 == ingredientName }
+            //ingredients = shoppingList
         }
         else{
-            pantryList.removeAll { $0 == ingredientName }
-            ingredients = pantryList
+            print("is pantry list")
+            //pantryList.removeAll { $0 == ingredientName }
+            //ingredients = pantryList
         }
         collectionView?.reloadData()
     }
     
     func showShoppingList(){
-        ingredients = shoppingList
+        ingredients.copy(other: shoppingList)
         isShoppingList = true
         collectionView?.reloadData()
     }
     
     func showPantryList(){
-        ingredients = pantryList
+        ingredients.copy(other: pantryList)
         isShoppingList = false
         collectionView?.reloadData()
     }
-    
+    /*
     func getPantryList(inputArray:Array<String>) -> Array<String> {
         return pantryList
     }
     func getShoppingList(inputArray:Array<String>) -> Array<String> {
         return shoppingList
     }
+ */
     
 }
 
@@ -272,3 +276,44 @@ class BaseCell: UICollectionViewCell{
     func setupViews(){
     }
 }
+
+
+class IngredientList {
+    var ingredientList: [Ingredient] = []
+    var selectedList: [Bool] = []
+    
+    //CHANGE TO INGREDIENT RETURN TYPE
+    func getIngredient(index: Int) -> String{
+        return ingredientList[index].name
+    }
+    
+    func getSelect(index: Int) -> Bool{
+        return selectedList[index]
+    }
+    
+    func addIngredient(ingredient: Ingredient){
+        ingredientList.append(ingredient)
+        selectedList.append(false)
+    }
+    
+    func ingredientListCount() -> Int{
+        return ingredientList.count
+    }
+    
+    func getSelectedIngredients() -> [Ingredient]{
+        var selectedIngredientList: [Ingredient] = []
+        for i in 0..<(ingredientList.count-1){
+            if selectedList[i] == true {
+                selectedIngredientList.append(ingredientList[i])
+            }
+        }
+        return selectedIngredientList
+    }
+    
+    func copy(other: IngredientList){
+        ingredientList = other.ingredientList
+        selectedList = other.selectedList
+    }
+    
+}
+
