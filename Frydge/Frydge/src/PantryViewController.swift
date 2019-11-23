@@ -60,6 +60,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         listCell.nameLabel.text = ingredients.getIngredient(index:indexPath.item)
         listCell.pantryViewController = self
         listCell.listIndex = indexPath.item
+        listCell.selectIngredientButton.isSelected = ingredients.getSelect(index: indexPath.item)
         return listCell
     }
     
@@ -104,6 +105,19 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         collectionView?.reloadData()
     }
     
+    func selectIngredient(index: Int){
+        if(isShoppingList){
+            shoppingList.switchSelect(index: index)
+            ingredients.copy(other: shoppingList)
+        }
+        else{
+            pantryList.switchSelect(index: index)
+            ingredients.copy(other: pantryList)
+        }
+        print(ingredients.selectedList)
+        collectionView?.reloadData()
+    }
+    
     func showShoppingList(){
         ingredients.copy(other: shoppingList)
         isShoppingList = true
@@ -115,14 +129,6 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         isShoppingList = false
         collectionView?.reloadData()
     }
-    /*
-    func getPantryList(inputArray:Array<String>) -> Array<String> {
-        return pantryList
-    }
-    func getShoppingList(inputArray:Array<String>) -> Array<String> {
-        return shoppingList
-    }
- */
     
 }
 
@@ -205,7 +211,6 @@ class ListHeader: BaseCell {
 class ListCell: BaseCell {
     
     var pantryViewController: PantryViewController?
-    private var isToggledOn: Bool = false
     
     var listIndex: Int = 0
 
@@ -226,14 +231,20 @@ class ListCell: BaseCell {
     
     let selectIngredientButton: UIButton = {
         let button = UIButton(type: .system)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
+        //button.layer.borderWidth = 1
+        //button.layer.borderColor = UIColor.black.cgColor
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .selected)
+        button.setTitleShadowColor(UIColor.clear, for: .normal)
+        button.setTitleShadowColor(UIColor.clear, for: .selected)
+        button.isSelected = false
+        button.showsTouchWhenHighlighted = false
         return button
     } ()
     
-    
     override func setupViews(){
+        print("ENTERED SETUP VIEWS")
         addSubview(nameLabel)
         addSubview(removeIngredientButton)
         addSubview(selectIngredientButton)
@@ -251,15 +262,14 @@ class ListCell: BaseCell {
         pantryViewController?.removeIngredient(index: listIndex)
     }
     @objc func selectIngredient(_ sender:UIButton!){
-        if(!isToggledOn){
-            isToggledOn = true
-            selectIngredientButton.backgroundColor = UIColor.blue
+        print("MADE IT")
+        if selectIngredientButton.isSelected == true {
+            selectIngredientButton.isSelected = false
         }
         else{
-            isToggledOn = false
-            selectIngredientButton.backgroundColor = UIColor.clear
+            selectIngredientButton.isSelected = true
         }
-        //pantryViewController?.selectIngredient(ingredientName: nameLabel.text!)
+        pantryViewController?.selectIngredient(index: listIndex)
     }
     
 }
@@ -291,6 +301,10 @@ class IngredientList {
     
     func getSelect(index: Int) -> Bool{
         return selectedList[index]
+    }
+    
+    func switchSelect(index:Int){
+        selectedList[index] = !selectedList[index]
     }
     
     func addIngredient(ingredient: Ingredient){
