@@ -16,6 +16,7 @@ class FrydgeTests: XCTestCase {
     private var recipe3 : Recipe!
     private var recipeStore : RecipeStore!
     private var recipeSearchViewController = RecipeSearchViewController()
+    private var cookbookViewController = CookbookViewController()
 
     override func setUp() {
         recipe1 = Recipe(id: 100, title: "Recipe Title 1", ingredientList: [Ingredient(name: "i1", amount: 1), Ingredient(name: "i2", amount: 2)], process: "process1", image: "imageUrl1");
@@ -51,5 +52,12 @@ class FrydgeTests: XCTestCase {
         
         XCTAssertEqual(populatedRecipes![0].title, "Grilled Chicken Sonoma Flatbread")
         XCTAssertEqual(populatedRecipes![8].title, "Another Thing")
+    }
+    
+    func testAddToCookbook() {
+        RecipeStore.add(addRecipe: recipe1)
+        let favoritedRecipes = cookbookViewController.getFavoriteRecipe()
+        
+        XCTAssertEqual(favoritedRecipes[0].title, "Recipe Title 1")
     }
 }

@@ -24,6 +24,7 @@ class Recipe {
     var image: UIImage?
     var preppingTime: Int? = 10
     var cookingTime: Int? = 10
+    var isFavorited: Bool = false
     
     /**
     Initializes a new recipe from the title, ingredients, process, and optionally image specified.
@@ -34,6 +35,7 @@ class Recipe {
         - ingredientList: Ingredients needed for the dish
         - process: A string describing the instructions to create the dish
         - image: A string naming an image from assets (used primarily for testing with dummy data)
+        - isFavorited: Whether or not the user has favorited this recipe to be displayed in Cookbook
         
 
     - Returns: A Recipe object, the foundation of many features in our app
@@ -93,7 +95,7 @@ class Recipe {
     /// - tag: recipePreview
     func recipePreview() -> UIView? {
         guard let image = image else { return nil }
-        let view = RecipeView(title: title, image: image)
+        let view = RecipeView(title: title, image: image, recipe: self)
         view.setupViews()
         return view
     }
@@ -110,6 +112,7 @@ class Recipe {
 class RecipeView: UIView {
     private var image: UIImage?
     private var recipeImage: UIImageView?
+    private var recipe: Recipe?
     private func setRecipeImage(image: UIImage) {
         let iv = UIImageView(image: image)
         iv.clipsToBounds = true
@@ -132,6 +135,7 @@ class RecipeView: UIView {
     }
     
     private var gradientView = UIView()
+    private var favoriteButton  = UIButton(type: .custom)
     
     /**
      Initializes a RecipeView, a class that Recipe depends on to generate a recipe preview. After initializing the RecipeView object,  [setupViews](x-source-tag://setupViews) must be called to set up the UI.
@@ -140,11 +144,12 @@ class RecipeView: UIView {
         - title: The name of the recipe
         - image: The recipe image displayed in the view
      */
-    init(title: String, image: UIImage) {
+    init(title: String, image: UIImage, recipe: Recipe) {
         super.init(frame: .zero)
         
         self.title = title
         self.image = image
+        self.recipe = recipe
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -155,15 +160,43 @@ class RecipeView: UIView {
      Sets the RecipeView object's subviews, including recipeImage, gradientView, and titleLabel. This should be called after initializing a RecipeView.
      */
     /// - tag: setupViews
+    
+    @objc func buttonAddRecipe(sender: UIButton!) {
+        RecipeStore.delete(delRecipe: recipe!)
+        RecipeStore.add(addRecipe: recipe!)
+        sender.setImage(UIImage(named: "heartfilled.png"), for: .normal)
+        sender.addTarget(self, action: #selector(buttonDelRecipe), for: .touchUpInside)
+        recipe!.isFavorited = true
+    }
+    
+    @objc func buttonDelRecipe(sender: UIButton!) {
+        RecipeStore.delete(delRecipe: recipe!)
+        sender.setImage(UIImage(named: "heart.jpg"), for: .normal)
+        sender.addTarget(self, action: #selector(buttonAddRecipe), for: .touchUpInside)
+        recipe!.isFavorited = false
+    }
+    
+    
     func setupViews() {
         guard let image = image, let title = title else { return }
         setRecipeImage(image: image)
         setTitleLabel(title: title)
         guard let recipeImage = recipeImage, let titleLabel = titleLabel else { return }
         
+        favoriteButton.frame = CGRect(x:5, y:5, width:35, height:35)
+        if(recipe!.isFavorited == false) {
+            favoriteButton.setImage(UIImage(named: "heart.jpg"), for: .normal)
+            favoriteButton.addTarget(self, action: #selector(buttonAddRecipe), for: .touchUpInside)
+        }
+        else {
+            favoriteButton.setImage(UIImage(named: "heartfilled.png"), for: .normal)
+            favoriteButton.addTarget(self, action: #selector(buttonDelRecipe), for: .touchUpInside)
+        }
+        
         addSubview(recipeImage)
         addSubview(gradientView)
         addSubview(titleLabel)
+        addSubview(favoriteButton)
         
         gradientView.translatesAutoresizingMaskIntoConstraints = false
         
