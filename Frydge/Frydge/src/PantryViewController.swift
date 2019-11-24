@@ -42,7 +42,9 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         ]
         collectionView?.backgroundView = backgroundImage
         collectionView?.backgroundColor = UIColor.white
-        collectionView?.alwaysBounceVertical = true
+        //collectionView?.alwaysBounceVertical = true
+        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        layout?.sectionHeadersPinToVisibleBounds = true
         
         //register cells & header
         collectionView?.register(ListCell.self, forCellWithReuseIdentifier: "cellId")
