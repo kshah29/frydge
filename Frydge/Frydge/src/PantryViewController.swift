@@ -15,20 +15,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let header: UILabel = {
-            let label = UILabel()
-            label.textAlignment = .center
-            label.text = "Ingredients"
-            label.font = UIFont(name: "Comfortaa", size: 42)
-            label.textColor = .black
-            return label
-        }()
-        view.addSubview(header)
-        header.translatesAutoresizingMaskIntoConstraints = false
-        header.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
-        header.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 64.0).isActive = true
-    
+
         //background image setup
         let backgroundImage = UIImageView(image: #imageLiteral(resourceName: "marble"))
         backgroundImage.contentMode = .scaleAspectFill
@@ -74,6 +61,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! ListHeader
         header.pantryViewController = self
+        header.backgroundColor = UIColor.white
         return header
     }
     
@@ -166,6 +154,14 @@ class ListHeader: BaseCell {
     
     var pantryViewController: PantryViewController?
 
+    let title: UILabel = {
+        let label = UILabel()
+        label.text = "Ingredients"
+        label.font = UIFont(name: "Comfortaa", size: 42)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     let ingredientNameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter Ingredient Name"
@@ -208,6 +204,7 @@ class ListHeader: BaseCell {
     } ()
     
     override func setupViews(){
+        addSubview(title)
         addSubview(shoppingListButton)
         addSubview(pantryListButton)
         addSubview(ingredientNameTextField)
@@ -222,6 +219,10 @@ class ListHeader: BaseCell {
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-[v2]-[v1(80)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":ingredientNameTextField, "v1":addIngredientButton, "v2":moveSelectedButton ]))
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-40-[v0(150)]-[v1(150)]-40-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":shoppingListButton, "v1":pantryListButton]))
+        
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-30-[v0]-60-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":title]))
+        
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]-110-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":title]))
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-85-[v0(50)]-20-[v1]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":pantryListButton, "v1":ingredientNameTextField]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-85-[v0(50)]-20-[v1]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":shoppingListButton, "v1":addIngredientButton]))
