@@ -93,6 +93,34 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         collectionView?.reloadData()
     }
     
+    func moveSelected(){
+        //if we're currently looking at shopping list
+        if(isShoppingList){
+            for i in 0..<(shoppingList.ingredientListCount()){
+                if shoppingList.getSelect(index: i){
+                    //FIX THIS
+                    let temp = Ingredient(name: shoppingList.getIngredient(index: i), amount: 1)
+                    pantryList.addIngredient(ingredient: temp)
+                }
+            }
+            shoppingList.removeSelectedIngredients()
+            ingredients.copy(other: shoppingList)
+        }
+        else{
+            for i in 0..<(pantryList.ingredientListCount()){
+                if pantryList.getSelect(index: i){
+                    //FIX THIS
+                    let temp = Ingredient(name: pantryList.getIngredient(index: i), amount: 1)
+                    shoppingList.addIngredient(ingredient: temp)
+                }
+            }
+            pantryList.removeSelectedIngredients()
+            ingredients.copy(other: pantryList)
+        }
+
+        collectionView?.reloadData()
+    }
+    
     func removeIngredient(index: Int){
         if(isShoppingList){
             shoppingList.removeIngredient(index: index)
@@ -114,7 +142,6 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
             pantryList.switchSelect(index: index)
             ingredients.copy(other: pantryList)
         }
-        print(ingredients.selectedList)
         collectionView?.reloadData()
     }
     
@@ -171,17 +198,26 @@ class ListHeader: BaseCell {
         return button
     } ()
     
+    let moveSelectedButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Move", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    } ()
+    
     override func setupViews(){
         addSubview(shoppingListButton)
         addSubview(pantryListButton)
         addSubview(ingredientNameTextField)
         addSubview(addIngredientButton)
+        addSubview(moveSelectedButton)
         
         shoppingListButton.addTarget(self, action: #selector(ListHeader.showShoppingList(_:)), for: .touchUpInside)
         pantryListButton.addTarget(self, action: #selector(ListHeader.showPantryList(_:)), for: .touchUpInside)
         addIngredientButton.addTarget(self, action: #selector(ListHeader.addIngredient(_:)), for: .touchUpInside)
+        moveSelectedButton.addTarget(self, action: #selector(ListHeader.moveSelected(_:)), for: .touchUpInside)
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-[v1(80)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":ingredientNameTextField, "v1":addIngredientButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-[v2]-[v1(80)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":ingredientNameTextField, "v1":addIngredientButton, "v2":moveSelectedButton ]))
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-40-[v0(150)]-[v1(150)]-40-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":shoppingListButton, "v1":pantryListButton]))
         
@@ -204,6 +240,10 @@ class ListHeader: BaseCell {
         pantryListButton.layer.borderColor = UIColor.black.cgColor
         shoppingListButton.layer.borderColor = UIColor.white.cgColor
         pantryViewController?.showPantryList()
+    }
+    
+    @objc func moveSelected(_ sender:UIButton!){
+        pantryViewController?.moveSelected()
     }
 }
 
@@ -244,7 +284,6 @@ class ListCell: BaseCell {
     } ()
     
     override func setupViews(){
-        print("ENTERED SETUP VIEWS")
         addSubview(nameLabel)
         addSubview(removeIngredientButton)
         addSubview(selectIngredientButton)
@@ -262,7 +301,6 @@ class ListCell: BaseCell {
         pantryViewController?.removeIngredient(index: listIndex)
     }
     @objc func selectIngredient(_ sender:UIButton!){
-        print("MADE IT")
         if selectIngredientButton.isSelected == true {
             selectIngredientButton.isSelected = false
         }
@@ -315,6 +353,16 @@ class IngredientList {
     func removeIngredient(index: Int){
         ingredientList.remove(at: index)
     }
+    
+    func removeSelectedIngredients(){
+        for i in (0...selectedList.count-1).reversed(){
+            if selectedList[i] == true {
+                ingredientList.remove(at: i)
+            }
+        }
+        selectedList.removeAll(where: { $0 == true })
+    }
+    
     
     func ingredientListCount() -> Int{
         return ingredientList.count
