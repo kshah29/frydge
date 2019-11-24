@@ -147,6 +147,11 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         collectionView?.reloadData()
     }
     
+    func showIngredientViewController(index: Int) {
+        let ingredientVC = IngredientViewController(name: ingredients.getIngredient(index: index))
+        present(ingredientVC, animated: true, completion: nil)
+    }
+    
 }
 
 
@@ -301,7 +306,8 @@ class ListCell: BaseCell {
     }
     
     @objc func removeIngredient(_ sender:UIButton!){
-        pantryViewController?.removeIngredient(index: listIndex)
+        //pantryViewController?.removeIngredient(index: listIndex)
+        pantryViewController?.showIngredientViewController(index: listIndex)
     }
     @objc func selectIngredient(_ sender:UIButton!){
         if selectIngredientButton.isSelected == true {
