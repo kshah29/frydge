@@ -160,7 +160,7 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     
     private func makeRequest (ingredientList : [String]) -> Void {
         let foodAPIURL = "https://api.spoonacular.com/recipes/complexSearch"
-        let apiKey : String = "1369e5b47d744efa9885c6ecae9f9be4"
+        let apiKey : String = "f29f441db07240f2919346b4d2c48a7f"
         var ingredientString : String = ""
         
         for ingredient in ingredientList {
