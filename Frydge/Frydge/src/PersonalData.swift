@@ -23,10 +23,6 @@ class PersonalData{
     static var isTreeNutFree : Bool = false
     static var isFishFree : Bool = false
     
-    static var intolerances : [String] = ["Dairy", "Gluten", "Wheat", "Sugar", "Egg", "Peanut", "Tree Nut", "Shellfish"]
-    
-    static var dietaryRestrictions : [String] = ["Vegetarian", "Vegan", "Paleo"]
-    
     static public func login(userName: String, userEmail: String){
         name = userName
         email = userEmail
@@ -74,14 +70,6 @@ class PersonalData{
     
     static public func setfishFree(fishFree: Bool){
         isFishFree = fishFree
-    }
-    
-    static public func getIntoleranceArr() -> [String] {
-        return intolerances
-    }
-    
-    static public func getDietaryRestrictionsArr() -> [String] {
-        return dietaryRestrictions
     }
     
     static public func getIntoleranceString() -> String{
