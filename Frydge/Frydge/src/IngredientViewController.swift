@@ -7,14 +7,17 @@ import UIKit
 
 class IngredientViewController: UIViewController {
     
-    var ingredient: Ingredient?
+    var ingredient: Ingredient
+    var pantryVC: PantryViewController
+    var index: Int
     var backgroundImage: UIImageView?
     var titleView: UIView?
     
-    //FIX THIS
-    init(name: String) {
+    init(input: Ingredient, pantry: PantryViewController, index: Int) {
+        self.ingredient = input
+        self.pantryVC = pantry
+        self.index = index
         super.init(nibName: nil, bundle: nil)
-        self.ingredient?.name = name
     }
 
     required init?(coder: NSCoder) {
@@ -30,6 +33,41 @@ class IngredientViewController: UIViewController {
         return label
     }()
     
+    let amount: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.text = "1"
+        label.font = UIFont(name: "Comfortaa", size: 25)
+        label.textColor = .black
+        return label
+    }()
+    
+    let amountField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Enter Amount"
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.borderStyle = .roundedRect
+        textField.keyboardType = .numberPad
+        return textField
+    }()
+    
+    let plusButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Plus", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    } ()
+    
+    func getNewAmount() -> Int {
+        return ingredient.amount
+    }
+    
+    @objc func plusButtonHandler(_ sender:UIButton!){
+        ingredient.amount += 1
+        amount.text = String(ingredient.amount)
+        pantryVC.ingredients.increaseIngredientAmount(index: index)
+        view.reloadInputViews()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,11 +89,29 @@ class IngredientViewController: UIViewController {
         ]
 
         NSLayoutConstraint.activate(list)
-        
+        header.text = ingredient.name
         view.addSubview(header)
         header.translatesAutoresizingMaskIntoConstraints = false
         header.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
         header.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 64.0).isActive = true
+        
+        amount.text = String(ingredient.amount)
+        view.addSubview(amount)
+        amount.translatesAutoresizingMaskIntoConstraints = false
+        amount.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
+        amount.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 200.0).isActive = true
+        
+        view.addSubview(amountField)
+        amountField.translatesAutoresizingMaskIntoConstraints = false
+        amountField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50.0).isActive = true
+        amountField.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100.0).isActive = true
+        
+        view.addSubview(plusButton)
+        plusButton.translatesAutoresizingMaskIntoConstraints = false
+        plusButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 100.0).isActive = true
+        plusButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 200.0).isActive = true
+        plusButton.addTarget(self, action: #selector(self.plusButtonHandler(_:)), for: .touchUpInside)
+
     }
     
     
