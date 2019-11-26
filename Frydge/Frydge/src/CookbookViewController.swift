@@ -11,6 +11,10 @@ import UIKit
 
 class CookbookViewController: UIViewController {
 
+    var backgroundImage = UIImageView(image: #imageLiteral(resourceName: "marble"))
+    var recipes: [Recipe]? = nil
+    var recipeViews: [UIView] = []
+    
     let header: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
