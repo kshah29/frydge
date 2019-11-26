@@ -10,7 +10,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
         //background image setup
         let backgroundImage = UIImageView(image: #imageLiteral(resourceName: "marble"))
         backgroundImage.contentMode = .scaleAspectFill
@@ -111,6 +111,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
             ingredients.copy(other: pantryList)
         }
         collectionView?.reloadData()
+        dismiss(animated: true, completion: nil)
     }
     
     func selectIngredient(index: Int){
@@ -262,9 +263,9 @@ class ListCell: BaseCell {
         return label
     }()
     
-    let removeIngredientButton: UIButton = {
+    let optionsButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Remove", for: .normal)
+        button.setTitle("Options", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     } ()
@@ -283,20 +284,19 @@ class ListCell: BaseCell {
     
     override func setupViews(){
         addSubview(nameLabel)
-        addSubview(removeIngredientButton)
+        addSubview(optionsButton)
         addSubview(selectIngredientButton)
         
-        removeIngredientButton.addTarget(self, action: #selector(ListCell.removeIngredient(_:)), for: .touchUpInside)
+        optionsButton.addTarget(self, action: #selector(ListCell.optionsIngredient(_:)), for: .touchUpInside)
         selectIngredientButton.addTarget(self, action: #selector(ListCell.selectIngredient(_:)), for: .touchUpInside)
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v2(30)]-[v0]-[v1(80)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel, "v1":removeIngredientButton, "v2":selectIngredientButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v2(30)]-[v0]-[v1(80)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel, "v1":optionsButton, "v2":selectIngredientButton]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":removeIngredientButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":optionsButton]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":selectIngredientButton]))
     }
     
-    @objc func removeIngredient(_ sender:UIButton!){
-        //pantryViewController?.removeIngredient(index: listIndex)
+    @objc func optionsIngredient(_ sender:UIButton!){
         pantryViewController?.showIngredientViewController(index: listIndex)
     }
     @objc func selectIngredient(_ sender:UIButton!){
