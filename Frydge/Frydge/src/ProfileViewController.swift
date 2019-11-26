@@ -18,11 +18,9 @@ class ProfileViewController: UIViewController {
         return iv
     }()
     
-    // First part of profile (picture, name, membership)
+    // MARK: - Picture, Name, Membership
     lazy var headerContainerView: UIView = {
         let view = UIView()
-        
-//        view.backgroundColor = .blue
         
         view.addSubview(profileImageView)
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -40,6 +38,8 @@ class ProfileViewController: UIViewController {
         return view
     }()
     
+    // Profile Image
+    
     let profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.image = #imageLiteral(resourceName: "avatar2")
@@ -48,6 +48,8 @@ class ProfileViewController: UIViewController {
         iv.layer.borderColor = UIColor.white.cgColor
         return iv
     }()
+    
+    // Name
     
     let nameLabel: UILabel = {
        let label = UILabel()
@@ -58,6 +60,8 @@ class ProfileViewController: UIViewController {
         return label
     }()
     
+    // Membership
+    
     let membershipLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -67,11 +71,9 @@ class ProfileViewController: UIViewController {
         return label
     }()
     
-    // Second part of profile (dietary restrictions)
+    // MARK: - Dietary Restrictions
     lazy var dietContainerView: UIView = {
         let view = UIView()
-        
-//        view.backgroundColor = .red
         
         view.layer.borderColor = UIColor.opaqueSeparator.cgColor
         view.layer.borderWidth = 2.0
@@ -159,11 +161,9 @@ class ProfileViewController: UIViewController {
         return label
     }()
     
-    // Third part of profile (allergies)
+    // MARK: - Allergies
     lazy var allergyContainerView: UIView = {
         let view = UIView()
-        
-//        view.backgroundColor = .white
         
         view.addSubview(allergyTitleLabel)
         allergyTitleLabel.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 15)
@@ -316,7 +316,8 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    // viewDidLoad
+    // MARK: - viewDidLoad()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -340,6 +341,8 @@ class ProfileViewController: UIViewController {
 
     }
 }
+
+// MARK: - Extensions
 
 extension UIColor {
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
