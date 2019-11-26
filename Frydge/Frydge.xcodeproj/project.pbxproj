@@ -33,6 +33,8 @@
 		4F99AB9D2374ED160065FE7D /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F99AB9C2374ED160065FE7D /* Recipe.swift */; };
 		82621005237E41A800C1D3ED /* PantryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82621004237E41A800C1D3ED /* PantryViewController.swift */; };
 		82EAE59A238A31A800DC98DF /* IngredientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EAE599238A31A800DC98DF /* IngredientViewController.swift */; };
+		82EAE59E238DB52F00DC98DF /* IngredientList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EAE59D238DB52F00DC98DF /* IngredientList.swift */; };
+		82EAE5A0238DB56400DC98DF /* PantryCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EAE59F238DB56400DC98DF /* PantryCells.swift */; };
 		9E60AF31237CD27D00FB7D44 /* PersonalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60AF30237CD27D00FB7D44 /* PersonalData.swift */; };
 		9E60AF33237CD2D500FB7D44 /* RecipeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60AF32237CD2D500FB7D44 /* RecipeStore.swift */; };
 		A705FA9A237CC1B300C7520F /* CookbookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A705FA98237CBDA600C7520F /* CookbookViewController.swift */; };
@@ -71,6 +73,8 @@
 		6EEC67CB237C934C0050B605 /* RecipeSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchViewController.swift; sourceTree = "<group>"; };
 		82621004237E41A800C1D3ED /* PantryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryViewController.swift; sourceTree = "<group>"; };
 		82EAE599238A31A800DC98DF /* IngredientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewController.swift; sourceTree = "<group>"; };
+		82EAE59D238DB52F00DC98DF /* IngredientList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientList.swift; sourceTree = "<group>"; };
+		82EAE59F238DB56400DC98DF /* PantryCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryCells.swift; sourceTree = "<group>"; };
 		9E60AF30237CD27D00FB7D44 /* PersonalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalData.swift; sourceTree = "<group>"; };
 		9E60AF32237CD2D500FB7D44 /* RecipeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStore.swift; sourceTree = "<group>"; };
 		A705FA98237CBDA600C7520F /* CookbookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookbookViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +140,9 @@
 				A705FA98237CBDA600C7520F /* CookbookViewController.swift */,
 				4F5EEEAA2373E19F000319CE /* MainTabBarController.swift */,
 				82621004237E41A800C1D3ED /* PantryViewController.swift */,
+				82EAE59F238DB56400DC98DF /* PantryCells.swift */,
+				82EAE599238A31A800DC98DF /* IngredientViewController.swift */,
+				82EAE59D238DB52F00DC98DF /* IngredientList.swift */,
 				9E60AF30237CD27D00FB7D44 /* PersonalData.swift */,
 				3A054899237D54F700B44E35 /* ProfileViewController.swift */,
 				4F99AB9C2374ED160065FE7D /* Recipe.swift */,
@@ -147,7 +154,6 @@
 				A705FAB1237D013000C7520F /* HeaderView.xib */,
 				4F5EEEAC2373E30A000319CE /* Main.storyboard */,
 				4F5EEEA12373E0E9000319CE /* LaunchScreen.storyboard */,
-				82EAE599238A31A800DC98DF /* IngredientViewController.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -295,7 +301,9 @@
 				A705FA9A237CC1B300C7520F /* CookbookViewController.swift in Sources */,
 				4F5EEE942373E0E5000319CE /* AppDelegate.swift in Sources */,
 				4F04DBA9237E2F4E0047083F /* RecipeViewController.swift in Sources */,
+				82EAE59E238DB52F00DC98DF /* IngredientList.swift in Sources */,
 				3A05489A237D54F700B44E35 /* ProfileViewController.swift in Sources */,
+				82EAE5A0238DB56400DC98DF /* PantryCells.swift in Sources */,
 				4F5EEE962373E0E5000319CE /* SceneDelegate.swift in Sources */,
 				9E60AF33237CD2D500FB7D44 /* RecipeStore.swift in Sources */,
 			);

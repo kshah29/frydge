@@ -1,3 +1,11 @@
+//
+//  PantryCells.swift
+//  Frydge
+//
+//  Created by Brianna Tanusi on 11/26/19.
+//  Copyright © 2019 Frydge Co. All rights reserved.
+//
+
 import UIKit
 
 var shoppingList = IngredientList()
@@ -7,7 +15,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     
     var isShoppingList = true
     var ingredients = IngredientList()
-    var header : ListHeader?
+    var header : PantryListHeader?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,16 +30,14 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         backgroundImage.rightAnchor.constraint(equalTo: collectionView.rightAnchor)
         backgroundImage.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor)
         
-        //NSLayoutConstraint.activate(list)
         collectionView?.backgroundView = backgroundImage
         collectionView?.backgroundColor = UIColor.white
-        //collectionView?.alwaysBounceVertical = true
         let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.sectionHeadersPinToVisibleBounds = true
         
         //register cells & header
-        collectionView?.register(ListCell.self, forCellWithReuseIdentifier: "cellId")
-        collectionView?.register(ListHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerId")
+        collectionView?.register(PantryListCell.self, forCellWithReuseIdentifier: "cellId")
+        collectionView?.register(PantryListHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerId")
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -40,7 +46,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     
     //display list
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ListCell
+        let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! PantryListCell
         listCell.nameLabel.text = ingredients.getIngredientName(index:indexPath.item) + " - " + String(ingredients.getIngredientAmount(index: indexPath.item))
         listCell.pantryViewController = self
         listCell.listIndex = indexPath.item
@@ -54,7 +60,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     
     //display header
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! ListHeader
+        header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! PantryListHeader
         header?.pantryViewController = self
         header?.backgroundColor = UIColor.white
         return header!
@@ -160,287 +166,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
 }
 
 
-class ListHeader: BaseCell {
-    
-    var pantryViewController: PantryViewController?
-
-    let title: UILabel = {
-        let label = UILabel()
-        label.text = "Ingredients"
-        label.font = UIFont(name: "Comfortaa", size: 42)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    let ingredientNameTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Enter Ingredient Name"
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
-    
-    let addIngredientButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Add", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    } ()
-    
-    let shoppingListButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
-        button.setTitle("Shopping List", for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    } ()
-    
-    let pantryListButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.white.cgColor
-        button.setTitle("Pantry List", for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    } ()
-    
-    let moveButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Move", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.isHidden = true
-        return button
-    } ()
-    
-    override func setupViews(){
-        addSubview(title)
-        addSubview(shoppingListButton)
-        addSubview(pantryListButton)
-        addSubview(ingredientNameTextField)
-        addSubview(addIngredientButton)
-        addSubview(moveButton)
-        
-        shoppingListButton.addTarget(self, action: #selector(ListHeader.showShoppingList(_:)), for: .touchUpInside)
-        pantryListButton.addTarget(self, action: #selector(ListHeader.showPantryList(_:)), for: .touchUpInside)
-        addIngredientButton.addTarget(self, action: #selector(ListHeader.addIngredient(_:)), for: .touchUpInside)
-        moveButton.addTarget(self, action: #selector(ListHeader.move(_:)), for: .touchUpInside)
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-[v1(80)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":ingredientNameTextField, "v1":addIngredientButton ]))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-40-[v0]-[v1(==v0)]-40-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":shoppingListButton, "v1":pantryListButton]))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-30-[v0]-60-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":title]))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":moveButton]))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]-110-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":title]))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-85-[v0(50)]-20-[v1]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":pantryListButton, "v1":ingredientNameTextField]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-85-[v0(50)]-20-[v1]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":shoppingListButton, "v1":addIngredientButton]))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-150-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":moveButton]))
-        
-    }
-    
-    @objc func addIngredient(_ sender:UIButton!){
-        pantryViewController?.addNewIngredient(ingredientName: ingredientNameTextField.text!)
-        ingredientNameTextField.text = ""
-    }
-    
-    @objc func showShoppingList(_ sender:UIButton!){
-        shoppingListButton.layer.borderColor = UIColor.black.cgColor
-        pantryListButton.layer.borderColor = UIColor.white.cgColor
-        pantryViewController?.showShoppingList()
-    }
-    
-    @objc func showPantryList(_ sender:UIButton!){
-        pantryListButton.layer.borderColor = UIColor.black.cgColor
-        shoppingListButton.layer.borderColor = UIColor.white.cgColor
-        pantryViewController?.showPantryList()
-    }
-    
-    @objc func move(_ sender:UIButton!){
-        pantryViewController?.move()
-    }
-    
-    func inputMode(){
-        addIngredientButton.isHidden = false
-        ingredientNameTextField.isHidden = false
-        moveButton.isHidden = true
-        reloadInputViews()
-    }
-    
-    func moveMode(){
-        addIngredientButton.isHidden = true
-        ingredientNameTextField.isHidden = true
-        moveButton.isHidden = false
-        reloadInputViews()
-    }
-    
-}
 
 
-class ListCell: BaseCell {
-    
-    var pantryViewController: PantryViewController?
-    
-    var listIndex: Int = 0
 
-    let nameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Sample Ingredient"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 14)
-        return label
-    }()
-    
-    let optionsButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Options", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    } ()
-    
-    let selectIngredientButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
-        button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .selected)
-        button.setTitleShadowColor(UIColor.clear, for: .normal)
-        button.setTitleShadowColor(UIColor.clear, for: .selected)
-        button.isSelected = false
-        button.showsTouchWhenHighlighted = false
-        return button
-    } ()
-    
-    override func setupViews(){
-        addSubview(nameLabel)
-        addSubview(optionsButton)
-        addSubview(selectIngredientButton)
-        
-        optionsButton.addTarget(self, action: #selector(ListCell.optionsIngredient(_:)), for: .touchUpInside)
-        selectIngredientButton.addTarget(self, action: #selector(ListCell.selectIngredient(_:)), for: .touchUpInside)
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v2(30)]-[v0]-[v1(80)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel, "v1":optionsButton, "v2":selectIngredientButton]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":optionsButton]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":selectIngredientButton]))
-    }
-    
-    @objc func optionsIngredient(_ sender:UIButton!){
-        pantryViewController?.showIngredientViewController(index: listIndex)
-    }
-    @objc func selectIngredient(_ sender:UIButton!){
-        if selectIngredientButton.isSelected == true {
-            selectIngredientButton.isSelected = false
-        }
-        else{
-            selectIngredientButton.isSelected = true
-        }
-        pantryViewController?.selectIngredient(index: listIndex)
-    }
-    
-}
-
-
-class BaseCell: UICollectionViewCell{
-    override init(frame: CGRect){
-        super.init(frame:frame)
-        setupViews()
-    }
-    
-    required init?(coder aDecoder: NSCoder){
-        fatalError("not implemented")
-    }
-    
-    func setupViews(){
-    }
-}
-
-
-class IngredientList {
-    var ingredientList: [Ingredient] = []
-    var selectedList: [Bool] = []
-    
-    func decreaseIngredientAmount(index:Int){
-        if ingredientList[index].amount <= 1 {
-            ingredientList[index].amount = 1
-        }
-        else{
-            ingredientList[index].amount -= 1
-        }
-    }
-    
-    func increaseIngredientAmount(index:Int){
-        ingredientList[index].amount += 1
-    }
-    
-    func getIngredientName(index: Int) -> String{
-        return ingredientList[index].name
-    }
-    
-    func getIngredientAmount(index: Int) -> Int {
-        return ingredientList[index].amount
-    }
-    
-    func getIngredient(index: Int) -> Ingredient{
-        return ingredientList[index]
-    }
-    
-    func getSelect(index: Int) -> Bool{
-        return selectedList[index]
-    }
-    
-    func switchSelect(index:Int){
-        selectedList[index] = !selectedList[index]
-    }
-    
-    func addIngredient(ingredient: Ingredient){
-        ingredientList.append(ingredient)
-        selectedList.append(false)
-    }
-    
-    func removeIngredient(index: Int){
-        ingredientList.remove(at: index)
-    }
-    
-    func removeSelectedIngredients(){
-        if selectedList.count == 0{
-            return
-        }
-        for i in (0...selectedList.count-1).reversed(){
-            if selectedList[i] == true {
-                ingredientList.remove(at: i)
-            }
-        }
-        selectedList.removeAll(where: { $0 == true })
-    }
-    
-    
-    func ingredientListCount() -> Int{
-        return ingredientList.count
-    }
-    
-    func getSelectedIngredients() -> [Ingredient]{
-        var selectedIngredientList: [Ingredient] = []
-        if ingredientList.count == 0{
-            return []
-        }
-        for i in 0..<(ingredientList.count-1){
-            if selectedList[i] == true {
-                selectedIngredientList.append(ingredientList[i])
-            }
-        }
-        return selectedIngredientList
-    }
-    
-    func copy(other: IngredientList){
-        ingredientList = other.ingredientList
-        selectedList = other.selectedList
-    }
-    
-}
 
