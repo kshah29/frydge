@@ -459,44 +459,88 @@ class ProfileViewController: UIViewController {
     
     // Selectors
     
+    func updateButtons() {
+        
+        checkboxButton1.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        checkboxButton2.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        checkboxButton3.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        if (PersonalData.getVegetarian())
+        {
+            checkboxButton1.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else if (PersonalData.getVegan())
+        {
+            checkboxButton2.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else if (PersonalData.getPaleo())
+        {
+            checkboxButton3.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+    }
+    
     @objc func handleSetVegetarian(sender: UIButton) {
-        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
-        {
-            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
-            PersonalData.setVegetarian(vegetarian: true)
-        }
-        else
-        {
-            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
-            PersonalData.setVegetarian(vegetarian: false)
-        }
+        PersonalData.setVegetarian(vegetarian: true)
+        PersonalData.setVegan(vegan: false)
+        PersonalData.setPaleo(paleo:false)
+        
+        updateButtons()
     }
     
     @objc func handleSetVegan(sender: UIButton) {
-        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
-        {
-            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
-            PersonalData.setVegan(vegan: true)
-        }
-        else
-        {
-            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
-            PersonalData.setVegan(vegan: false)
-        }
+        PersonalData.setVegan(vegan: true)
+        PersonalData.setVegetarian(vegetarian: false)
+        PersonalData.setPaleo(paleo: false)
+        
+        updateButtons()
     }
     
     @objc func handleSetPaleo(sender: UIButton) {
-        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
-        {
-            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
-            PersonalData.setPaleo(paleo: true)
-        }
-        else
-        {
-            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
-            PersonalData.setPaleo(paleo: false)
-        }
+        PersonalData.setPaleo(paleo: true)
+        PersonalData.setVegetarian(vegetarian: false)
+        PersonalData.setVegan(vegan: false)
+        
+        updateButtons()
     }
+    
+//    @objc func handleSetVegetarian(sender: UIButton) {
+//        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+//        {
+//            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+//            PersonalData.setVegetarian(vegetarian: true)
+//        }
+//        else
+//        {
+//            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+//            PersonalData.setVegetarian(vegetarian: false)
+//        }
+//    }
+//
+//    @objc func handleSetVegan(sender: UIButton) {
+//        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+//        {
+//            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+//            PersonalData.setVegan(vegan: true)
+//        }
+//        else
+//        {
+//            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+//            PersonalData.setVegan(vegan: false)
+//        }
+//    }
+//
+//    @objc func handleSetPaleo(sender: UIButton) {
+//        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+//        {
+//            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+//            PersonalData.setPaleo(paleo: true)
+//        }
+//        else
+//        {
+//            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+//            PersonalData.setPaleo(paleo: false)
+//        }
+//    }
     
     @objc func handleSetDairy(sender: UIButton) {
         if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
