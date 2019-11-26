@@ -364,10 +364,12 @@ class ProfileViewController: UIViewController {
         if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
         {
             sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setVegetarian(vegetarian: true)
         }
         else
         {
             sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setVegetarian(vegetarian: false)
         }
     }
     
@@ -375,10 +377,12 @@ class ProfileViewController: UIViewController {
         if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
         {
             sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setVegan(vegan: true)
         }
         else
         {
             sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setVegan(vegan: false)
         }
     }
     
@@ -386,10 +390,12 @@ class ProfileViewController: UIViewController {
         if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
         {
             sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setPaleo(paleo: true)
         }
         else
         {
             sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setPaleo(paleo: false)
         }
     }
     
@@ -397,10 +403,12 @@ class ProfileViewController: UIViewController {
         if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
         {
             sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setDairy(dairyFree: true)
         }
         else
         {
             sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setDairy(dairyFree: false)
         }
     }
     
@@ -408,10 +416,12 @@ class ProfileViewController: UIViewController {
         if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
         {
             sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setGlutenFree(glutenFree: true)
         }
         else
         {
             sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setGlutenFree(glutenFree: false)
         }
     }
     
@@ -419,10 +429,12 @@ class ProfileViewController: UIViewController {
         if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
         {
             sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setWheatFree(wheatFree: true)
         }
         else
         {
             sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setWheatFree(wheatFree: false)
         }
     }
     
@@ -430,10 +442,12 @@ class ProfileViewController: UIViewController {
         if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
         {
             sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setLowSugar(lowSugar: true)
         }
         else
         {
             sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setLowSugar(lowSugar: false)
         }
     }
 
@@ -441,10 +455,12 @@ class ProfileViewController: UIViewController {
         if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
         {
             sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setEggFree(eggFree: true)
         }
         else
         {
             sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setEggFree(eggFree: false)
         }
     }
     
@@ -452,10 +468,12 @@ class ProfileViewController: UIViewController {
         if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
         {
             sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setPeanutFree(peanutFree: true)
         }
         else
         {
             sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setPeanutFree(peanutFree: false)
         }
     }
     
@@ -463,10 +481,12 @@ class ProfileViewController: UIViewController {
         if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
         {
             sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setTreeNutFree(treeNutFree: true)
         }
         else
         {
             sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setTreeNutFree(treeNutFree: false)
         }
     }
     
@@ -474,10 +494,12 @@ class ProfileViewController: UIViewController {
         if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
         {
             sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setfishFree(fishFree: true)
         }
         else
         {
             sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setfishFree(fishFree: false)
         }
     }
     
