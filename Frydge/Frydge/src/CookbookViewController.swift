@@ -11,6 +11,10 @@ import UIKit
 
 class CookbookViewController: UIViewController {
 
+    var backgroundImage = UIImageView(image: #imageLiteral(resourceName: "marble"))
+    var recipes: [Recipe]? = nil
+    var recipeViews: [UIView] = []
+    
     let header: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -32,6 +36,13 @@ class CookbookViewController: UIViewController {
                 present(recipeVC, animated: true, completion: nil)
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
+        self.viewDidLoad()
     }
 
     override func viewDidLoad() {

@@ -42,6 +42,8 @@
 		A705FAB7237DDC6700C7520F /* Comfortaa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A705FAB6237DDC6700C7520F /* Comfortaa.ttf */; };
 		A705FABD237E491300C7520F /* FrydgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A705FAA7237CFC5300C7520F /* FrydgeTests.swift */; };
 		A705FABE237E492C00C7520F /* RecipeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC67CB237C934C0050B605 /* RecipeSearchViewController.swift */; };
+		A705FAC22389D72500C7520F /* heartfilled.png in Resources */ = {isa = PBXBuildFile; fileRef = A705FAC12389D72500C7520F /* heartfilled.png */; };
+		A705FAC62389D90000C7520F /* heart.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A705FAC52389D90000C7520F /* heart.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		A705FAA9237CFC5300C7520F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A705FAB1237D013000C7520F /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		A705FAB6237DDC6700C7520F /* Comfortaa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Comfortaa.ttf; sourceTree = "<group>"; };
+		A705FAC12389D72500C7520F /* heartfilled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartfilled.png; sourceTree = "<group>"; };
+		A705FAC52389D90000C7520F /* heart.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = heart.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,8 @@
 		4F79C8EF237E74EB00F23DB1 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				A705FAC52389D90000C7520F /* heart.jpg */,
+				A705FAC12389D72500C7520F /* heartfilled.png */,
 				4F79C8F0237E762C00F23DB1 /* Fonts */,
 				4F5EEE9F2373E0E9000319CE /* Assets.xcassets */,
 			);
@@ -271,7 +277,9 @@
 				4F5EEEAD2373E30A000319CE /* Main.storyboard in Resources */,
 				4F5EEEA32373E0E9000319CE /* LaunchScreen.storyboard in Resources */,
 				4F5EEEA02373E0E9000319CE /* Assets.xcassets in Resources */,
+				A705FAC62389D90000C7520F /* heart.jpg in Resources */,
 				A705FAB7237DDC6700C7520F /* Comfortaa.ttf in Resources */,
+				A705FAC22389D72500C7520F /* heartfilled.png in Resources */,
 				3A0F9041237E379D00CF6A1B /* Roboto-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
