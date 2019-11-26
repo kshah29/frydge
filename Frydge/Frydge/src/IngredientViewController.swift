@@ -53,6 +53,12 @@ class IngredientViewController: UIViewController {
         ingredient.amount += 1
         amount.text = String(ingredient.amount)
         pantryVC.ingredients.increaseIngredientAmount(index: index)
+        if pantryVC.isShoppingList {
+            shoppingList.copy(other: pantryVC.ingredients)
+        }
+        else{
+            pantryList.copy(other: pantryVC.ingredients)
+        }
         pantryVC.collectionView?.reloadData()
         view.reloadInputViews()
     }
@@ -73,6 +79,12 @@ class IngredientViewController: UIViewController {
         }
         amount.text = String(ingredient.amount)
         pantryVC.ingredients.decreaseIngredientAmount(index: index)
+        if pantryVC.isShoppingList {
+            shoppingList.copy(other: pantryVC.ingredients)
+        }
+        else{
+            pantryList.copy(other: pantryVC.ingredients)
+        }
         pantryVC.collectionView?.reloadData()
         view.reloadInputViews()
     }
@@ -102,7 +114,7 @@ class IngredientViewController: UIViewController {
         
         view.addSubview(backgroundImage)
 
-        var list = [
+        let list = [
             backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundImage.leftAnchor.constraint(equalTo: view.leftAnchor),
             backgroundImage.rightAnchor.constraint(equalTo: view.rightAnchor),

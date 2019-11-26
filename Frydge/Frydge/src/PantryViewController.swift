@@ -16,7 +16,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         backgroundImage.contentMode = .scaleAspectFill
         backgroundImage.alpha = 0.5
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        var list = [
+        let list = [
             backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundImage.leftAnchor.constraint(equalTo: view.leftAnchor),
             backgroundImage.rightAnchor.constraint(equalTo: view.rightAnchor),
@@ -217,7 +217,7 @@ class ListHeader: BaseCell {
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-[v2]-[v1(80)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":ingredientNameTextField, "v1":addIngredientButton, "v2":moveSelectedButton ]))
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-40-[v0]-[v1]-40-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":shoppingListButton, "v1":pantryListButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-40-[v0]-[v1(==v0)]-40-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":shoppingListButton, "v1":pantryListButton]))
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-30-[v0]-60-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":title]))
         
