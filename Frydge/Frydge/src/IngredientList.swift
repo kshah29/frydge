@@ -10,6 +10,14 @@ class IngredientList {
     var ingredientList: [Ingredient] = []
     var selectedList: [Bool] = []
     
+    func getIngredientsListForSearch() -> [String]{
+        var ingredientsListOfNames: [String] = []
+        for i in ingredientList{
+            ingredientsListOfNames.append(i.name)
+        }
+        return ingredientsListOfNames
+    }
+    
     func decreaseIngredientAmount(index:Int){
         if ingredientList[index].amount <= 1 {
             ingredientList[index].amount = 1
