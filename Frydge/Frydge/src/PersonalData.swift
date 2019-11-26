@@ -164,10 +164,10 @@ class PersonalData{
         }
         if (isTreeNutFree){
             if intolerances == "" {
-                intolerances = "Tree Nut"
+                intolerances = "TreeNut"
             }
             else {
-                intolerances += ",Tree Nut"
+                intolerances += ",TreeNut"
             }
         }
         if (isFishFree){
