@@ -115,7 +115,16 @@ class ProfileViewController: UIViewController {
     
     let checkboxButton1: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        if (PersonalData.getVegetarian())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
         button.addTarget(self, action: #selector(handleSetVegetarian(sender:)), for: .touchUpInside)
         return button
     }()
@@ -131,7 +140,16 @@ class ProfileViewController: UIViewController {
     
     let checkboxButton2: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        if (PersonalData.getVegan())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
         button.addTarget(self, action: #selector(handleSetVegan(sender:)), for: .touchUpInside)
         return button
     }()
@@ -147,7 +165,16 @@ class ProfileViewController: UIViewController {
     
     let checkboxButton3: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        if (PersonalData.getPaleo())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
         button.addTarget(self, action: #selector(handleSetPaleo(sender:)), for: .touchUpInside)
         return button
     }()
@@ -232,7 +259,16 @@ class ProfileViewController: UIViewController {
     
     let checkboxButton4: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        if (PersonalData.getDairy())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
         button.addTarget(self, action: #selector(handleSetDairy(sender:)), for: .touchUpInside)
         return button
     }()
@@ -248,7 +284,16 @@ class ProfileViewController: UIViewController {
     
     let checkboxButton5: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        if (PersonalData.getGlutenFree())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
         button.addTarget(self, action: #selector(handleSetGluten(sender:)), for: .touchUpInside)
         return button
     }()
@@ -264,7 +309,16 @@ class ProfileViewController: UIViewController {
     
     let checkboxButton6: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        if (PersonalData.getWheatFree())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
         button.addTarget(self, action: #selector(handleSetWheat(sender:)), for: .touchUpInside)
         return button
     }()
@@ -280,7 +334,16 @@ class ProfileViewController: UIViewController {
     
     let checkboxButton7: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        if (PersonalData.getLowSugar())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
         button.addTarget(self, action: #selector(handleSetSugar(sender:)), for: .touchUpInside)
         return button
     }()
@@ -296,7 +359,16 @@ class ProfileViewController: UIViewController {
     
     let checkboxButton8: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        if (PersonalData.getEggFree())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
         button.addTarget(self, action: #selector(handleSetEgg(sender:)), for: .touchUpInside)
         return button
     }()
@@ -312,7 +384,16 @@ class ProfileViewController: UIViewController {
     
     let checkboxButton9: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        if (PersonalData.getPeanutFree())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
         button.addTarget(self, action: #selector(handleSetPeanut(sender:)), for: .touchUpInside)
         return button
     }()
@@ -328,7 +409,16 @@ class ProfileViewController: UIViewController {
     
     let checkboxButton10: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        if (PersonalData.getTreeNutFree())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
         button.addTarget(self, action: #selector(handleSetTreeNut(sender:)), for: .touchUpInside)
         return button
     }()
@@ -344,7 +434,16 @@ class ProfileViewController: UIViewController {
     
     let checkboxButton11: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        if (PersonalData.getfishFree())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
         button.addTarget(self, action: #selector(handleSetShellfish(sender:)), for: .touchUpInside)
         return button
     }()
