@@ -58,17 +58,35 @@ class IngredientViewController: UIViewController {
         return button
     } ()
     
-    func getNewAmount() -> Int {
-        return ingredient.amount
-    }
-    
     @objc func plusButtonHandler(_ sender:UIButton!){
         ingredient.amount += 1
         amount.text = String(ingredient.amount)
         pantryVC.ingredients.increaseIngredientAmount(index: index)
+        pantryVC.collectionView?.reloadData()
         view.reloadInputViews()
     }
     
+    let minusButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Minus", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    } ()
+    
+    @objc func minusButtonHandler(_ sender:UIButton!){
+        if(ingredient.amount <= 1){
+            ingredient.amount = 1
+        }
+        else{
+            ingredient.amount -= 1
+        }
+        amount.text = String(ingredient.amount)
+        pantryVC.ingredients.increaseIngredientAmount(index: index)
+        pantryVC.collectionView?.reloadData()
+        view.reloadInputViews()
+    }
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -111,6 +129,13 @@ class IngredientViewController: UIViewController {
         plusButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 100.0).isActive = true
         plusButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 200.0).isActive = true
         plusButton.addTarget(self, action: #selector(self.plusButtonHandler(_:)), for: .touchUpInside)
+        
+        view.addSubview(minusButton)
+        minusButton.translatesAutoresizingMaskIntoConstraints = false
+        minusButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0.0).isActive = true
+        minusButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 200.0).isActive = true
+        minusButton.addTarget(self, action: #selector(self.minusButtonHandler(_:)), for: .touchUpInside)
+        
 
     }
     

@@ -47,6 +47,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ListCell
         listCell.nameLabel.text = ingredients.getIngredientName(index:indexPath.item)
+        listCell.amountLabel.text = String(ingredients.getIngredientAmount(index: indexPath.item))
         listCell.pantryViewController = self
         listCell.listIndex = indexPath.item
         listCell.selectIngredientButton.isSelected = ingredients.getSelect(index: indexPath.item)
@@ -152,8 +153,6 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     func showIngredientViewController(index: Int) {
         let ingredientVC = IngredientViewController(input: ingredients.getIngredient(index: index), pantry: self, index: index)
         present(ingredientVC, animated: true, completion: nil)
-        ingredients.setIngredientAmount(index: index, newAmount: ingredientVC.getNewAmount())
-        print(ingredientVC.getNewAmount())
     }
     
 }
@@ -274,6 +273,14 @@ class ListCell: BaseCell {
         return label
     }()
     
+    let amountLabel: UILabel = {
+        let label = UILabel()
+        label.text = "amount"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        return label
+    }()
+    
     let removeIngredientButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Remove", for: .normal)
@@ -297,13 +304,14 @@ class ListCell: BaseCell {
     
     override func setupViews(){
         addSubview(nameLabel)
+        addSubview(amountLabel)
         addSubview(removeIngredientButton)
         addSubview(selectIngredientButton)
         
         removeIngredientButton.addTarget(self, action: #selector(ListCell.removeIngredient(_:)), for: .touchUpInside)
         selectIngredientButton.addTarget(self, action: #selector(ListCell.selectIngredient(_:)), for: .touchUpInside)
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v2(30)]-[v0]-[v1(80)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel, "v1":removeIngredientButton, "v2":selectIngredientButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v2(30)]-[v3]-[v0]-[v1(80)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel, "v1":removeIngredientButton, "v2":selectIngredientButton, "v3": amountLabel]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":removeIngredientButton]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":selectIngredientButton]))
@@ -345,9 +353,8 @@ class IngredientList {
     var ingredientList: [Ingredient] = []
     var selectedList: [Bool] = []
     
-    //CHANGE TO INGREDIENT RETURN TYPE
-    func setIngredientAmount(index:Int, newAmount:Int){
-        ingredientList[index].amount = newAmount
+    func decreaseIngredientAmount(index:Int){
+        ingredientList[index].amount -= 1
     }
     
     func increaseIngredientAmount(index:Int){
@@ -356,6 +363,10 @@ class IngredientList {
     
     func getIngredientName(index: Int) -> String{
         return ingredientList[index].name
+    }
+    
+    func getIngredientAmount(index: Int) -> Int {
+        return ingredientList[index].amount
     }
     
     func getIngredient(index: Int) -> Ingredient{
