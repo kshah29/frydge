@@ -15,10 +15,16 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     let searchbar = UISearchBar(frame: CGRect(x: 10, y: 50, width: 390.0, height: 50.0))
     var recipes: [Recipe]? = nil
     var recipeViews: [UIView] = []
+    var compiledRecipes: Bool = false
     var backgroundImage = UIImageView(image: #imageLiteral(resourceName: "marble"))
     
     public func getRecipes(query: String) {
-        dummyMakeRequest()
+        self.recipes = []
+        self.compiledRecipes = false
+        makeRequest(ingredientList: query.components(separatedBy: " "))
+        while (self.compiledRecipes == false){
+            // DO nothing - wait for it to populate
+        }
         populateRecipes()
     }
     
@@ -148,6 +154,8 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
                 self.recipes?.append(Recipe(id: nid ?? 0, title: title as! String, ingredientList: [], process: process, image: imageURL as! String))
             }
         }
+        
+        compiledRecipes = true
     }
     
     private func makeRequest (ingredientList : [String]) -> Void {
@@ -175,7 +183,7 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
             intoleranceParam += "&intolerances" + intolerance
         }
         
-        let queryNumber = "2"
+        let queryNumber = "10"
         
         let procedureParam = "&instructionsRequired=true"
         let recipeInfo = "&addRecipeInformation=true"
