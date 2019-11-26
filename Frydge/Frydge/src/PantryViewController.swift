@@ -5,8 +5,9 @@ var pantryList = IngredientList()
 
 class PantryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var isShoppingList = true;
+    var isShoppingList = true
     var ingredients = IngredientList()
+    var header : ListHeader?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,12 +17,17 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         backgroundImage.contentMode = .scaleAspectFill
         backgroundImage.alpha = 0.5
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        let list = [
-            backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundImage.leftAnchor.constraint(equalTo: view.leftAnchor),
-            backgroundImage.rightAnchor.constraint(equalTo: view.rightAnchor),
-            backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-        ]
+        //backgroundImage.contentMode = .scaleAspectFill
+        //backgroundImage.topAnchor.constraint(equalTo: collectionView!.topAnchor)
+            
+        //let list = [
+            backgroundImage.topAnchor.constraint(equalTo: collectionView.topAnchor)
+            backgroundImage.leftAnchor.constraint(equalTo: collectionView.leftAnchor)
+            backgroundImage.rightAnchor.constraint(equalTo: collectionView.rightAnchor)
+            backgroundImage.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor)
+        //]
+        
+        //NSLayoutConstraint.activate(list)
         collectionView?.backgroundView = backgroundImage
         collectionView?.backgroundColor = UIColor.white
         //collectionView?.alwaysBounceVertical = true
@@ -31,7 +37,6 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         //register cells & header
         collectionView?.register(ListCell.self, forCellWithReuseIdentifier: "cellId")
         collectionView?.register(ListHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerId")
-         
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -54,10 +59,10 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     
     //display header
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! ListHeader
-        header.pantryViewController = self
-        header.backgroundColor = UIColor.white
-        return header
+        header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! ListHeader
+        header?.pantryViewController = self
+        header?.backgroundColor = UIColor.white
+        return header!
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -114,6 +119,35 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         dismiss(animated: true, completion: nil)
     }
     
+    //MOVE
+    let moveButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("MOVE", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    } ()
+    
+    /*
+    func showMoveButton(){
+        print("test")
+        header?.switchAppearance()
+        //header
+        //collectionView?.addSubview(moveButton)
+        //viewDidLoad()
+        
+    }
+    //
+    */
+    
+    func showHeader(){
+        if ingredients.selectedList.contains(true){
+            header?.moveMode()
+        }
+        else{
+            header?.inputMode()
+        }
+    }
+    
     func selectIngredient(index: Int){
         if(isShoppingList){
             shoppingList.switchSelect(index: index)
@@ -123,6 +157,8 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
             pantryList.switchSelect(index: index)
             ingredients.copy(other: pantryList)
         }
+        showHeader()
+        //showMoveButton()
         collectionView?.reloadData()
     }
     
@@ -130,6 +166,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         pantryList.copy(other: ingredients)
         ingredients.copy(other: shoppingList)
         isShoppingList = true
+        showHeader()
         collectionView?.reloadData()
     }
     
@@ -137,6 +174,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         shoppingList.copy(other: ingredients)
         ingredients.copy(other: pantryList)
         isShoppingList = false
+        showHeader()
         collectionView?.reloadData()
     }
     
@@ -247,6 +285,19 @@ class ListHeader: BaseCell {
     @objc func moveSelected(_ sender:UIButton!){
         pantryViewController?.moveSelected()
     }
+    
+    func inputMode(){
+        addIngredientButton.isHidden = false
+        ingredientNameTextField.isHidden = false
+        reloadInputViews()
+    }
+    
+    func moveMode(){
+        addIngredientButton.isHidden = true
+        ingredientNameTextField.isHidden = true
+        reloadInputViews()
+    }
+    
 }
 
 
@@ -390,6 +441,9 @@ class IngredientList {
     
     func getSelectedIngredients() -> [Ingredient]{
         var selectedIngredientList: [Ingredient] = []
+        if ingredientList.count == 0{
+            return []
+        }
         for i in 0..<(ingredientList.count-1){
             if selectedList[i] == true {
                 selectedIngredientList.append(ingredientList[i])
