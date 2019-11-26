@@ -28,6 +28,50 @@ class PersonalData{
         email = userEmail
     }
     
+    static public func getVegan() -> Bool {
+        return isVegan
+    }
+    
+    static public func getVegetarian() -> Bool {
+        return isVegetarian
+    }
+    
+    static public func getPaleo() -> Bool {
+        return isPaleo
+    }
+    
+    static public func getDairy() -> Bool {
+        return isDairyFree
+    }
+    
+    static public func getGlutenFree() -> Bool {
+        return isGlutenFree
+    }
+    
+    static public func getWheatFree() -> Bool {
+        return isWheatFree
+    }
+    
+    static public func getLowSugar() -> Bool {
+        return isLowSugar
+    }
+    
+    static public func getEggFree() -> Bool {
+        return isEggFree
+    }
+    
+    static public func getPeanutFree() -> Bool {
+        return isPeanutFree
+    }
+    
+    static public func getTreeNutFree() -> Bool {
+        return isTreeNutFree
+    }
+    
+    static public func getfishFree() -> Bool {
+        return isFishFree
+    }
+    
     static public func setVegan(vegan: Bool){
         isVegan = vegan
     }
