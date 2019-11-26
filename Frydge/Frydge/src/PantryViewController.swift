@@ -178,7 +178,7 @@ class ListHeader: BaseCell {
     let shoppingListButton: UIButton = {
         let button = UIButton(type: .system)
         button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderColor = UIColor.black.cgColor
         button.setTitle("Shopping List", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -188,6 +188,7 @@ class ListHeader: BaseCell {
     let pantryListButton: UIButton = {
         let button = UIButton(type: .system)
         button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.white.cgColor
         button.setTitle("Pantry List", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -216,7 +217,7 @@ class ListHeader: BaseCell {
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-[v2]-[v1(80)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":ingredientNameTextField, "v1":addIngredientButton, "v2":moveSelectedButton ]))
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-40-[v0(150)]-[v1(150)]-40-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":shoppingListButton, "v1":pantryListButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-40-[v0]-[v1]-40-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":shoppingListButton, "v1":pantryListButton]))
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-30-[v0]-60-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":title]))
         
