@@ -173,20 +173,26 @@ class ProfileViewController: UIViewController {
         view.addSubview(checkboxButton4)
         checkboxButton4.anchor(top: allergyTitleLabel.bottomAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 10, width: 24, height: 24)
         
-        view.addSubview(allergyNut)
-        allergyNut.anchor(top: allergyTitleLabel.bottomAnchor, left: checkboxButton4.rightAnchor, paddingTop: 20, paddingLeft: 15)
+        view.addSubview(allergyDairy)
+        allergyDairy.anchor(top: allergyTitleLabel.bottomAnchor, left: checkboxButton4.rightAnchor, paddingTop: 20, paddingLeft: 15)
         
         view.addSubview(checkboxButton5)
         checkboxButton5.anchor(top: checkboxButton4.bottomAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 10, width: 24, height: 24)
         
         view.addSubview(allergyGluten)
-        allergyGluten.anchor(top: allergyNut.bottomAnchor, left: checkboxButton4.rightAnchor, paddingTop: 20, paddingLeft: 15)
+        allergyGluten.anchor(top: allergyDairy.bottomAnchor, left: checkboxButton4.rightAnchor, paddingTop: 20, paddingLeft: 15)
         
         view.addSubview(checkboxButton6)
         checkboxButton6.anchor(top: checkboxButton5.bottomAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 10, width: 24, height: 24)
         
-        view.addSubview(allergyFat)
-        allergyFat.anchor(top: allergyGluten.bottomAnchor, left: checkboxButton6.rightAnchor, paddingTop: 20, paddingLeft: 15)
+        view.addSubview(allergyWheat)
+        allergyWheat.anchor(top: allergyGluten.bottomAnchor, left: checkboxButton6.rightAnchor, paddingTop: 20, paddingLeft: 15)
+        
+        view.addSubview(checkboxButton7)
+        checkboxButton7.anchor(top:checkboxButton6.bottomAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 10, width: 24, height:24)
+        
+        view.addSubview(allergySugar)
+        allergySugar.anchor(top: allergyWheat.bottomAnchor, left: checkboxButton7.rightAnchor, paddingTop: 20, paddingLeft: 15)
         
         return view
     }()
@@ -207,10 +213,10 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
-    let allergyNut: UILabel = {
+    let allergyDairy: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.text = "NUT"
+        label.text = "DAIRY"
         label.font = UIFont(name: "Roboto-Black", size: 15)
         label.textColor = .black
         return label
@@ -239,10 +245,26 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
-    let allergyFat: UILabel = {
+    let allergyWheat: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.text = "FAT"
+        label.text = "WHEAT"
+        label.font = UIFont(name: "Roboto-Black", size: 15)
+        label.textColor = .black
+        return label
+    }()
+    
+    let checkboxButton7: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleSetSugar(sender:)), for: .touchUpInside)
+        return button
+    }()
+    
+    let allergySugar: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.text = "SUGAR"
         label.font = UIFont(name: "Roboto-Black", size: 15)
         label.textColor = .black
         return label
@@ -306,6 +328,17 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func handleSetFat(sender: UIButton) {
+        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+        {
+            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+    }
+    
+    @objc func handleSetSugar(sender: UIButton) {
         if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
         {
             sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
