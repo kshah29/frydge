@@ -1,8 +1,3 @@
-//
-//  RecipeSearchViewController.swift
-//  Frydge
-//
-
 import UIKit
 
 var shoppingList = IngredientList()
@@ -46,8 +41,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     //display list
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ListCell
-        listCell.nameLabel.text = ingredients.getIngredientName(index:indexPath.item)
-        listCell.amountLabel.text = String(ingredients.getIngredientAmount(index: indexPath.item))
+        listCell.nameLabel.text = ingredients.getIngredientName(index:indexPath.item) + " - " + String(ingredients.getIngredientAmount(index: indexPath.item))
         listCell.pantryViewController = self
         listCell.listIndex = indexPath.item
         listCell.selectIngredientButton.isSelected = ingredients.getSelect(index: indexPath.item)
@@ -72,13 +66,12 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     
     //change lists
     func addNewIngredient(ingredientName: String){
-        var ingredient = Ingredient(name: ingredientName, amount: 1)
         if(isShoppingList){
-            shoppingList.addIngredient(ingredient: ingredient)
+            shoppingList.addIngredient(ingredient: Ingredient(name: ingredientName, amount: 1))
             ingredients.copy(other: shoppingList)
         }
         else{
-            pantryList.addIngredient(ingredient: ingredient)
+            pantryList.addIngredient(ingredient: Ingredient(name: ingredientName, amount: 1))
             ingredients.copy(other: pantryList)
         }
         collectionView?.reloadData()
@@ -89,9 +82,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         if(isShoppingList){
             for i in 0..<(shoppingList.ingredientListCount()){
                 if shoppingList.getSelect(index: i){
-                    //FIX THIS
-                    var temp = Ingredient(name: shoppingList.getIngredientName(index: i), amount: 1)
-                    pantryList.addIngredient(ingredient: temp)
+                    pantryList.addIngredient(ingredient: shoppingList.getIngredient(index: i))
                 }
             }
             shoppingList.removeSelectedIngredients()
@@ -100,9 +91,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
         else{
             for i in 0..<(pantryList.ingredientListCount()){
                 if pantryList.getSelect(index: i){
-                    //FIX THIS
-                    var temp = Ingredient(name: pantryList.getIngredientName(index: i), amount: 1)
-                    shoppingList.addIngredient(ingredient: temp)
+                    shoppingList.addIngredient(ingredient: pantryList.getIngredient(index: i))
                 }
             }
             pantryList.removeSelectedIngredients()
@@ -273,14 +262,6 @@ class ListCell: BaseCell {
         return label
     }()
     
-    let amountLabel: UILabel = {
-        let label = UILabel()
-        label.text = "amount"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 14)
-        return label
-    }()
-    
     let removeIngredientButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Remove", for: .normal)
@@ -290,8 +271,6 @@ class ListCell: BaseCell {
     
     let selectIngredientButton: UIButton = {
         let button = UIButton(type: .system)
-        //button.layer.borderWidth = 1
-        //button.layer.borderColor = UIColor.black.cgColor
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
         button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .selected)
@@ -304,14 +283,13 @@ class ListCell: BaseCell {
     
     override func setupViews(){
         addSubview(nameLabel)
-        addSubview(amountLabel)
         addSubview(removeIngredientButton)
         addSubview(selectIngredientButton)
         
         removeIngredientButton.addTarget(self, action: #selector(ListCell.removeIngredient(_:)), for: .touchUpInside)
         selectIngredientButton.addTarget(self, action: #selector(ListCell.selectIngredient(_:)), for: .touchUpInside)
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v2(30)]-[v3]-[v0]-[v1(80)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel, "v1":removeIngredientButton, "v2":selectIngredientButton, "v3": amountLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v2(30)]-[v0]-[v1(80)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel, "v1":removeIngredientButton, "v2":selectIngredientButton]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":removeIngredientButton]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":selectIngredientButton]))
@@ -354,7 +332,12 @@ class IngredientList {
     var selectedList: [Bool] = []
     
     func decreaseIngredientAmount(index:Int){
-        ingredientList[index].amount -= 1
+        if ingredientList[index].amount <= 1 {
+            ingredientList[index].amount = 1
+        }
+        else{
+            ingredientList[index].amount -= 1
+        }
     }
     
     func increaseIngredientAmount(index:Int){

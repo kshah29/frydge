@@ -81,7 +81,7 @@ class IngredientViewController: UIViewController {
             ingredient.amount -= 1
         }
         amount.text = String(ingredient.amount)
-        pantryVC.ingredients.increaseIngredientAmount(index: index)
+        pantryVC.ingredients.decreaseIngredientAmount(index: index)
         pantryVC.collectionView?.reloadData()
         view.reloadInputViews()
     }
