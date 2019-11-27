@@ -9,9 +9,9 @@
 import Foundation
 
 class PersonalData{
-    static var name : String = ""
+    static var name : String = "placeholder_name"
     static var email : String = ""
-    static var membershipDate : String = ""
+    static var membershipDate : String = "placeholder_date"
     static var isVegan : Bool = false
     static var isVegetarian : Bool = false
     static var isPaleo : Bool = false
