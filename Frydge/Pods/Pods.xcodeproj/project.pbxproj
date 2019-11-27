@@ -1,0 +1,652 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1FEFEC277C6AB1FC3BB6C225B207A0E3 /* RSSelectionMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AD4A838CB2C9C2444590A639584D9A /* RSSelectionMenuDelegate.swift */; };
+		2DB950309275E5194C592A9BC03352C8 /* RSSelectionMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49460FB4AC382ED8DF0CF7117368A415 /* RSSelectionMenuController.swift */; };
+		32650C7A73D318E9EC82CAC98FD90702 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		3420F0BB153836BF7E07CCC6CB538871 /* RSSelectionMenuSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C69CA6C77C927CD807CF3A5E047845A /* RSSelectionMenuSearchDelegate.swift */; };
+		3532B8F35E390F9DBA1296FD1019117A /* RSSelectionMenuExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F96054AB5ED8EFC9D4BC0762CA43577 /* RSSelectionMenuExtension.swift */; };
+		59774F48C932268CF814B2DD7B9826DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		740102C51DADBA1EC75013D7AD79D755 /* RSSelectionMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A60567482AFB637B5EDE8EBEBA86034A /* RSSelectionMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		88C8E46E8277E93FCCCE7131DEABC5FC /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA7EFFC867078CDA0FEA775CD01528 /* Enums.swift */; };
+		9059660CCD3978E1FDC10C43CE095D21 /* Pods-Frydge-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BA572A361AEED1E89F77D02F72137C1D /* Pods-Frydge-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAE7695239FD730CCFC10EDEDCD57991 /* NavigationBarTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872353F3A654B6607C708FA84E5103F2 /* NavigationBarTheme.swift */; };
+		B0A98A68A41DF0553679D32F9F1B1C40 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4DD910F428A87E510B965270A55012 /* Constants.swift */; };
+		BE689FB364CA4757C781D789DE07FE92 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C466BE2364C588DAC030B770D6F93DD0 /* ViewControllerExtension.swift */; };
+		C192DB633F1AB6AB5BFF7519E301355B /* Pods-Frydge-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A02239D58D291B0A040FBC33281069 /* Pods-Frydge-dummy.m */; };
+		CC80501C41EAEFC6A764AFC80C526B00 /* RSFirstRowSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1915DC5B49DCF809CE24EF679CA4D7A7 /* RSFirstRowSelection.swift */; };
+		D03B57EE685B5C41EE7623C9C07B3C9C /* RSSelectionMenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EFC43CD9AE6A21208A890681D35474 /* RSSelectionMenuDataSource.swift */; };
+		E12977F927E13A9CBFFAFD25AC21DB25 /* RSSelectionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56D2763A8B8569958F2947C28FF173 /* RSSelectionTableView.swift */; };
+		E393172031A708F78DF1A7DEB0087420 /* DecodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462612E11D37EE79F7C4163B36D22B3 /* DecodableExtension.swift */; };
+		EC9E1007410259FC2E6D771E2F581A69 /* RSSelectionMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F7A765CF9D130456BF88BFE9D0A0007 /* RSSelectionMenu-dummy.m */; };
+		FB8D4FA2D43E5D88CBC2FF01B37A7221 /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A128125DB47A5AEF24B573BC709AB06C /* NSObjectExtension.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		490FF5CD84C5EC8B72CF077C8EF329F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4BA747C8987B7580A893EC859D12686;
+			remoteInfo = RSSelectionMenu;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		122F4F077A28D417D3942E0C5109F20B /* RSSelectionMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RSSelectionMenu.xcconfig; sourceTree = "<group>"; };
+		1915DC5B49DCF809CE24EF679CA4D7A7 /* RSFirstRowSelection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSFirstRowSelection.swift; path = RSSelectionMenu/RSSelectionMenu/Source/RSFirstRowSelection.swift; sourceTree = "<group>"; };
+		1C69CA6C77C927CD807CF3A5E047845A /* RSSelectionMenuSearchDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSSelectionMenuSearchDelegate.swift; path = RSSelectionMenu/RSSelectionMenu/Source/RSSelectionMenuSearchDelegate.swift; sourceTree = "<group>"; };
+		27AD4A838CB2C9C2444590A639584D9A /* RSSelectionMenuDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSSelectionMenuDelegate.swift; path = RSSelectionMenu/RSSelectionMenu/Source/RSSelectionMenuDelegate.swift; sourceTree = "<group>"; };
+		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3CF90A17A0D116DC5719CB0DBE6D513C /* Pods-Frydge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Frydge.release.xcconfig"; sourceTree = "<group>"; };
+		49460FB4AC382ED8DF0CF7117368A415 /* RSSelectionMenuController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSSelectionMenuController.swift; path = RSSelectionMenu/RSSelectionMenu/Source/RSSelectionMenuController.swift; sourceTree = "<group>"; };
+		6CCC360957E38A1CE9480D579A0AE85D /* RSSelectionMenu-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RSSelectionMenu-Info.plist"; sourceTree = "<group>"; };
+		706B704B60A4280AA84100106E09E938 /* Pods-Frydge-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Frydge-Info.plist"; sourceTree = "<group>"; };
+		7433D41F5EEFFCAC6B2DDE6ED2DA9216 /* RSSelectionMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RSSelectionMenu-prefix.pch"; sourceTree = "<group>"; };
+		7C9BFC1E3EC8EF8F5BEA6BB622D2E6D3 /* Pods_Frydge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Frydge.framework; path = "Pods-Frydge.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F7A765CF9D130456BF88BFE9D0A0007 /* RSSelectionMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RSSelectionMenu-dummy.m"; sourceTree = "<group>"; };
+		7F96054AB5ED8EFC9D4BC0762CA43577 /* RSSelectionMenuExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSSelectionMenuExtension.swift; path = RSSelectionMenu/RSSelectionMenu/Utilities/Extensions/RSSelectionMenuExtension.swift; sourceTree = "<group>"; };
+		8462612E11D37EE79F7C4163B36D22B3 /* DecodableExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DecodableExtension.swift; path = RSSelectionMenu/RSSelectionMenu/Utilities/Extensions/DecodableExtension.swift; sourceTree = "<group>"; };
+		872353F3A654B6607C708FA84E5103F2 /* NavigationBarTheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NavigationBarTheme.swift; path = RSSelectionMenu/RSSelectionMenu/Source/NavigationBarTheme.swift; sourceTree = "<group>"; };
+		87A02239D58D291B0A040FBC33281069 /* Pods-Frydge-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Frydge-dummy.m"; sourceTree = "<group>"; };
+		8F66E55B398B3E74C634E21E9EAFAB59 /* Pods-Frydge.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Frydge.modulemap"; sourceTree = "<group>"; };
+		99EE3D96466F9C4DE5C66D53E619FAC3 /* Pods-Frydge-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Frydge-frameworks.sh"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A128125DB47A5AEF24B573BC709AB06C /* NSObjectExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSObjectExtension.swift; path = RSSelectionMenu/RSSelectionMenu/Utilities/Extensions/NSObjectExtension.swift; sourceTree = "<group>"; };
+		A60567482AFB637B5EDE8EBEBA86034A /* RSSelectionMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RSSelectionMenu-umbrella.h"; sourceTree = "<group>"; };
+		B1EFC43CD9AE6A21208A890681D35474 /* RSSelectionMenuDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSSelectionMenuDataSource.swift; path = RSSelectionMenu/RSSelectionMenu/Source/RSSelectionMenuDataSource.swift; sourceTree = "<group>"; };
+		B7EB40E58F1345CBD3EB0477FBE0ED12 /* RSSelectionMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RSSelectionMenu.modulemap; sourceTree = "<group>"; };
+		BA572A361AEED1E89F77D02F72137C1D /* Pods-Frydge-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Frydge-umbrella.h"; sourceTree = "<group>"; };
+		BD878BBF5A2E10DD40007ED10288F8EE /* Pods-Frydge-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Frydge-acknowledgements.markdown"; sourceTree = "<group>"; };
+		C466BE2364C588DAC030B770D6F93DD0 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewControllerExtension.swift; path = RSSelectionMenu/RSSelectionMenu/Utilities/Extensions/ViewControllerExtension.swift; sourceTree = "<group>"; };
+		C8C4578432714A1A74A7A0C4B4023447 /* RSSelectionMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RSSelectionMenu.framework; path = RSSelectionMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D03DFC1DFC7B6BCCF5BFE78C6D124E08 /* Pods-Frydge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Frydge.debug.xcconfig"; sourceTree = "<group>"; };
+		D3AAF344D0BA13507BAB0570F94BF403 /* Pods-Frydge-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Frydge-acknowledgements.plist"; sourceTree = "<group>"; };
+		DCBA7EFFC867078CDA0FEA775CD01528 /* Enums.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Enums.swift; path = RSSelectionMenu/RSSelectionMenu/Utilities/Enums.swift; sourceTree = "<group>"; };
+		EC56D2763A8B8569958F2947C28FF173 /* RSSelectionTableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSSelectionTableView.swift; path = RSSelectionMenu/RSSelectionMenu/Source/RSSelectionTableView.swift; sourceTree = "<group>"; };
+		FA4DD910F428A87E510B965270A55012 /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = RSSelectionMenu/RSSelectionMenu/Utilities/Constants.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D61FF5C9B41D5346E843A7E11CAD118 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59774F48C932268CF814B2DD7B9826DA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB4A5008E66ADB080AA18FFECC89F3DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32650C7A73D318E9EC82CAC98FD90702 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3EC3543F7BD385183CA9AAF64C601013 /* Pods-Frydge */ = {
+			isa = PBXGroup;
+			children = (
+				8F66E55B398B3E74C634E21E9EAFAB59 /* Pods-Frydge.modulemap */,
+				BD878BBF5A2E10DD40007ED10288F8EE /* Pods-Frydge-acknowledgements.markdown */,
+				D3AAF344D0BA13507BAB0570F94BF403 /* Pods-Frydge-acknowledgements.plist */,
+				87A02239D58D291B0A040FBC33281069 /* Pods-Frydge-dummy.m */,
+				99EE3D96466F9C4DE5C66D53E619FAC3 /* Pods-Frydge-frameworks.sh */,
+				706B704B60A4280AA84100106E09E938 /* Pods-Frydge-Info.plist */,
+				BA572A361AEED1E89F77D02F72137C1D /* Pods-Frydge-umbrella.h */,
+				D03DFC1DFC7B6BCCF5BFE78C6D124E08 /* Pods-Frydge.debug.xcconfig */,
+				3CF90A17A0D116DC5719CB0DBE6D513C /* Pods-Frydge.release.xcconfig */,
+			);
+			name = "Pods-Frydge";
+			path = "Target Support Files/Pods-Frydge";
+			sourceTree = "<group>";
+		};
+		50CBCC615102F5A2619E70D971FEE8E9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				60D42E76063DE41FCB64C51538F07D10 /* RSSelectionMenu */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5F4AD739BFB185CE82A4904A02E4AE94 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3EC3543F7BD385183CA9AAF64C601013 /* Pods-Frydge */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		60D42E76063DE41FCB64C51538F07D10 /* RSSelectionMenu */ = {
+			isa = PBXGroup;
+			children = (
+				FA4DD910F428A87E510B965270A55012 /* Constants.swift */,
+				8462612E11D37EE79F7C4163B36D22B3 /* DecodableExtension.swift */,
+				DCBA7EFFC867078CDA0FEA775CD01528 /* Enums.swift */,
+				872353F3A654B6607C708FA84E5103F2 /* NavigationBarTheme.swift */,
+				A128125DB47A5AEF24B573BC709AB06C /* NSObjectExtension.swift */,
+				1915DC5B49DCF809CE24EF679CA4D7A7 /* RSFirstRowSelection.swift */,
+				49460FB4AC382ED8DF0CF7117368A415 /* RSSelectionMenuController.swift */,
+				B1EFC43CD9AE6A21208A890681D35474 /* RSSelectionMenuDataSource.swift */,
+				27AD4A838CB2C9C2444590A639584D9A /* RSSelectionMenuDelegate.swift */,
+				7F96054AB5ED8EFC9D4BC0762CA43577 /* RSSelectionMenuExtension.swift */,
+				1C69CA6C77C927CD807CF3A5E047845A /* RSSelectionMenuSearchDelegate.swift */,
+				EC56D2763A8B8569958F2947C28FF173 /* RSSelectionTableView.swift */,
+				C466BE2364C588DAC030B770D6F93DD0 /* ViewControllerExtension.swift */,
+				CA6CC9E8D72D7D00ECF3FB4CF424CD16 /* Support Files */,
+			);
+			name = RSSelectionMenu;
+			path = RSSelectionMenu;
+			sourceTree = "<group>";
+		};
+		BAB66DC58BE13A94CF5871293595F087 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7C9BFC1E3EC8EF8F5BEA6BB622D2E6D3 /* Pods_Frydge.framework */,
+				C8C4578432714A1A74A7A0C4B4023447 /* RSSelectionMenu.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		CA6CC9E8D72D7D00ECF3FB4CF424CD16 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B7EB40E58F1345CBD3EB0477FBE0ED12 /* RSSelectionMenu.modulemap */,
+				122F4F077A28D417D3942E0C5109F20B /* RSSelectionMenu.xcconfig */,
+				7F7A765CF9D130456BF88BFE9D0A0007 /* RSSelectionMenu-dummy.m */,
+				6CCC360957E38A1CE9480D579A0AE85D /* RSSelectionMenu-Info.plist */,
+				7433D41F5EEFFCAC6B2DDE6ED2DA9216 /* RSSelectionMenu-prefix.pch */,
+				A60567482AFB637B5EDE8EBEBA86034A /* RSSelectionMenu-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/RSSelectionMenu";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				50CBCC615102F5A2619E70D971FEE8E9 /* Pods */,
+				BAB66DC58BE13A94CF5871293595F087 /* Products */,
+				5F4AD739BFB185CE82A4904A02E4AE94 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B65DABE6601C26CEC2FBA90AEB62F654 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9059660CCD3978E1FDC10C43CE095D21 /* Pods-Frydge-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3A85424E96826B6B1B462A5A1B6214A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				740102C51DADBA1EC75013D7AD79D755 /* RSSelectionMenu-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		76D95F2B2D55BF88E3971B983333BCFF /* Pods-Frydge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7D6217169F88D33F8D849593AECC52D0 /* Build configuration list for PBXNativeTarget "Pods-Frydge" */;
+			buildPhases = (
+				B65DABE6601C26CEC2FBA90AEB62F654 /* Headers */,
+				898367EBEEE05B2D3407646734F187E1 /* Sources */,
+				AB4A5008E66ADB080AA18FFECC89F3DD /* Frameworks */,
+				B08723CE3584CF29917F5E998EB9AA47 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DC81BD80129B5B8DA8B50177753FB58E /* PBXTargetDependency */,
+			);
+			name = "Pods-Frydge";
+			productName = "Pods-Frydge";
+			productReference = 7C9BFC1E3EC8EF8F5BEA6BB622D2E6D3 /* Pods_Frydge.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F4BA747C8987B7580A893EC859D12686 /* RSSelectionMenu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 38CAFE9F9343A183AC51178811BD256C /* Build configuration list for PBXNativeTarget "RSSelectionMenu" */;
+			buildPhases = (
+				F3A85424E96826B6B1B462A5A1B6214A /* Headers */,
+				9C27F25C31845B4573722D78A9374CAF /* Sources */,
+				8D61FF5C9B41D5346E843A7E11CAD118 /* Frameworks */,
+				A95F9A8914D5239C38E223017CCB7811 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RSSelectionMenu;
+			productName = RSSelectionMenu;
+			productReference = C8C4578432714A1A74A7A0C4B4023447 /* RSSelectionMenu.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = BAB66DC58BE13A94CF5871293595F087 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				76D95F2B2D55BF88E3971B983333BCFF /* Pods-Frydge */,
+				F4BA747C8987B7580A893EC859D12686 /* RSSelectionMenu */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A95F9A8914D5239C38E223017CCB7811 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B08723CE3584CF29917F5E998EB9AA47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		898367EBEEE05B2D3407646734F187E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C192DB633F1AB6AB5BFF7519E301355B /* Pods-Frydge-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C27F25C31845B4573722D78A9374CAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0A98A68A41DF0553679D32F9F1B1C40 /* Constants.swift in Sources */,
+				E393172031A708F78DF1A7DEB0087420 /* DecodableExtension.swift in Sources */,
+				88C8E46E8277E93FCCCE7131DEABC5FC /* Enums.swift in Sources */,
+				AAE7695239FD730CCFC10EDEDCD57991 /* NavigationBarTheme.swift in Sources */,
+				FB8D4FA2D43E5D88CBC2FF01B37A7221 /* NSObjectExtension.swift in Sources */,
+				CC80501C41EAEFC6A764AFC80C526B00 /* RSFirstRowSelection.swift in Sources */,
+				EC9E1007410259FC2E6D771E2F581A69 /* RSSelectionMenu-dummy.m in Sources */,
+				2DB950309275E5194C592A9BC03352C8 /* RSSelectionMenuController.swift in Sources */,
+				D03B57EE685B5C41EE7623C9C07B3C9C /* RSSelectionMenuDataSource.swift in Sources */,
+				1FEFEC277C6AB1FC3BB6C225B207A0E3 /* RSSelectionMenuDelegate.swift in Sources */,
+				3532B8F35E390F9DBA1296FD1019117A /* RSSelectionMenuExtension.swift in Sources */,
+				3420F0BB153836BF7E07CCC6CB538871 /* RSSelectionMenuSearchDelegate.swift in Sources */,
+				E12977F927E13A9CBFFAFD25AC21DB25 /* RSSelectionTableView.swift in Sources */,
+				BE689FB364CA4757C781D789DE07FE92 /* ViewControllerExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DC81BD80129B5B8DA8B50177753FB58E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RSSelectionMenu;
+			target = F4BA747C8987B7580A893EC859D12686 /* RSSelectionMenu */;
+			targetProxy = 490FF5CD84C5EC8B72CF077C8EF329F7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1422B121EAEAEA11307496903FA623C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		1C7D523FD685338DB4CF326FFB72E1EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D03DFC1DFC7B6BCCF5BFE78C6D124E08 /* Pods-Frydge.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Frydge/Pods-Frydge-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Frydge/Pods-Frydge.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7A6E9541A4F56C4FD01A49321E2860D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 122F4F077A28D417D3942E0C5109F20B /* RSSelectionMenu.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RSSelectionMenu/RSSelectionMenu-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RSSelectionMenu/RSSelectionMenu-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/RSSelectionMenu/RSSelectionMenu.modulemap";
+				PRODUCT_MODULE_NAME = RSSelectionMenu;
+				PRODUCT_NAME = RSSelectionMenu;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		99369AD2653B07E8E43118E21CC44C0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CF90A17A0D116DC5719CB0DBE6D513C /* Pods-Frydge.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Frydge/Pods-Frydge-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Frydge/Pods-Frydge.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9C5D54301B26D84990009882C9F7199D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 122F4F077A28D417D3942E0C5109F20B /* RSSelectionMenu.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RSSelectionMenu/RSSelectionMenu-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RSSelectionMenu/RSSelectionMenu-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/RSSelectionMenu/RSSelectionMenu.modulemap";
+				PRODUCT_MODULE_NAME = RSSelectionMenu;
+				PRODUCT_NAME = RSSelectionMenu;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		ED7888FA6713EABBF66D26A8003AD1CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		38CAFE9F9343A183AC51178811BD256C /* Build configuration list for PBXNativeTarget "RSSelectionMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A6E9541A4F56C4FD01A49321E2860D2 /* Debug */,
+				9C5D54301B26D84990009882C9F7199D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED7888FA6713EABBF66D26A8003AD1CA /* Debug */,
+				1422B121EAEAEA11307496903FA623C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7D6217169F88D33F8D849593AECC52D0 /* Build configuration list for PBXNativeTarget "Pods-Frydge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C7D523FD685338DB4CF326FFB72E1EF /* Debug */,
+				99369AD2653B07E8E43118E21CC44C0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

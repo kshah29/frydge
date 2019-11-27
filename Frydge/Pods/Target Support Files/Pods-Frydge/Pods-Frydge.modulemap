@@ -1,0 +1,6 @@
+framework module Pods_Frydge {
+  umbrella header "Pods-Frydge-umbrella.h"
+
+  export *
+  module * { export * }
+}

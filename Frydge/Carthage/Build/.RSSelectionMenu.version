@@ -1,0 +1,19 @@
+{
+  "Mac" : [
+
+  ],
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "commitish" : "v6.0.7",
+  "iOS" : [
+    {
+      "name" : "RSSelectionMenu",
+      "hash" : "c38d71c959e7a850789367e5261bba178a2520e9474e3dde4110fb1e50ecd2bc",
+      "swiftToolchainVersion" : "5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)"
+    }
+  ]
+}

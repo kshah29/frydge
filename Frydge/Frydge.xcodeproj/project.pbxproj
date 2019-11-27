@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -31,12 +31,16 @@
 		4F5EEEAB2373E19F000319CE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EEEAA2373E19F000319CE /* MainTabBarController.swift */; };
 		4F5EEEAD2373E30A000319CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F5EEEAC2373E30A000319CE /* Main.storyboard */; };
 		4F99AB9D2374ED160065FE7D /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F99AB9C2374ED160065FE7D /* Recipe.swift */; };
+		6BE78872CE9C1374D8572FA9 /* Pods_Frydge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 870420012AB7CB3E57E698C0 /* Pods_Frydge.framework */; };
 		82621005237E41A800C1D3ED /* PantryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82621004237E41A800C1D3ED /* PantryViewController.swift */; };
 		82EAE59A238A31A800DC98DF /* IngredientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EAE599238A31A800DC98DF /* IngredientViewController.swift */; };
 		82EAE59E238DB52F00DC98DF /* IngredientList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EAE59D238DB52F00DC98DF /* IngredientList.swift */; };
 		82EAE5A0238DB56400DC98DF /* PantryCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EAE59F238DB56400DC98DF /* PantryCells.swift */; };
 		9E60AF31237CD27D00FB7D44 /* PersonalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60AF30237CD27D00FB7D44 /* PersonalData.swift */; };
 		9E60AF33237CD2D500FB7D44 /* RecipeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60AF32237CD2D500FB7D44 /* RecipeStore.swift */; };
+		9E926ABE238DEA42005D1A6E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 9E926ABD238DEA42005D1A6E /* Podfile */; };
+		9E926AC0238DF1A0005D1A6E /* RSSelectionMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E926ABF238DF1A0005D1A6E /* RSSelectionMenu.framework */; };
+		9E926AC1238DF349005D1A6E /* RSSelectionMenu.framework in Sources */ = {isa = PBXBuildFile; fileRef = 9E926ABF238DF1A0005D1A6E /* RSSelectionMenu.framework */; };
 		A705FA9A237CC1B300C7520F /* CookbookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A705FA98237CBDA600C7520F /* CookbookViewController.swift */; };
 		A705FAB2237D013000C7520F /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A705FAB1237D013000C7520F /* HeaderView.xib */; };
 		A705FAB7237DDC6700C7520F /* Comfortaa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A705FAB6237DDC6700C7520F /* Comfortaa.ttf */; };
@@ -55,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29B492D8096F67873B8A552B /* Pods-Frydge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frydge.debug.xcconfig"; path = "Target Support Files/Pods-Frydge/Pods-Frydge.debug.xcconfig"; sourceTree = "<group>"; };
 		3A054899237D54F700B44E35 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3A0F9040237E379D00CF6A1B /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		4F04DBA8237E2F4E0047083F /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
@@ -75,14 +80,18 @@
 		82EAE599238A31A800DC98DF /* IngredientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewController.swift; sourceTree = "<group>"; };
 		82EAE59D238DB52F00DC98DF /* IngredientList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientList.swift; sourceTree = "<group>"; };
 		82EAE59F238DB56400DC98DF /* PantryCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryCells.swift; sourceTree = "<group>"; };
+		870420012AB7CB3E57E698C0 /* Pods_Frydge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Frydge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E60AF30237CD27D00FB7D44 /* PersonalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalData.swift; sourceTree = "<group>"; };
 		9E60AF32237CD2D500FB7D44 /* RecipeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStore.swift; sourceTree = "<group>"; };
+		9E926ABD238DEA42005D1A6E /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		9E926ABF238DF1A0005D1A6E /* RSSelectionMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RSSelectionMenu.framework; path = Carthage/Build/iOS/RSSelectionMenu.framework; sourceTree = "<group>"; };
 		A705FA98237CBDA600C7520F /* CookbookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookbookViewController.swift; sourceTree = "<group>"; };
 		A705FAA5237CFC5300C7520F /* FrydgeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrydgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A705FAA7237CFC5300C7520F /* FrydgeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrydgeTests.swift; sourceTree = "<group>"; };
 		A705FAA9237CFC5300C7520F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A705FAB1237D013000C7520F /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		A705FAB6237DDC6700C7520F /* Comfortaa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Comfortaa.ttf; sourceTree = "<group>"; };
+		FAFD0C336A3D8F1ACA256754 /* Pods-Frydge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frydge.release.xcconfig"; path = "Target Support Files/Pods-Frydge/Pods-Frydge.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +99,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E926AC0238DF1A0005D1A6E /* RSSelectionMenu.framework in Frameworks */,
+				6BE78872CE9C1374D8572FA9 /* Pods_Frydge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,13 +114,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F3C2A28DFEA1E2E056B3CE7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9E926ABF238DF1A0005D1A6E /* RSSelectionMenu.framework */,
+				870420012AB7CB3E57E698C0 /* Pods_Frydge.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4F5EEE872373E0E5000319CE = {
 			isa = PBXGroup;
 			children = (
+				9E926ABD238DEA42005D1A6E /* Podfile */,
 				4F0D98CF237E6ADA00ECCB6B /* README.md */,
 				4F5EEE922373E0E5000319CE /* Frydge */,
 				A705FAA6237CFC5300C7520F /* FrydgeTests */,
 				4F5EEE912373E0E5000319CE /* Products */,
+				B4A5DD82CBA1CFA20DCD8946 /* Pods */,
+				0F3C2A28DFEA1E2E056B3CE7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -185,6 +208,15 @@
 			path = FrydgeTests;
 			sourceTree = "<group>";
 		};
+		B4A5DD82CBA1CFA20DCD8946 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				29B492D8096F67873B8A552B /* Pods-Frydge.debug.xcconfig */,
+				FAFD0C336A3D8F1ACA256754 /* Pods-Frydge.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -192,9 +224,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4F5EEEA72373E0E9000319CE /* Build configuration list for PBXNativeTarget "Frydge" */;
 			buildPhases = (
+				45AB333A86B77C71D4F54A38 /* [CP] Check Pods Manifest.lock */,
 				4F5EEE8C2373E0E5000319CE /* Sources */,
 				4F5EEE8D2373E0E5000319CE /* Frameworks */,
 				4F5EEE8E2373E0E5000319CE /* Resources */,
+				92E1FF3F1CF75B025DA2D52D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -272,6 +306,7 @@
 				4F5EEEA32373E0E9000319CE /* LaunchScreen.storyboard in Resources */,
 				4F5EEEA02373E0E9000319CE /* Assets.xcassets in Resources */,
 				A705FAB7237DDC6700C7520F /* Comfortaa.ttf in Resources */,
+				9E926ABE238DEA42005D1A6E /* Podfile in Resources */,
 				3A0F9041237E379D00CF6A1B /* Roboto-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,11 +320,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		45AB333A86B77C71D4F54A38 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Frydge-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92E1FF3F1CF75B025DA2D52D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Frydge/Pods-Frydge-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Frydge/Pods-Frydge-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Frydge/Pods-Frydge-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4F5EEE8C2373E0E5000319CE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E926AC1238DF349005D1A6E /* RSSelectionMenu.framework in Sources */,
 				A705FABE237E492C00C7520F /* RecipeSearchViewController.swift in Sources */,
 				4F5EEE9E2373E0E5000319CE /* Frydge.xcdatamodeld in Sources */,
 				4F5EEE982373E0E5000319CE /* ViewController.swift in Sources */,
@@ -467,9 +545,15 @@
 		};
 		4F5EEEA82373E0E9000319CE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29B492D8096F67873B8A552B /* Pods-Frydge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = Carthage/Build/iOS/RSSelectionMenu.framework;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Frydge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -484,9 +568,16 @@
 		};
 		4F5EEEA92373E0E9000319CE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAFD0C336A3D8F1ACA256754 /* Pods-Frydge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = Carthage/Build/iOS/RSSelectionMenu.framework;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = /Users/kanishashah/Disk/test/frydge/Frydge/Carthage/Build/iOS;
 				INFOPLIST_FILE = Frydge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

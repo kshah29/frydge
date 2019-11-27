@@ -12,11 +12,32 @@ import UIKit
 
 class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     
+    let data = ["fhiduw", "fhewojc"]
+    var selectedNames: [String] = []
     let searchbar = UISearchBar(frame: CGRect(x: 10, y: 50, width: 390.0, height: 50.0))
+    let menu = RSSelectionMenu(dataSource: data) { (cell, name, indexPath) in
+        cell.textLabel?.text = name
+    }
     var recipes: [Recipe]? = nil
     var recipeViews: [UIView] = []
     var compiledRecipes: Bool = false
     var backgroundImage = UIImageView(image: #imageLiteral(resourceName: "marble"))
+    
+    
+    
+    // provide selected items
+   // menu.setSelectedItems(items: selectedNames) { (name, index, selected, selectedItems) in
+     //   selectedNames = selectedItems
+  //  }
+    // show - Present
+//    menu.show(from: self)
+    // or
+    // show - Push
+   // menu.show(style: .push, from: self)
+    
+    
+    
+    
     
     public func getRecipes(query: String) {
         self.recipes = []

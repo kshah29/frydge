@@ -1,0 +1,4 @@
+target 'Frydge' do
+  use_frameworks!
+  pod 'RSSelectionMenu', '~> 6.0.7'
+end
