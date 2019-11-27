@@ -42,7 +42,7 @@ class ProfileViewController: UIViewController {
     
     let profileImageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = #imageLiteral(resourceName: "avatar2")
+        iv.image = PersonalData.getProfileImage()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.layer.borderColor = UIColor.white.cgColor

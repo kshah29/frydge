@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 class PersonalData{
     static var name : String = "placeholder_name"
     static var email : String = ""
     static var membershipDate : String = "placeholder_date"
+    static var profileImage : UIImage = #imageLiteral(resourceName: "avatar2")
     static var isVegan : Bool = false
     static var isVegetarian : Bool = false
     static var isPaleo : Bool = false
@@ -45,6 +47,10 @@ class PersonalData{
     
     static public func getMembershipDate() -> String {
         return membershipDate
+    }
+    
+    static public func getProfileImage() -> UIImage {
+        return profileImage
     }
     
     static public func getVegan() -> Bool {
