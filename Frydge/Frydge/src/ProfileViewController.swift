@@ -233,17 +233,17 @@ class ProfileViewController: UIViewController {
         view.addSubview(allergyPeanut)
         allergyPeanut.anchor(top: allergyEgg.bottomAnchor, left: checkboxButton9.rightAnchor, paddingTop: 20, paddingLeft: 15)
 
-        view.addSubview(checkboxButton10)
-        checkboxButton10.anchor(top: checkboxButton5.bottomAnchor, left: checkboxButton6.rightAnchor, paddingTop: 15, paddingLeft: 175, width: 24, height: 24)
-
-        view.addSubview(allergyTreeNut)
-        allergyTreeNut.anchor(top: allergyPeanut.bottomAnchor, left: checkboxButton10.rightAnchor, paddingTop: 20, paddingLeft: 15)
+//        view.addSubview(checkboxButton10)
+//        checkboxButton10.anchor(top: checkboxButton5.bottomAnchor, left: checkboxButton6.rightAnchor, paddingTop: 15, paddingLeft: 175, width: 24, height: 24)
+//
+//        view.addSubview(allergyTreeNut)
+//        allergyTreeNut.anchor(top: allergyPeanut.bottomAnchor, left: checkboxButton10.rightAnchor, paddingTop: 20, paddingLeft: 15)
 
         view.addSubview(checkboxButton11)
-        checkboxButton11.anchor(top:checkboxButton6.bottomAnchor, left: checkboxButton7.rightAnchor, paddingTop: 15, paddingLeft: 175, width: 24, height:24)
+        checkboxButton11.anchor(top:checkboxButton5.bottomAnchor, left: checkboxButton6.rightAnchor, paddingTop: 15, paddingLeft: 175, width: 24, height:24)
 
         view.addSubview(allergyShellfish)
-        allergyShellfish.anchor(top: allergyTreeNut.bottomAnchor, left: checkboxButton11.rightAnchor, paddingTop: 20, paddingLeft: 15)
+        allergyShellfish.anchor(top: allergyPeanut.bottomAnchor, left: checkboxButton11.rightAnchor, paddingTop: 20, paddingLeft: 15)
         
         return view
     }()
@@ -407,30 +407,30 @@ class ProfileViewController: UIViewController {
         return label
     }()
     
-    let checkboxButton10: UIButton = {
-        let button = UIButton(type: .system)
-        
-        if (PersonalData.getTreeNutFree())
-        {
-            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
-        }
-        else
-        {
-            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
-        }
-        
-        button.addTarget(self, action: #selector(handleSetTreeNut(sender:)), for: .touchUpInside)
-        return button
-    }()
-    
-    let allergyTreeNut: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.text = "TREE NUT"
-        label.font = UIFont(name: "Roboto-Black", size: 15)
-        label.textColor = .black
-        return label
-    }()
+//    let checkboxButton10: UIButton = {
+//        let button = UIButton(type: .system)
+//
+//        if (PersonalData.getTreeNutFree())
+//        {
+//            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+//        }
+//        else
+//        {
+//            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+//        }
+//
+//        button.addTarget(self, action: #selector(handleSetTreeNut(sender:)), for: .touchUpInside)
+//        return button
+//    }()
+//
+//    let allergyTreeNut: UILabel = {
+//        let label = UILabel()
+//        label.textAlignment = .left
+//        label.text = "TREE NUT"
+//        label.font = UIFont(name: "Roboto-Black", size: 15)
+//        label.textColor = .black
+//        return label
+//    }()
     
     let checkboxButton11: UIButton = {
         let button = UIButton(type: .system)
