@@ -132,30 +132,30 @@ class IngredientViewController: UIViewController {
         NSLayoutConstraint.activate(list)
         header.text = ingredient.name
         view.addSubview(header)
-        header.translatesAutoresizingMaskIntoConstraints = false
+        //header.translatesAutoresizingMaskIntoConstraints = false
         header.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0.0).isActive = true
         header.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -250.0).isActive = true
         
         amount.text = String(ingredient.amount)
         view.addSubview(amount)
-        amount.translatesAutoresizingMaskIntoConstraints = false
+        //amount.translatesAutoresizingMaskIntoConstraints = false
         amount.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0.0).isActive = true
         amount.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -100.0).isActive = true
         
         view.addSubview(plusButton)
-        plusButton.translatesAutoresizingMaskIntoConstraints = false
+        //plusButton.translatesAutoresizingMaskIntoConstraints = false
         plusButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 100.0).isActive = true
         plusButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -100.0).isActive = true
         plusButton.addTarget(self, action: #selector(self.plusButtonHandler(_:)), for: .touchUpInside)
         
         view.addSubview(minusButton)
-        minusButton.translatesAutoresizingMaskIntoConstraints = false
+        //minusButton.translatesAutoresizingMaskIntoConstraints = false
         minusButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: -100.0).isActive = true
         minusButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -100.0).isActive = true
         minusButton.addTarget(self, action: #selector(self.minusButtonHandler(_:)), for: .touchUpInside)
         
         view.addSubview(deleteButton)
-        deleteButton.translatesAutoresizingMaskIntoConstraints = false
+       // deleteButton.translatesAutoresizingMaskIntoConstraints = false
         deleteButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0.0).isActive = true
         deleteButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 50.0).isActive = true
         deleteButton.addTarget(self, action: #selector(self.deleteButtonHandler(_:)), for: .touchUpInside)

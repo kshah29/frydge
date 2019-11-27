@@ -38,23 +38,25 @@ class PantryListHeader: BaseCell {
     
     let shoppingListButton: UIButton = {
         let button = UIButton(type: .system)
-        button.layer.borderWidth = 1
+        button.layer.borderWidth = 2
         button.layer.borderColor = UIColor.black.cgColor
         button.setTitle("SHOPPING LIST", for: .normal)
         button.titleLabel?.font = UIFont(name: "Comfortaa", size: 17)
         button.setTitleColor(UIColor.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .white
         return button
     } ()
     
     let pantryListButton: UIButton = {
         let button = UIButton(type: .system)
         button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0).cgColor
         button.setTitle("PANTRY LIST", for: .normal)
         button.titleLabel?.font = UIFont(name: "Comfortaa", size: 17)
         button.setTitleColor(UIColor.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .white
         return button
     } ()
     
@@ -66,7 +68,6 @@ class PantryListHeader: BaseCell {
         button.titleLabel?.font = UIFont(name: "Comfortaa", size: 17)
         button.setTitleColor(UIColor.white, for: .normal)
         button.backgroundColor = UIColor(red:0.33, green:0.36, blue:0.40, alpha:1.0)
-            //UIColor(red:0.37, green:0.44, blue:0.48, alpha:1.0)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isHidden = true
         button.adjustsImageWhenHighlighted = false
@@ -74,6 +75,7 @@ class PantryListHeader: BaseCell {
     } ()
     
     override func setupViews(){
+        
         addSubview(title)
         addSubview(shoppingListButton)
         addSubview(pantryListButton)
@@ -87,19 +89,15 @@ class PantryListHeader: BaseCell {
         moveButton.addTarget(self, action: #selector(PantryListHeader.move(_:)), for: .touchUpInside)
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-10-[v1(30)]-22-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":ingredientNameTextField, "v1":addIngredientButton ]))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-40-[v0]-[v1(==v0)]-40-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":shoppingListButton, "v1":pantryListButton]))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-30-[v0]-60-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":title]))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":moveButton]))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]-110-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":title]))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-85-[v0(50)]-20-[v1]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":pantryListButton, "v1":ingredientNameTextField]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-85-[v0(50)]-20-[v1(30)]-12-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":shoppingListButton, "v1":addIngredientButton]))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-150-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":moveButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-20-[v1(==v0)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":shoppingListButton, "v1":pantryListButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-30-[v0]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":title]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":moveButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-20@1000-[v0]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":title]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-110-[v0(50)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":pantryListButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-110-[v0(50)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":shoppingListButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[v1(40)]-15-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v1":ingredientNameTextField]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[v1(30)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v1":addIngredientButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[v0(40)]-15-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":moveButton]))
         
     }
     
@@ -116,7 +114,9 @@ class PantryListHeader: BaseCell {
             return
         }
         shoppingListButton.layer.borderColor = UIColor.black.cgColor
-        pantryListButton.layer.borderColor = UIColor.white.cgColor
+        shoppingListButton.layer.borderWidth = 2
+        pantryListButton.layer.borderColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0).cgColor
+        pantryListButton.layer.borderWidth = 1
         moveButton.isSelected = false
         pantryViewController?.showShoppingList()
     }
@@ -126,7 +126,9 @@ class PantryListHeader: BaseCell {
             return
         }
         pantryListButton.layer.borderColor = UIColor.black.cgColor
-        shoppingListButton.layer.borderColor = UIColor.white.cgColor
+        pantryListButton.layer.borderWidth = 2
+        shoppingListButton.layer.borderColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0).cgColor
+        shoppingListButton.layer.borderWidth = 1
         moveButton.isSelected = true
         pantryViewController?.showPantryList()
     }
@@ -150,8 +152,6 @@ class PantryListHeader: BaseCell {
     }
     
 }
-
-
 
 
 class PantryListCell: BaseCell {
@@ -185,7 +185,6 @@ class PantryListCell: BaseCell {
         button.setTitleShadowColor(UIColor.clear, for: .normal)
         button.setTitleShadowColor(UIColor.clear, for: .selected)
         button.isSelected = false
-        //button.showsTouchWhenHighlighted = false
         button.adjustsImageWhenHighlighted = false
         return button
     } ()
@@ -198,10 +197,10 @@ class PantryListCell: BaseCell {
         optionsButton.addTarget(self, action: #selector(PantryListCell.optionsIngredient(_:)), for: .touchUpInside)
         selectIngredientButton.addTarget(self, action: #selector(PantryListCell.selectIngredient(_:)), for: .touchUpInside)
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v2(30)]-[v0]-[v1(35)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel, "v1":optionsButton, "v2":selectIngredientButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v2(25)]-15-[v0]-[v1(35)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel, "v1":optionsButton, "v2":selectIngredientButton]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":nameLabel]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":optionsButton]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":selectIngredientButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-12-[v0(25)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":selectIngredientButton]))
     }
     
     @objc func optionsIngredient(_ sender:UIButton!){
