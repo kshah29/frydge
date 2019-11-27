@@ -28,8 +28,9 @@ class IngredientViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.text = "Sample Text"
-        label.font = UIFont(name: "Comfortaa", size: 42)
+        label.font = UIFont(name: "Comfortaa", size: 50)
         label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -37,14 +38,20 @@ class IngredientViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.text = "1"
-        label.font = UIFont(name: "Comfortaa", size: 30)
+        label.font = UIFont(name: "Comfortaa", size: 35)
         label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let plusButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Plus", for: .normal)
+        //button.setTitle("Plus", for: .normal)
+        button.layer.cornerRadius = button.frame.size.height/2
+        button.clipsToBounds = true
+        button.contentMode = UIView.ContentMode.center
+        let image = UIImage(named: "plus_icon.png")
+        button.setBackgroundImage(image, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     } ()
@@ -65,7 +72,9 @@ class IngredientViewController: UIViewController {
     
     let minusButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Minus", for: .normal)
+        //button.setTitle("Minus", for: .normal)
+        let image = UIImage(named: "minus_icon.png")
+        button.setBackgroundImage(image, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     } ()
@@ -91,7 +100,9 @@ class IngredientViewController: UIViewController {
     
     let deleteButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("delete", for: .normal)
+        //button.setTitle("delete", for: .normal)
+        let image = UIImage(named: "trash_icon.png")
+        button.setBackgroundImage(image, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     } ()
@@ -125,21 +136,23 @@ class IngredientViewController: UIViewController {
         header.text = ingredient.name
         view.addSubview(header)
         header.translatesAutoresizingMaskIntoConstraints = false
-        header.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
-        header.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 64.0).isActive = true
+        //header.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
+        //header.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 64.0).isActive = true
+        header.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0.0).isActive = true
+        header.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -250.0).isActive = true
         
         amount.text = String(ingredient.amount)
         view.addSubview(amount)
         amount.translatesAutoresizingMaskIntoConstraints = false
         amount.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0.0).isActive = true
-        amount.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -150.0).isActive = true
+        amount.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -100.0).isActive = true
         //amount.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 32.0).isActive = true
        // amount.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 200.0).isActive = true
         
         view.addSubview(plusButton)
         plusButton.translatesAutoresizingMaskIntoConstraints = false
         plusButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 100.0).isActive = true
-        plusButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -150.0).isActive = true
+        plusButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -100.0).isActive = true
         //plusButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 100.0).isActive = true
         //plusButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 200.0).isActive = true
         plusButton.addTarget(self, action: #selector(self.plusButtonHandler(_:)), for: .touchUpInside)
@@ -147,7 +160,7 @@ class IngredientViewController: UIViewController {
         view.addSubview(minusButton)
         minusButton.translatesAutoresizingMaskIntoConstraints = false
         minusButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: -100.0).isActive = true
-        minusButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -150.0).isActive = true
+        minusButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -100.0).isActive = true
         //minusButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0.0).isActive = true
         //minusButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 200.0).isActive = true
         minusButton.addTarget(self, action: #selector(self.minusButtonHandler(_:)), for: .touchUpInside)
@@ -155,7 +168,7 @@ class IngredientViewController: UIViewController {
         view.addSubview(deleteButton)
         deleteButton.translatesAutoresizingMaskIntoConstraints = false
         deleteButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0.0).isActive = true
-        deleteButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0.0).isActive = true
+        deleteButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 50.0).isActive = true
         //minusButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0.0).isActive = true
         //minusButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 200.0).isActive = true
         deleteButton.addTarget(self, action: #selector(self.deleteButtonHandler(_:)), for: .touchUpInside)
