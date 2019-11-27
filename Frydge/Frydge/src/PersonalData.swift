@@ -11,6 +11,7 @@ import Foundation
 class PersonalData{
     static var name : String = ""
     static var email : String = ""
+    static var membershipDate : String = ""
     static var isVegan : Bool = false
     static var isVegetarian : Bool = false
     static var isPaleo : Bool = false
@@ -26,6 +27,23 @@ class PersonalData{
     static public func login(userName: String, userEmail: String){
         name = userName
         email = userEmail
+    }
+    
+    static public func setMembershipDate() {
+        let date = Date()
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = "MMM yyyy"
+        
+        membershipDate = formatter.string(from: date)
+    }
+    
+    static public func getName() -> String {
+        return name
+    }
+    
+    static public func getMembershipDate() -> String {
+        return membershipDate
     }
     
     static public func getVegan() -> Bool {

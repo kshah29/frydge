@@ -54,7 +54,7 @@ class ProfileViewController: UIViewController {
     let nameLabel: UILabel = {
        let label = UILabel()
         label.textAlignment = .center
-        label.text = "User"
+        label.text = PersonalData.getName()
         label.font = UIFont(name: "Comfortaa", size: 32)
         label.textColor = .black
         return label
@@ -65,7 +65,7 @@ class ProfileViewController: UIViewController {
     let membershipLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = "member since Nov. 2019"
+        label.text = "member since " + PersonalData.getMembershipDate()
         label.font = UIFont(name: "Comfortaa", size: 16)
         label.textColor = .black
         return label
@@ -620,18 +620,18 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    @objc func handleSetTreeNut(sender: UIButton) {
-        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
-        {
-            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
-            PersonalData.setTreeNutFree(treeNutFree: true)
-        }
-        else
-        {
-            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
-            PersonalData.setTreeNutFree(treeNutFree: false)
-        }
-    }
+//    @objc func handleSetTreeNut(sender: UIButton) {
+//        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+//        {
+//            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+//            PersonalData.setTreeNutFree(treeNutFree: true)
+//        }
+//        else
+//        {
+//            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+//            PersonalData.setTreeNutFree(treeNutFree: false)
+//        }
+//    }
     
     @objc func handleSetShellfish(sender: UIButton) {
         if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
