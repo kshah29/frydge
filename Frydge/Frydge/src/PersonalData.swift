@@ -29,6 +29,7 @@ class PersonalData{
         email = userEmail
     }
     
+    // call on first login
     static public func setMembershipDate() {
         let date = Date()
         let formatter = DateFormatter()

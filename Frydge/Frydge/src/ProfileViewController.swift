@@ -480,7 +480,16 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func handleSetVegetarian(sender: UIButton) {
-        PersonalData.setVegetarian(vegetarian: true)
+        
+        if (PersonalData.getVegetarian())
+        {
+            PersonalData.setVegetarian(vegetarian: false)
+        }
+        else
+        {
+            PersonalData.setVegetarian(vegetarian: true)
+        }
+        
         PersonalData.setVegan(vegan: false)
         PersonalData.setPaleo(paleo:false)
         
@@ -488,7 +497,16 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func handleSetVegan(sender: UIButton) {
-        PersonalData.setVegan(vegan: true)
+        
+        if (PersonalData.getVegan())
+        {
+            PersonalData.setVegan(vegan: false)
+        }
+        else
+        {
+            PersonalData.setVegan(vegan: true)
+        }
+        
         PersonalData.setVegetarian(vegetarian: false)
         PersonalData.setPaleo(paleo: false)
         
@@ -496,7 +514,16 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func handleSetPaleo(sender: UIButton) {
-        PersonalData.setPaleo(paleo: true)
+         
+         if (PersonalData.getPaleo())
+         {
+             PersonalData.setPaleo(paleo: false)
+         }
+         else
+         {
+             PersonalData.setPaleo(paleo: true)
+         }
+        
         PersonalData.setVegetarian(vegetarian: false)
         PersonalData.setVegan(vegan: false)
         
