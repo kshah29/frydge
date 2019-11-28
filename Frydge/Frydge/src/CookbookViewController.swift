@@ -37,6 +37,13 @@ class CookbookViewController: UIViewController {
             }
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
+        self.viewDidLoad()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

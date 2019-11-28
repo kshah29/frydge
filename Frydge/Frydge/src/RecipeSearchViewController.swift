@@ -15,59 +15,19 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     let searchbar = UISearchBar(frame: CGRect(x: 10, y: 50, width: 390.0, height: 50.0))
     var recipes: [Recipe]? = nil
     var recipeViews: [UIView] = []
+    var compiledRecipes: Bool = false
     var backgroundImage = UIImageView(image: #imageLiteral(resourceName: "marble"))
     
     public func getRecipes(query: String) {
-        dummyMakeRequest()
+        self.recipes = []
+        self.compiledRecipes = false
+        makeRequest(ingredientList: query.components(separatedBy: " "))
+        while (self.compiledRecipes == false){
+            // DO nothing - wait for it to populate
+        }
         populateRecipes()
     }
     
-    @objc func buttonAddRecipe(sender: UIButton!) {
-        for recipe in self.recipes! {
-            if sender.tag == recipe.id {
-                RecipeStore.delete(delRecipe: recipe)
-                RecipeStore.add(addRecipe: recipe)
-            }
-        }
-        sender.setTitle("★", for: .normal)
-        sender.addTarget(self, action: #selector(buttonDelRecipe), for: .touchUpInside)
-        
-        // FIXME:- I did this really janky hack to update the Cookbook view controller, but it's probably pretty bad for performance.
-        if let tabController = self.tabBarController {
-            for (index, vc) in tabController.viewControllers?.enumerated() ?? [].enumerated() {
-                if let _ = vc as? CookbookViewController {
-                    let cb = CookbookViewController()
-                    cb.tabBarItem.title = "Cookbook"
-                    cb.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)], for: .normal)
-                    cb.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-                    tabController.viewControllers?[index] = cb
-                }
-            }
-        }
-    }
-    
-    @objc func buttonDelRecipe(sender: UIButton!) {
-        for recipe in self.recipes! {
-            if sender.tag == recipe.id {
-                RecipeStore.delete(delRecipe: recipe)
-            }
-        }
-        sender.setTitle("☆", for: .normal)
-        sender.addTarget(self, action: #selector(buttonAddRecipe), for: .touchUpInside)
-        
-        // FIXME:- I did this really janky hack to update the Cookbook view controller, but it's probably pretty bad for performance.
-        if let tabController = self.tabBarController {
-            for (index, vc) in tabController.viewControllers?.enumerated() ?? [].enumerated() {
-                if let _ = vc as? CookbookViewController {
-                    let cb = CookbookViewController()
-                    cb.tabBarItem.title = "Cookbook"
-                    cb.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)], for: .normal)
-                    cb.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-                    tabController.viewControllers?[index] = cb
-                }
-            }
-        }
-    }
     
     @objc func showRecipeViewController(_ sender: UITapGestureRecognizer) {
         for recipe in self.recipes! {
@@ -148,11 +108,13 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
                 self.recipes?.append(Recipe(id: nid ?? 0, title: title as! String, ingredientList: [], process: process, image: imageURL as! String))
             }
         }
+        
+        compiledRecipes = true
     }
     
     private func makeRequest (ingredientList : [String]) -> Void {
         let foodAPIURL = "https://api.spoonacular.com/recipes/complexSearch"
-        let apiKey : String = "1369e5b47d744efa9885c6ecae9f9be4"
+        let apiKey : String = "f29f441db07240f2919346b4d2c48a7f"
         var ingredientString : String = ""
         
         for ingredient in ingredientList {
@@ -175,7 +137,7 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
             intoleranceParam += "&intolerances" + intolerance
         }
         
-        let queryNumber = "2"
+        let queryNumber = "10"
         
         let procedureParam = "&instructionsRequired=true"
         let recipeInfo = "&addRecipeInformation=true"
@@ -264,30 +226,10 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
             // add the favorite button to the view, tagged with the recipe's id
             let current_recipe = (self.recipes)![i]
             let y_coord = (220 * i) + 10
-            let button = UIButton(frame: CGRect(x: 355, y: y_coord, width: 30, height: 30))
-            button.tag = current_recipe.id
-            button.backgroundColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.5)
             
             recipeView.tag = current_recipe.id
             let tapRecipeGesture = UITapGestureRecognizer(target: self, action: #selector(self.showRecipeViewController(_:)))
             recipeView.addGestureRecognizer(tapRecipeGesture)
-            
-            let current_favorites = RecipeStore.getRecipeList()
-            var in_favorites = false
-            for favorite in current_favorites {
-                if favorite.id == current_recipe.id {
-                    // this recipe is already in favorites, clicking on the button should remove it
-                    button.setTitle("★", for: .normal)
-                    button.addTarget(self, action: #selector(buttonDelRecipe), for: .touchUpInside)
-                    in_favorites = true
-                }
-            }
-            
-            if !in_favorites {
-                button.setTitle("☆", for: .normal)
-                button.addTarget(self, action: #selector(buttonAddRecipe), for: .touchUpInside)
-            }
-            scrollView.addSubview(button)
             
             let scrollContentHeight = CGFloat(220 * recipeViews.count)
             scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: scrollContentHeight)

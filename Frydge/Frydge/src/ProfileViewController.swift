@@ -18,11 +18,9 @@ class ProfileViewController: UIViewController {
         return iv
     }()
     
-    // First part of profile (picture, name, membership)
+    // MARK: - Picture, Name, Membership
     lazy var headerContainerView: UIView = {
         let view = UIView()
-        
-//        view.backgroundColor = .blue
         
         view.addSubview(profileImageView)
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -40,38 +38,42 @@ class ProfileViewController: UIViewController {
         return view
     }()
     
+    // Profile Image
+    
     let profileImageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = #imageLiteral(resourceName: "avatar2")
+        iv.image = PersonalData.getProfileImage()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.layer.borderColor = UIColor.white.cgColor
         return iv
     }()
     
+    // Name
+    
     let nameLabel: UILabel = {
        let label = UILabel()
         label.textAlignment = .center
-        label.text = "User"
+        label.text = PersonalData.getName()
         label.font = UIFont(name: "Comfortaa", size: 32)
         label.textColor = .black
         return label
     }()
     
+    // Membership
+    
     let membershipLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = "member since Nov. 2019"
+        label.text = "member since " + PersonalData.getMembershipDate()
         label.font = UIFont(name: "Comfortaa", size: 16)
         label.textColor = .black
         return label
     }()
     
-    // Second part of profile (dietary restrictions)
+    // MARK: - Dietary Restrictions
     lazy var dietContainerView: UIView = {
         let view = UIView()
-        
-//        view.backgroundColor = .red
         
         view.layer.borderColor = UIColor.opaqueSeparator.cgColor
         view.layer.borderWidth = 2.0
@@ -113,7 +115,16 @@ class ProfileViewController: UIViewController {
     
     let checkboxButton1: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        if (PersonalData.getVegetarian())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
         button.addTarget(self, action: #selector(handleSetVegetarian(sender:)), for: .touchUpInside)
         return button
     }()
@@ -129,7 +140,16 @@ class ProfileViewController: UIViewController {
     
     let checkboxButton2: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        if (PersonalData.getVegan())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
         button.addTarget(self, action: #selector(handleSetVegan(sender:)), for: .touchUpInside)
         return button
     }()
@@ -145,7 +165,16 @@ class ProfileViewController: UIViewController {
     
     let checkboxButton3: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        if (PersonalData.getPaleo())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
         button.addTarget(self, action: #selector(handleSetPaleo(sender:)), for: .touchUpInside)
         return button
     }()
@@ -159,11 +188,9 @@ class ProfileViewController: UIViewController {
         return label
     }()
     
-    // Third part of profile (allergies)
+    // MARK: - Allergies
     lazy var allergyContainerView: UIView = {
         let view = UIView()
-        
-//        view.backgroundColor = .white
         
         view.addSubview(allergyTitleLabel)
         allergyTitleLabel.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 15)
@@ -173,20 +200,50 @@ class ProfileViewController: UIViewController {
         view.addSubview(checkboxButton4)
         checkboxButton4.anchor(top: allergyTitleLabel.bottomAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 10, width: 24, height: 24)
         
-        view.addSubview(allergyNut)
-        allergyNut.anchor(top: allergyTitleLabel.bottomAnchor, left: checkboxButton4.rightAnchor, paddingTop: 20, paddingLeft: 15)
+        view.addSubview(allergyDairy)
+        allergyDairy.anchor(top: allergyTitleLabel.bottomAnchor, left: checkboxButton4.rightAnchor, paddingTop: 20, paddingLeft: 15)
         
         view.addSubview(checkboxButton5)
         checkboxButton5.anchor(top: checkboxButton4.bottomAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 10, width: 24, height: 24)
         
         view.addSubview(allergyGluten)
-        allergyGluten.anchor(top: allergyNut.bottomAnchor, left: checkboxButton4.rightAnchor, paddingTop: 20, paddingLeft: 15)
+        allergyGluten.anchor(top: allergyDairy.bottomAnchor, left: checkboxButton4.rightAnchor, paddingTop: 20, paddingLeft: 15)
         
         view.addSubview(checkboxButton6)
         checkboxButton6.anchor(top: checkboxButton5.bottomAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 10, width: 24, height: 24)
         
-        view.addSubview(allergyFat)
-        allergyFat.anchor(top: allergyGluten.bottomAnchor, left: checkboxButton6.rightAnchor, paddingTop: 20, paddingLeft: 15)
+        view.addSubview(allergyWheat)
+        allergyWheat.anchor(top: allergyGluten.bottomAnchor, left: checkboxButton6.rightAnchor, paddingTop: 20, paddingLeft: 15)
+        
+        view.addSubview(checkboxButton7)
+        checkboxButton7.anchor(top:checkboxButton6.bottomAnchor, left: view.leftAnchor, paddingTop: 15, paddingLeft: 10, width: 24, height:24)
+        
+        view.addSubview(allergySugar)
+        allergySugar.anchor(top: allergyWheat.bottomAnchor, left: checkboxButton7.rightAnchor, paddingTop: 20, paddingLeft: 15)
+        
+        view.addSubview(checkboxButton8)
+        checkboxButton8.anchor(top: allergyTitleLabel.bottomAnchor, left: checkboxButton4.rightAnchor, paddingTop: 15, paddingLeft: 175, width: 24, height: 24)
+        
+        view.addSubview(allergyEgg)
+        allergyEgg.anchor(top: allergyTitleLabel.bottomAnchor, left: checkboxButton8.rightAnchor, paddingTop: 20, paddingLeft: 15)
+
+        view.addSubview(checkboxButton9)
+        checkboxButton9.anchor(top: checkboxButton8.bottomAnchor, left: checkboxButton5.rightAnchor, paddingTop: 15, paddingLeft: 175, width: 24, height: 24)
+
+        view.addSubview(allergyPeanut)
+        allergyPeanut.anchor(top: allergyEgg.bottomAnchor, left: checkboxButton9.rightAnchor, paddingTop: 20, paddingLeft: 15)
+
+//        view.addSubview(checkboxButton10)
+//        checkboxButton10.anchor(top: checkboxButton5.bottomAnchor, left: checkboxButton6.rightAnchor, paddingTop: 15, paddingLeft: 175, width: 24, height: 24)
+//
+//        view.addSubview(allergyTreeNut)
+//        allergyTreeNut.anchor(top: allergyPeanut.bottomAnchor, left: checkboxButton10.rightAnchor, paddingTop: 20, paddingLeft: 15)
+
+        view.addSubview(checkboxButton11)
+        checkboxButton11.anchor(top:checkboxButton5.bottomAnchor, left: checkboxButton6.rightAnchor, paddingTop: 15, paddingLeft: 175, width: 24, height:24)
+
+        view.addSubview(allergyShellfish)
+        allergyShellfish.anchor(top: allergyPeanut.bottomAnchor, left: checkboxButton11.rightAnchor, paddingTop: 20, paddingLeft: 15)
         
         return view
     }()
@@ -202,15 +259,24 @@ class ProfileViewController: UIViewController {
     
     let checkboxButton4: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
-        button.addTarget(self, action: #selector(handleSetNut(sender:)), for: .touchUpInside)
+        
+        if (PersonalData.getDairy())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
+        button.addTarget(self, action: #selector(handleSetDairy(sender:)), for: .touchUpInside)
         return button
     }()
     
-    let allergyNut: UILabel = {
+    let allergyDairy: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.text = "NUT"
+        label.text = "DAIRY"
         label.font = UIFont(name: "Roboto-Black", size: 15)
         label.textColor = .black
         return label
@@ -218,7 +284,16 @@ class ProfileViewController: UIViewController {
     
     let checkboxButton5: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        if (PersonalData.getGlutenFree())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
         button.addTarget(self, action: #selector(handleSetGluten(sender:)), for: .touchUpInside)
         return button
     }()
@@ -234,15 +309,149 @@ class ProfileViewController: UIViewController {
     
     let checkboxButton6: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
-        button.addTarget(self, action: #selector(handleSetFat(sender:)), for: .touchUpInside)
+        
+        if (PersonalData.getWheatFree())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
+        button.addTarget(self, action: #selector(handleSetWheat(sender:)), for: .touchUpInside)
         return button
     }()
     
-    let allergyFat: UILabel = {
+    let allergyWheat: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.text = "FAT"
+        label.text = "WHEAT"
+        label.font = UIFont(name: "Roboto-Black", size: 15)
+        label.textColor = .black
+        return label
+    }()
+    
+    let checkboxButton7: UIButton = {
+        let button = UIButton(type: .system)
+        
+        if (PersonalData.getLowSugar())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
+        button.addTarget(self, action: #selector(handleSetSugar(sender:)), for: .touchUpInside)
+        return button
+    }()
+    
+    let allergySugar: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.text = "SUGAR"
+        label.font = UIFont(name: "Roboto-Black", size: 15)
+        label.textColor = .black
+        return label
+    }()
+    
+    let checkboxButton8: UIButton = {
+        let button = UIButton(type: .system)
+        
+        if (PersonalData.getEggFree())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
+        button.addTarget(self, action: #selector(handleSetEgg(sender:)), for: .touchUpInside)
+        return button
+    }()
+    
+    let allergyEgg: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.text = "EGG"
+        label.font = UIFont(name: "Roboto-Black", size: 15)
+        label.textColor = .black
+        return label
+    }()
+    
+    let checkboxButton9: UIButton = {
+        let button = UIButton(type: .system)
+        
+        if (PersonalData.getPeanutFree())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
+        button.addTarget(self, action: #selector(handleSetPeanut(sender:)), for: .touchUpInside)
+        return button
+    }()
+    
+    let allergyPeanut: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.text = "PEANUT"
+        label.font = UIFont(name: "Roboto-Black", size: 15)
+        label.textColor = .black
+        return label
+    }()
+    
+//    let checkboxButton10: UIButton = {
+//        let button = UIButton(type: .system)
+//
+//        if (PersonalData.getTreeNutFree())
+//        {
+//            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+//        }
+//        else
+//        {
+//            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+//        }
+//
+//        button.addTarget(self, action: #selector(handleSetTreeNut(sender:)), for: .touchUpInside)
+//        return button
+//    }()
+//
+//    let allergyTreeNut: UILabel = {
+//        let label = UILabel()
+//        label.textAlignment = .left
+//        label.text = "TREE NUT"
+//        label.font = UIFont(name: "Roboto-Black", size: 15)
+//        label.textColor = .black
+//        return label
+//    }()
+    
+    let checkboxButton11: UIButton = {
+        let button = UIButton(type: .system)
+        
+        if (PersonalData.getfishFree())
+        {
+            button.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else
+        {
+            button.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
+        button.addTarget(self, action: #selector(handleSetShellfish(sender:)), for: .touchUpInside)
+        return button
+    }()
+    
+    let allergyShellfish: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.text = "SHELLFISH"
         label.font = UIFont(name: "Roboto-Black", size: 15)
         label.textColor = .black
         return label
@@ -250,47 +459,126 @@ class ProfileViewController: UIViewController {
     
     // Selectors
     
-    @objc func handleSetVegetarian(sender: UIButton) {
-        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+    func updateButtons() {
+        
+        checkboxButton1.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        checkboxButton2.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        checkboxButton3.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        if (PersonalData.getVegetarian())
         {
-            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            checkboxButton1.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else if (PersonalData.getVegan())
+        {
+            checkboxButton2.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        else if (PersonalData.getPaleo())
+        {
+            checkboxButton3.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+    }
+    
+    @objc func handleSetVegetarian(sender: UIButton) {
+        
+        if (PersonalData.getVegetarian())
+        {
+            PersonalData.setVegetarian(vegetarian: false)
         }
         else
         {
-            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setVegetarian(vegetarian: true)
         }
+        
+        PersonalData.setVegan(vegan: false)
+        PersonalData.setPaleo(paleo:false)
+        
+        updateButtons()
     }
     
     @objc func handleSetVegan(sender: UIButton) {
-        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+        
+        if (PersonalData.getVegan())
         {
-            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setVegan(vegan: false)
         }
         else
         {
-            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setVegan(vegan: true)
         }
+        
+        PersonalData.setVegetarian(vegetarian: false)
+        PersonalData.setPaleo(paleo: false)
+        
+        updateButtons()
     }
     
     @objc func handleSetPaleo(sender: UIButton) {
-        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
-        {
-            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
-        }
-        else
-        {
-            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
-        }
+         
+         if (PersonalData.getPaleo())
+         {
+             PersonalData.setPaleo(paleo: false)
+         }
+         else
+         {
+             PersonalData.setPaleo(paleo: true)
+         }
+        
+        PersonalData.setVegetarian(vegetarian: false)
+        PersonalData.setVegan(vegan: false)
+        
+        updateButtons()
     }
     
-    @objc func handleSetNut(sender: UIButton) {
+//    @objc func handleSetVegetarian(sender: UIButton) {
+//        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+//        {
+//            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+//            PersonalData.setVegetarian(vegetarian: true)
+//        }
+//        else
+//        {
+//            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+//            PersonalData.setVegetarian(vegetarian: false)
+//        }
+//    }
+//
+//    @objc func handleSetVegan(sender: UIButton) {
+//        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+//        {
+//            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+//            PersonalData.setVegan(vegan: true)
+//        }
+//        else
+//        {
+//            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+//            PersonalData.setVegan(vegan: false)
+//        }
+//    }
+//
+//    @objc func handleSetPaleo(sender: UIButton) {
+//        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+//        {
+//            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+//            PersonalData.setPaleo(paleo: true)
+//        }
+//        else
+//        {
+//            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+//            PersonalData.setPaleo(paleo: false)
+//        }
+//    }
+    
+    @objc func handleSetDairy(sender: UIButton) {
         if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
         {
             sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setDairy(dairyFree: true)
         }
         else
         {
             sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setDairy(dairyFree: false)
         }
     }
     
@@ -298,25 +586,95 @@ class ProfileViewController: UIViewController {
         if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
         {
             sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setGlutenFree(glutenFree: true)
         }
         else
         {
             sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setGlutenFree(glutenFree: false)
         }
     }
     
-    @objc func handleSetFat(sender: UIButton) {
+    @objc func handleSetWheat(sender: UIButton) {
         if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
         {
             sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setWheatFree(wheatFree: true)
         }
         else
         {
             sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setWheatFree(wheatFree: false)
         }
     }
     
-    // viewDidLoad
+    @objc func handleSetSugar(sender: UIButton) {
+        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+        {
+            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setLowSugar(lowSugar: true)
+        }
+        else
+        {
+            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setLowSugar(lowSugar: false)
+        }
+    }
+
+    @objc func handleSetEgg(sender: UIButton) {
+        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+        {
+            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setEggFree(eggFree: true)
+        }
+        else
+        {
+            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setEggFree(eggFree: false)
+        }
+    }
+    
+    @objc func handleSetPeanut(sender: UIButton) {
+        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+        {
+            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setPeanutFree(peanutFree: true)
+        }
+        else
+        {
+            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setPeanutFree(peanutFree: false)
+        }
+    }
+    
+//    @objc func handleSetTreeNut(sender: UIButton) {
+//        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+//        {
+//            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+//            PersonalData.setTreeNutFree(treeNutFree: true)
+//        }
+//        else
+//        {
+//            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+//            PersonalData.setTreeNutFree(treeNutFree: false)
+//        }
+//    }
+    
+    @objc func handleSetShellfish(sender: UIButton) {
+        if (sender.currentImage?.isEqualToImage(#imageLiteral(resourceName: "unchecked")) ?? false)
+        {
+            sender.setImage(#imageLiteral(resourceName: "checked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setfishFree(fishFree: true)
+        }
+        else
+        {
+            sender.setImage(#imageLiteral(resourceName: "unchecked").withRenderingMode(.alwaysOriginal), for: .normal)
+            PersonalData.setfishFree(fishFree: false)
+        }
+    }
+    
+    // MARK: - viewDidLoad()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -340,6 +698,8 @@ class ProfileViewController: UIViewController {
 
     }
 }
+
+// MARK: - Extensions
 
 extension UIColor {
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
