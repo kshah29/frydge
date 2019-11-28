@@ -240,6 +240,12 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         NSLayoutConstraint.activate(list)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
+        self.populateRecipes()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
