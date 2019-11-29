@@ -14,28 +14,21 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         // Setup our custom view controllers
         
-        tabBar.barTintColor = UIColor(named: "Blue")
-        let testVC = RecipeSearchViewController()
-        testVC.tabBarItem.title = "Search"
-        testVC.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)], for: .normal)
-        testVC.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        tabBar.barTintColor = UIColor(named: "White")
+        
+        let searchVC = RecipeSearchViewController()
+        searchVC.tabBarItem.image = UIImage(named: "search.png")
         
         let profileVC = ProfileViewController()
-        profileVC.tabBarItem.title = "Profile"
-        profileVC.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)], for: .normal)
-        profileVC.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        profileVC.tabBarItem.image = UIImage(named: "user.png")
         
-        let cb = CookbookViewController() // cookbook
-        cb.tabBarItem.title = "Cookbook"
-        cb.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)], for: .normal)
-        cb.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        let cookbookVC = CookbookViewController() // cookbook
+        cookbookVC.tabBarItem.image = UIImage(named: "heart.png")
         
         let pantryVC = PantryViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        pantryVC.tabBarItem.title = "Pantry"
-        pantryVC.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)], for: .normal)
-        pantryVC.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        pantryVC.tabBarItem.image = UIImage(named: "pantry.png")
 
-        viewControllers = [testVC, cb, pantryVC, profileVC]
+        viewControllers = [searchVC, cookbookVC, pantryVC, profileVC]
     }
     
     private func createDummyNavControllerWithTitle(title: String, imageName: String?) -> UINavigationController {
@@ -47,9 +40,6 @@ class MainTabBarController: UITabBarController {
         if let imageName = imageName {
             navController.tabBarItem.image = UIImage(named: imageName)?.resizedImage(for: CGSize(width: tabBarHeight - 20, height: tabBarHeight - 20))
         }
-        navController.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)], for: .normal)
-        navController.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-
         return navController
     }
 
