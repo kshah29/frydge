@@ -130,7 +130,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     
     func showHeader(){
         if ingredients.selectedList.contains(true){
-            header?.moveMode()
+            header?.selectedMode()
         }
         else{
             header?.inputMode()
