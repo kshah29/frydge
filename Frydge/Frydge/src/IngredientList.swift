@@ -58,6 +58,7 @@ class IngredientList {
     
     func removeIngredient(index: Int){
         ingredientList.remove(at: index)
+        selectedList.remove(at: index)
     }
     
     func removeSelectedIngredients(){
