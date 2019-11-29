@@ -114,7 +114,7 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     
     private func makeRequest (ingredientList : [String]) -> Void {
         let foodAPIURL = "https://api.spoonacular.com/recipes/complexSearch"
-        let apiKey : String = "f29f441db07240f2919346b4d2c48a7f"
+        let apiKey : String = "b8bc0943e3784d28ae91cbe52ed432c9"
         var ingredientString : String = ""
         
         for ingredient in ingredientList {
@@ -261,8 +261,12 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         view.backgroundColor = .white
         view.addSubview(backgroundImage)
         
-        getRecipes(query: "")
-        
+        if searchbar.text != nil {
+            getRecipes(query: searchbar.text!)
+        }
+        else{
+            getRecipes(query: "")
+        }
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
     }

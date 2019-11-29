@@ -130,7 +130,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     
     func showHeader(){
         if ingredients.selectedList.contains(true){
-            header?.moveMode()
+            header?.selectedMode()
         }
         else{
             header?.inputMode()
@@ -169,6 +169,18 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     func showIngredientViewController(index: Int) {
         let ingredientVC = IngredientViewController(input: ingredients.getIngredient(index: index), pantry: self, index: index)
         present(ingredientVC, animated: true, completion: nil)
+    }
+    
+    func searchWithPantry(){
+        let searchList = ingredients.getSelectedIngredients().getIngredientsListForSearch()
+        print(searchList)
+        let rsVC = RecipeSearchViewController()
+        var input = ""
+        for i in searchList{
+            input += i + " "
+        }
+        rsVC.searchbar.text = input.lowercased()
+        present(rsVC, animated: true, completion: nil)
     }
     
 }
