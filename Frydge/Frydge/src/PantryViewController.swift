@@ -172,16 +172,13 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     }
     
     func searchWithPantry(){
-        var temp = pantryList
-        var temp1 = temp.getIngredientsListForSearch()
+        let searchList = ingredients.getSelectedIngredients().getIngredientsListForSearch()
+        print(searchList)
         let rsVC = RecipeSearchViewController()
-
         var input = ""
-        for i in temp1{
-            input += i
-            input += " "
+        for i in searchList{
+            input += i + " "
         }
-        
         rsVC.searchbar.text = input.lowercased()
         present(rsVC, animated: true, completion: nil)
     }

@@ -77,14 +77,14 @@ class IngredientList {
         return ingredientList.count
     }
     
-    func getSelectedIngredients() -> [Ingredient]{
-        var selectedIngredientList: [Ingredient] = []
+    func getSelectedIngredients() -> IngredientList{
+        var selectedIngredientList = IngredientList()
         if ingredientList.count == 0{
-            return []
+            return selectedIngredientList
         }
-        for i in 0..<(ingredientList.count-1){
+        for i in 0..<(ingredientList.count){
             if selectedList[i] == true {
-                selectedIngredientList.append(ingredientList[i])
+                selectedIngredientList.addIngredient(ingredient: ingredientList[i])
             }
         }
         return selectedIngredientList
