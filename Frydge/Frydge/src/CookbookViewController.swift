@@ -64,24 +64,41 @@ class CookbookViewController: UIViewController {
         view.backgroundColor = UIColor(white: 1, alpha: 1)
         
         view.addSubview(backgroundImage)
+        
+        let scrollView: UIScrollView = {
+            let v = UIScrollView()
+            v.translatesAutoresizingMaskIntoConstraints = false
+            v.backgroundColor = .white
+            v.addSubview(backgroundImage)
+            return v
+        }()
+        
+        view.addSubview(scrollView)
+        scrollView.alwaysBounceVertical = true
 
         var list = [
             backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundImage.leftAnchor.constraint(equalTo: view.leftAnchor),
             backgroundImage.rightAnchor.constraint(equalTo: view.rightAnchor),
             backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
+            scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ]
 
         var i = 0
         for (index, recipeView) in recipeViews.enumerated() {
-            view.addSubview(recipeView)
+            scrollView.addSubview(recipeView)
 
-            let top = (220 * i) + 120
-
-            list.append(recipeView.topAnchor.constraint(equalTo: view.topAnchor, constant: CGFloat(top)))
-            list.append(recipeView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
-            list.append(recipeView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9))
+            let top = (220 * i)
+            list.append(recipeView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: CGFloat(top)))
+            list.append(recipeView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor))
+            list.append(recipeView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.9))
             list.append(recipeView.heightAnchor.constraint(equalToConstant: 200))
+            
+            let scrollContentHeight = CGFloat(220 * recipeViews.count)
+            scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: scrollContentHeight)
 
             i = i + 1
             
