@@ -74,6 +74,13 @@ class PantryListHeader: BaseCell {
         return button
     } ()
     
+    let searchButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("search", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    } ()
+    
     override func setupViews(){
         
         addSubview(title)
@@ -82,11 +89,13 @@ class PantryListHeader: BaseCell {
         addSubview(ingredientNameTextField)
         addSubview(addIngredientButton)
         addSubview(moveButton)
+        addSubview(searchButton)
         
         shoppingListButton.addTarget(self, action: #selector(PantryListHeader.showShoppingList(_:)), for: .touchUpInside)
         pantryListButton.addTarget(self, action: #selector(PantryListHeader.showPantryList(_:)), for: .touchUpInside)
         addIngredientButton.addTarget(self, action: #selector(PantryListHeader.addIngredient(_:)), for: .touchUpInside)
         moveButton.addTarget(self, action: #selector(PantryListHeader.move(_:)), for: .touchUpInside)
+        searchButton.addTarget(self, action: #selector(PantryListHeader.search(_:)), for: .touchUpInside)
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-10-[v1(30)]-22-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":ingredientNameTextField, "v1":addIngredientButton ]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-20-[v1(==v0)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":shoppingListButton, "v1":pantryListButton]))
@@ -135,6 +144,10 @@ class PantryListHeader: BaseCell {
     
     @objc func move(_ sender:UIButton!){
         pantryViewController?.move()
+    }
+    
+    @objc func search(_ sender:UIButton!){
+        pantryViewController?.searchWithPantry()
     }
     
     func inputMode(){
