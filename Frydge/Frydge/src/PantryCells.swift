@@ -65,12 +65,26 @@ class PantryListHeader: BaseCell {
         button.setTitle("MOVE ITEM(S) TO PANTRY LIST", for: .normal)
         button.setTitle("MOVE ITEM(S) TO SHOPPING LIST", for: .selected)
         button.isSelected = false
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0).cgColor
         button.titleLabel?.font = UIFont(name: "Comfortaa", size: 17)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.backgroundColor = UIColor(red:0.33, green:0.36, blue:0.40, alpha:1.0)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.backgroundColor = UIColor.white
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isHidden = true
-        button.adjustsImageWhenHighlighted = false
+        return button
+    } ()
+    
+    let searchButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("SEARCH WITH ITEM(S)", for: .normal)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0).cgColor
+        button.titleLabel?.font = UIFont(name: "Comfortaa", size: 17)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.backgroundColor = UIColor.white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.isHidden = true
         return button
     } ()
     
@@ -82,22 +96,28 @@ class PantryListHeader: BaseCell {
         addSubview(ingredientNameTextField)
         addSubview(addIngredientButton)
         addSubview(moveButton)
+        addSubview(searchButton)
         
         shoppingListButton.addTarget(self, action: #selector(PantryListHeader.showShoppingList(_:)), for: .touchUpInside)
         pantryListButton.addTarget(self, action: #selector(PantryListHeader.showPantryList(_:)), for: .touchUpInside)
         addIngredientButton.addTarget(self, action: #selector(PantryListHeader.addIngredient(_:)), for: .touchUpInside)
         moveButton.addTarget(self, action: #selector(PantryListHeader.move(_:)), for: .touchUpInside)
+        searchButton.addTarget(self, action: #selector(PantryListHeader.search(_:)), for: .touchUpInside)
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-10-[v1(30)]-22-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":ingredientNameTextField, "v1":addIngredientButton ]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-20-[v1(==v0)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":shoppingListButton, "v1":pantryListButton]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-30-[v0]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":title]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":moveButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":searchButton]))
+        
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-20@1000-[v0]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":title]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-110-[v0(50)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":pantryListButton]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-110-[v0(50)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":shoppingListButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-110-[v0(50)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":moveButton]))
+
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[v1(40)]-15-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v1":ingredientNameTextField]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[v1(30)]-20-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v1":addIngredientButton]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[v0(40)]-15-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":moveButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[v0(50)]-15-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":searchButton]))
         
     }
     
@@ -137,17 +157,29 @@ class PantryListHeader: BaseCell {
         pantryViewController?.move()
     }
     
+    @objc func search(_ sender:UIButton!){
+        pantryViewController?.searchWithPantry()
+    }
+    
     func inputMode(){
         addIngredientButton.isHidden = false
         ingredientNameTextField.isHidden = false
         moveButton.isHidden = true
+        
+        shoppingListButton.isHidden = false
+        pantryListButton.isHidden = false
+        searchButton.isHidden = true
         reloadInputViews()
     }
     
-    func moveMode(){
+    func selectedMode(){
         addIngredientButton.isHidden = true
         ingredientNameTextField.isHidden = true
         moveButton.isHidden = false
+        
+        shoppingListButton.isHidden = true
+        pantryListButton.isHidden = true
+        searchButton.isHidden = false
         reloadInputViews()
     }
     
