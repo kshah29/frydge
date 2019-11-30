@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Users</key>
+	<array>
+		<dict>
+			<key>Username</key>
+			<string>iancostello</string>
+			<key>Password</key>
+			<string>password</string>
+		</dict>
+		<dict>
+			<key>Username</key>
+			<string>meganhong</string>
+			<key>Password</key>
+			<string>password</string>
+		</dict>
+		<dict>
+			<key>Username</key>
+			<string>davidlee</string>
+			<key>Password</key>
+			<string>password</string>
+		</dict>
+		<dict>
+			<key>Username</key>
+			<string>natashasarkar</string>
+			<key>Password</key>
+			<string>password</string>
+		</dict>
+		<dict>
+			<key>Username</key>
+			<string>kanishashah</string>
+			<key>Password</key>
+			<string>password</string>
+		</dict>
+		<dict>
+			<key>Username</key>
+			<string>briannatanusi</string>
+			<key>Password</key>
+			<string>password</string>
+		</dict>
+	</array>
+</dict>
+</plist>
