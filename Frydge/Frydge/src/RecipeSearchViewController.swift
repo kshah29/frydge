@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     
     let searchbar = UISearchBar(frame: CGRect(x: 10, y: 50, width: 390.0, height: 50.0))
@@ -17,15 +16,21 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     var recipeViews: [UIView] = []
     var compiledRecipes: Bool = false
     var backgroundImage = UIImageView(image: #imageLiteral(resourceName: "marble"))
+    var offset = 0;
+    var query = "";
     
-    public func getRecipes(query: String) {
+    @objc public func getRecipes() {
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
+        
         self.recipes = []
         self.compiledRecipes = false
-        makeRequest(ingredientList: query.components(separatedBy: " "))
+        makeRequest(ingredientList: self.query.components(separatedBy: " "))
         while (self.compiledRecipes == false){
             // DO nothing - wait for it to populate
         }
-        populateRecipes()
+        populateRecipes();
     }
     
     
@@ -114,7 +119,7 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     
     private func makeRequest (ingredientList : [String]) -> Void {
         let foodAPIURL = "https://api.spoonacular.com/recipes/complexSearch"
-        let apiKey : String = "b8bc0943e3784d28ae91cbe52ed432c9"
+        let apiKey : String = "481b16a5a75a43a8b446d33210dd6de6"
         var ingredientString : String = ""
         
         for ingredient in ingredientList {
@@ -142,7 +147,7 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         let procedureParam = "&instructionsRequired=true"
         let recipeInfo = "&addRecipeInformation=true"
         
-        let urlWithParams = foodAPIURL + "?apiKey=" + apiKey  + dietParam + intoleranceParam + "&includeIngredients=" + ingredientString + procedureParam + recipeInfo + "&number=" + queryNumber
+        let urlWithParams = foodAPIURL + "?apiKey=" + apiKey  + dietParam + intoleranceParam + "&includeIngredients=" + ingredientString + procedureParam + recipeInfo + "&number=" + queryNumber + "&offset=" + String(self.offset)
         print(urlWithParams)
         
         
@@ -169,13 +174,10 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
             }
         }
         task.resume()
+        self.offset = self.offset + 10;
     }
     
     func populateRecipes() {
-        for view in self.view.subviews {
-            view.removeFromSuperview()
-        }
-        
         super.viewDidLoad()
         
         searchbar.barTintColor = UIColor(named: "blue")
@@ -225,18 +227,24 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
             
             // add the favorite button to the view, tagged with the recipe's id
             let current_recipe = (self.recipes)![i]
-            let y_coord = (220 * i) + 10
             
             recipeView.tag = current_recipe.id
             let tapRecipeGesture = UITapGestureRecognizer(target: self, action: #selector(self.showRecipeViewController(_:)))
             recipeView.addGestureRecognizer(tapRecipeGesture)
             
-            let scrollContentHeight = CGFloat(220 * recipeViews.count)
+            let scrollContentHeight = CGFloat(220 * recipeViews.count + 50)
             scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: scrollContentHeight)
             
             i = i + 1
         }
-    
+        
+        let load_more_button = UIButton(frame: CGRect(x: 20, y: 2200, width: 200, height: 30))
+        load_more_button.backgroundColor = UIColor(red: 166/256, green: 165/256, blue: 162/256, alpha: 0.5)
+        
+        load_more_button.setTitle("...load more recipes", for: .normal)
+        load_more_button.addTarget(self, action: #selector(getRecipes), for: .touchUpInside)
+        
+        scrollView.addSubview(load_more_button)
         NSLayoutConstraint.activate(list)
     }
     
@@ -262,19 +270,22 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         view.addSubview(backgroundImage)
         
         if searchbar.text != nil {
-            getRecipes(query: searchbar.text!)
+            self.query = searchbar.text!
+            getRecipes()
         }
         else{
-            getRecipes(query: "")
+            getRecipes()
         }
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.offset = 0
         searchBar.resignFirstResponder()
         if searchBar.text != nil {
-            getRecipes(query: searchBar.text!)
+            self.query = searchBar.text!
+            getRecipes()
         }
     }
 }
