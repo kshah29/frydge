@@ -283,6 +283,10 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         self.populateRecipes()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        searchbar.resignFirstResponder()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
