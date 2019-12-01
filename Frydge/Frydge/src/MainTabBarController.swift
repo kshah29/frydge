@@ -16,17 +16,18 @@ class MainTabBarController: UITabBarController {
         
         tabBar.barTintColor = UIColor(named: "White")
         
+        let tabBarHeight = self.tabBar.bounds.height
         let searchVC = RecipeSearchViewController()
-        searchVC.tabBarItem.image = UIImage(named: "search.png")
+        searchVC.tabBarItem.image = UIImage(named: "search.pdf")?.resizedImage(for: CGSize(width: tabBarHeight - 30, height: tabBarHeight - 30))
         
         let profileVC = ProfileViewController()
-        profileVC.tabBarItem.image = UIImage(named: "user.png")
+        profileVC.tabBarItem.image = UIImage(named: "user.pdf")?.resizedImage(for: CGSize(width: tabBarHeight - 30, height: tabBarHeight - 30))
         
         let cookbookVC = CookbookViewController() // cookbook
-        cookbookVC.tabBarItem.image = UIImage(named: "heart.png")
+        cookbookVC.tabBarItem.image = UIImage(named: "heart.pdf")?.resizedImage(for: CGSize(width: tabBarHeight - 30, height: tabBarHeight - 30))
         
         let pantryVC = PantryViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        pantryVC.tabBarItem.image = UIImage(named: "pantry.png")
+        pantryVC.tabBarItem.image = UIImage(named: "pantry2.pdf")?.resizedImage(for: CGSize(width: tabBarHeight - 22, height: tabBarHeight - 22))
 
         viewControllers = [searchVC, cookbookVC, pantryVC, profileVC]
     }

@@ -32,9 +32,9 @@ class RecipeViewController: UIViewController {
                 backgroundImage.frame = view.frame
                 backgroundImage.contentMode = .scaleAspectFill
                 
-                let frost = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-                frost.frame = backgroundImage.frame
-                backgroundImage.insertSubview(frost, at: 0)
+//                let frost = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+//                frost.frame = backgroundImage.frame
+//                backgroundImage.insertSubview(frost, at: 0)
                 
                 let fadeView = UIView(frame: backgroundImage.frame)
                 fadeView.backgroundColor = .white
