@@ -21,6 +21,7 @@ class Recipe {
     var ingredientList: [Ingredient] = []
     var process: [String] = []
     var notes: String?
+    var imageUrl: String?
     var image: UIImage?
     var preppingTime: Int?
     var cookingTime: Int?
@@ -46,6 +47,7 @@ class Recipe {
         self.ingredientList = ingredientList
         self.process = process
         if image != nil {
+            self.imageUrl = image
             self.setImage(byUrl: image!)
         }
         if prepTime != nil {

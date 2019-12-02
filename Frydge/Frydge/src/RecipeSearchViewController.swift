@@ -129,7 +129,13 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
                     print(process)
                 }
                 
-                self.recipes?.append(Recipe(id: nid ?? 0, title: title as! String, ingredientList: [], process: process, image: imageURL as! String, prepTime: prepTime, cookTime: cookTime))
+                let newRecipe = Recipe(id: nid ?? 0, title: title as! String, ingredientList: [], process: process, image: imageURL as! String, prepTime: prepTime, cookTime: cookTime)
+                for recipe in RecipeStore.getRecipeList() {
+                    if newRecipe.id == recipe.id {
+                        newRecipe.isFavorited = true
+                    }
+                }
+                self.recipes?.append(newRecipe)
             }
         }
         
@@ -138,7 +144,7 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     
     private func makeRequest (ingredientList : [String]) -> Void {
         let foodAPIURL = "https://api.spoonacular.com/recipes/complexSearch"
-        let apiKey : String = "481b16a5a75a43a8b446d33210dd6de6"
+        let apiKey : String = "d8023f61c8ff467abbb87c3de75aa735"
         var ingredientString : String = ""
         
         for ingredient in ingredientList {

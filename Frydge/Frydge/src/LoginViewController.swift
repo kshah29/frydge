@@ -119,6 +119,7 @@ class LoginViewController: UIViewController {
     
     func handleSuccessfulLogin(username: String, userList: [[String : Any]], loginCompletion: @escaping () -> ()) {
         PersonalData.setPersonalDataFromSuccessfulLogin(username: username)
+        RecipeStore.setRecipeStoreFromSuccessfulLogin(username: username)
         let mainVC = MainTabBarController()
         self.navigationController?.pushViewController(viewController: mainVC, animated: true, completion: {
             loginCompletion()
@@ -377,7 +378,7 @@ func readPlist(namePlist: String, key: String) -> AnyObject{
             print("error_read")
         }
     }
-//    print("plist_read \(output)")
+    print("plist_read \(output)")
     return output
 }
 
