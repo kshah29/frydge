@@ -19,11 +19,11 @@ class Recipe {
     var id: Int = 0
     var title: String = ""
     var ingredientList: [Ingredient] = []
-    var process: String = ""
+    var process: [String] = []
     var notes: String?
     var image: UIImage?
-    var preppingTime: Int? = 10
-    var cookingTime: Int? = 10
+    var preppingTime: Int?
+    var cookingTime: Int?
     var isFavorited: Bool = false
     
     /**
@@ -40,7 +40,7 @@ class Recipe {
 
     - Returns: A Recipe object, the foundation of many features in our app
     */
-    init(id: Int, title: String, ingredientList: [Ingredient], process: String, image: String?) {
+    init(id: Int, title: String, ingredientList: [Ingredient], process: [String], image: String?, prepTime: Int?, cookTime: Int?) {
         self.id = id
         self.title = title
         self.ingredientList = ingredientList
@@ -48,12 +48,12 @@ class Recipe {
         if image != nil {
             self.setImage(byUrl: image!)
         }
-//        if prepTime != nil {
-//            self.preppingTime = prepTime
-//        }
-//        if cookTime != nil {
-//            self.cookingTime = cookTime
-//        }
+        if prepTime != nil {
+            self.preppingTime = prepTime
+        }
+        if cookTime != nil {
+            self.cookingTime = cookTime
+        }
         
     }
     
@@ -110,6 +110,7 @@ class Recipe {
  This class is used to layout the views used in generating a Recipe object's preview.
  */
 class RecipeView: UIView {
+    private var contentView = ContentView(frame: .zero)
     private var image: UIImage?
     private var recipeImage: UIImageView?
     private var recipe: Recipe?
@@ -136,6 +137,12 @@ class RecipeView: UIView {
     
     private var gradientView = UIView()
     private var favoriteButton  = UIButton(type: .custom)
+    private var favoriteButtonBackground: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.alpha = 0.7
+        return view
+    }()
     
     /**
      Initializes a RecipeView, a class that Recipe depends on to generate a recipe preview. After initializing the RecipeView object,  [setupViews](x-source-tag://setupViews) must be called to set up the UI.
@@ -164,14 +171,18 @@ class RecipeView: UIView {
     @objc func buttonAddRecipe(sender: UIButton!) {
         RecipeStore.delete(delRecipe: recipe!)
         RecipeStore.add(addRecipe: recipe!)
-        sender.setImage(UIImage(named: "heartfilled.png"), for: .normal)
+        sender.setImage(UIImage(named: "heartFilled.pdf"), for: .normal)
+        sender.imageView?.contentMode = .scaleAspectFit
+        favoriteButton.tintColor = #colorLiteral(red: 0.9990664124, green: 0.2145801485, blue: 0.2993823588, alpha: 1)
         sender.addTarget(self, action: #selector(buttonDelRecipe), for: .touchUpInside)
         recipe!.isFavorited = true
     }
     
     @objc func buttonDelRecipe(sender: UIButton!) {
         RecipeStore.delete(delRecipe: recipe!)
-        sender.setImage(UIImage(named: "heart.jpg"), for: .normal)
+        sender.setImage(UIImage(named: "heart.pdf"), for: .normal)
+        sender.imageView?.contentMode = .scaleAspectFit
+        favoriteButton.tintColor = #colorLiteral(red: 0.9990664124, green: 0.2145801485, blue: 0.2993823588, alpha: 1)
         sender.addTarget(self, action: #selector(buttonAddRecipe), for: .touchUpInside)
         recipe!.isFavorited = false
     }
@@ -183,44 +194,61 @@ class RecipeView: UIView {
         setTitleLabel(title: title)
         guard let recipeImage = recipeImage, let titleLabel = titleLabel else { return }
         
-        favoriteButton.frame = CGRect(x:5, y:5, width:35, height:35)
+        favoriteButtonBackground.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        favoriteButtonBackground.layer.cornerRadius = 5
+        favoriteButtonBackground.layer.masksToBounds = true
+        favoriteButtonBackground.layer.maskedCorners = [.layerMaxXMaxYCorner]
+        favoriteButton.frame = CGRect(x:7, y:7, width:36, height:36)
         if(recipe!.isFavorited == false) {
-            favoriteButton.setImage(UIImage(named: "heart.jpg"), for: .normal)
+            favoriteButton.setImage(UIImage(named: "heart.pdf"), for: .normal)
+            favoriteButton.imageView?.contentMode = .scaleAspectFit
+            favoriteButton.tintColor = #colorLiteral(red: 0.9990664124, green: 0.2145801485, blue: 0.2993823588, alpha: 1)
             favoriteButton.addTarget(self, action: #selector(buttonAddRecipe), for: .touchUpInside)
         }
         else {
-            favoriteButton.setImage(UIImage(named: "heartfilled.png"), for: .normal)
+            favoriteButton.setImage(UIImage(named: "heartFilled.pdf"), for: .normal)
+            favoriteButton.imageView?.contentMode = .scaleAspectFit
+            favoriteButton.tintColor = #colorLiteral(red: 0.9990664124, green: 0.2145801485, blue: 0.2993823588, alpha: 1)
             favoriteButton.addTarget(self, action: #selector(buttonDelRecipe), for: .touchUpInside)
         }
         
-        addSubview(recipeImage)
-        addSubview(gradientView)
-        addSubview(titleLabel)
-        addSubview(favoriteButton)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(contentView)
+        contentView.addSubview(recipeImage)
+        contentView.gradientView = gradientView
+        contentView.addSubview(gradientView)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(favoriteButtonBackground)
+        contentView.addSubview(favoriteButton)
         
         gradientView.translatesAutoresizingMaskIntoConstraints = false
         
+        contentView.constrainToContainer(container: self, padding: 0)
         NSLayoutConstraint.activate([
-            recipeImage.topAnchor.constraint(equalTo: topAnchor),
-            recipeImage.leftAnchor.constraint(equalTo: leftAnchor),
-            recipeImage.rightAnchor.constraint(equalTo: rightAnchor),
-            recipeImage.bottomAnchor.constraint(equalTo: bottomAnchor),
+            recipeImage.topAnchor.constraint(equalTo: contentView.topAnchor),
+            recipeImage.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            recipeImage.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            recipeImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
-            gradientView.leftAnchor.constraint(equalTo: leftAnchor),
-            gradientView.rightAnchor.constraint(equalTo: rightAnchor),
-            gradientView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            gradientView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
+            gradientView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            gradientView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            gradientView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            gradientView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.6),
             
-            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
-            titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            titleLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
+            titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
+            titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            titleLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.4),
         ])
         
 
         translatesAutoresizingMaskIntoConstraints = false
-        clipsToBounds = true
-        layer.cornerRadius = CGFloat(5)
+        contentView.layer.cornerRadius = CGFloat(5)
+        contentView.clipsToBounds = true
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.7
+        layer.shadowRadius = 8
+        layer.shadowOffset = CGSize(width: 0, height: 0)
     }
     
     // For some reason the gradient layer must be positioned in this function. It doesn't get along well with AutoLayout otherwise.
@@ -228,7 +256,18 @@ class RecipeView: UIView {
         super.layoutSubviews()
         
         let gradientColors: [CGColor] = [UIColor.clear.cgColor, UIColor(hue: 0, saturation: 0, brightness: 1.0, alpha: 0.35).cgColor, UIColor(hue: 0, saturation: 0, brightness: 1.0, alpha: 0.7).cgColor]
-        gradientView.setGradientBackground(colors: gradientColors, locations: [0.0, 0.2, 0.5])
+        gradientView.setGradientBackground(colors: gradientColors, locations: [0.0, 0.3, 0.5])
+    }
+    
+    class ContentView: UIView {
+        var gradientView: UIView?
+        
+        override func layoutSubviews() {
+            super.layoutSubviews()
+            
+            let gradientColors: [CGColor] = [UIColor.clear.cgColor, UIColor(hue: 0, saturation: 0, brightness: 1.0, alpha: 0.35).cgColor, UIColor(hue: 0, saturation: 0, brightness: 1.0, alpha: 0.8).cgColor]
+            gradientView?.setGradientBackground(colors: gradientColors, locations: [0.0, 0.3, 0.5])
+        }
     }
 }
 

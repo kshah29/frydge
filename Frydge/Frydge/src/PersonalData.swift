@@ -23,7 +23,6 @@ class PersonalData{
     static var isLowSugar : Bool = false
     static var isEggFree : Bool = false
     static var isPeanutFree : Bool = false
-//    static var isTreeNutFree : Bool = false
     static var isFishFree : Bool = false
     
     static public func login(userName: String, userEmail: String){
@@ -89,10 +88,6 @@ class PersonalData{
         return isPeanutFree
     }
     
-//    static public func getTreeNutFree() -> Bool {
-//        return isTreeNutFree
-//    }
-    
     static public func getfishFree() -> Bool {
         return isFishFree
     }
@@ -132,10 +127,6 @@ class PersonalData{
     static public func setPeanutFree(peanutFree: Bool){
         isPeanutFree = peanutFree
     }
-    
-//    static public func setTreeNutFree(treeNutFree: Bool){
-//        isTreeNutFree = treeNutFree
-//    }
     
     static public func setfishFree(fishFree: Bool){
         isFishFree = fishFree
@@ -187,14 +178,6 @@ class PersonalData{
                 intolerances += ",Peanut"
             }
         }
-//        if (isTreeNutFree){
-//            if intolerances == "" {
-//                intolerances = "TreeNut"
-//            }
-//            else {
-//                intolerances += ",TreeNut"
-//            }
-//        }
         if (isFishFree){
             if intolerances == "" {
                 intolerances = "Shellfish"
