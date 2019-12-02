@@ -35,22 +35,22 @@ class FrydgeTests: XCTestCase {
     
     func testAddIngredientToShoppingList(){
         pantryViewController.addNewIngredient(ingredientName: ingredient1.name)
-        XCTAssertEqual(pantryViewController.shoppingList[0].name, ingredient1.name)
+        XCTAssertEqual(pantryViewController.shoppingList.getIngredient(index: 0).name, ingredient1.name)
     }
     
     func testMoveIngredientsToPantryList(){
         pantryViewController.addNewIngredient(ingredientName: ingredient1.name)
         pantryViewController.addNewIngredient(ingredientName: ingredient2.name)
         pantryViewController.moveIngredients()
-        XCTAssertEqual(pantryViewController.pantryList[0].name, ingredient1.name)
-        XCTAssertEqual(pantryViewController.pantryList[1].name, ingredient2.name)
+        XCTAssertEqual(pantryViewController.pantryList.getIngredient(index: 0).name, ingredient1.name)
+        XCTAssertEqual(pantryViewController.pantryList.getIngredient(index: 1).name, ingredient2.name)
     }
     
     func testDeleteIngredientFromShoppingList(){
         pantryViewController.addNewIngredient(ingredientName: ingredient1.name)
         pantryViewController.addNewIngredient(ingredientName: ingredient2.name)
         pantryViewController.removeIngredient(index: 0)
-        XCTAssertEqual(pantryViewController.shoppingList[0].name, ingredient2.name)
+        XCTAssertEqual(pantryViewController.shoppingList.getIngredient(index: 0).name, ingredient2.name)
     }
     
     func testAddRecipesToRecipeStore() {
