@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     let backgroundImage: UIImageView = {
         let iv = UIImageView(image: #imageLiteral(resourceName: "marble"))
@@ -44,9 +44,18 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let defaults = UserDefaults.standard
+        if let user = defaults.string(forKey: "loggedInUser") {
+            if let validLogins = readPropertyList(path: "ExampleUsers"), let userList = validLogins["Users"] as? [[String:Any]] {
+                handleSuccessfulLogin(username: user, userList: userList, loginCompletion: {})
+            }
+        }
         
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
+        
+        loginCard.userField.delegate = self
+        loginCard.passField.delegate = self
         
         view.addSubview(backgroundImage)
         view.addSubview(logo)
@@ -120,6 +129,8 @@ class LoginViewController: UIViewController {
     func handleSuccessfulLogin(username: String, userList: [[String : Any]], loginCompletion: @escaping () -> ()) {
         PersonalData.setPersonalDataFromSuccessfulLogin(username: username)
         RecipeStore.setRecipeStoreFromSuccessfulLogin(username: username)
+        let defaults = UserDefaults.standard
+        defaults.set(username, forKey: "loggedInUser")
         let mainVC = MainTabBarController()
         self.navigationController?.pushViewController(viewController: mainVC, animated: true, completion: {
             loginCompletion()
@@ -140,6 +151,17 @@ class LoginViewController: UIViewController {
     }
     func startActivityIndicator() {
         loginCard.startActivityIndicator()
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.tag == 0 {
+            loginCard.passField.becomeFirstResponder()
+        }
+        else {
+            loginAction(sender: loginCard.loginButton)
+        }
+        
+        return true
     }
     
     class LoginCard: UIView {
@@ -168,6 +190,11 @@ class LoginViewController: UIViewController {
             layer.shadowRadius = 8
             layer.shadowOffset = CGSize(width: 0, height: 0)
             translatesAutoresizingMaskIntoConstraints = false
+            
+            userField.returnKeyType = .next
+            passField.returnKeyType = .go
+            userField.tag = 0
+            passField.tag = 1
             
             addSubview(userField)
             addSubview(passField)
@@ -378,7 +405,7 @@ func readPlist(namePlist: String, key: String) -> AnyObject{
             print("error_read")
         }
     }
-    print("plist_read \(output)")
+//    print("plist_read \(output)")
     return output
 }
 

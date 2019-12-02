@@ -11,6 +11,21 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    let logoutButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("LOGOUT", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Roboto-Black", size: 15)
+        button.addTarget(self, action: #selector(logoutAction), for: .touchUpInside)
+        button.backgroundColor = .white
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.25
+        button.layer.shadowRadius = 10
+        button.layer.shadowOffset = CGSize(width: 0, height: 0)
+        button.layer.cornerRadius = 10
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     let line: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .black
@@ -696,6 +711,20 @@ class ProfileViewController: UIViewController {
         view.addSubview(allergyContainerView)
         allergyContainerView.anchor(top: dietContainerView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, height: 200)
 
+        view.addSubview(logoutButton)
+        let safeGuide = self.view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            logoutButton.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: 10),
+            logoutButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
+            logoutButton.widthAnchor.constraint(equalToConstant: 100),
+            logoutButton.heightAnchor.constraint(equalToConstant: 40),
+        ])
+    }
+    
+    @objc func logoutAction(sender: UIButton!) {
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "loggedInUser")
+        navigationController?.popToRootViewController(animated: true)
     }
 }
 

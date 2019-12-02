@@ -9,7 +9,12 @@
 import Foundation
 import UIKit
 
-class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
+class RecipeSearchViewController: UIViewController, UISearchBarDelegate, SearchOptionsViewDelegate {
+    func updateSearchOptions(newRestrictionsString: String?, newIntolerancesString: String?) {
+        restrictionsString = newRestrictionsString ?? restrictionsString
+        intolerancesString = newIntolerancesString ?? intolerancesString
+    }
+    
     
     let searchbarBackgroundView = UIView(frame: .zero)
     let searchbar = UISearchBar(frame: CGRect(x: 10, y: 50, width: 390.0, height: 50.0))
@@ -19,6 +24,8 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     var backgroundImage = UIImageView(image: #imageLiteral(resourceName: "marble"))
     var offset = 0;
     var query = "";
+    var restrictionsString = PersonalData.getDietaryRestrictions()
+    var intolerancesString = PersonalData.getIntoleranceString()
     
     let dimmerView: UIView = {
         let view = UIView()
@@ -155,13 +162,15 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
             }
         }
         
-        let diet = PersonalData.getDietaryRestrictions()
+//        let diet = PersonalData.getDietaryRestrictions()
+        let diet = restrictionsString
         var dietParam = ""
         if (diet != ""){
             dietParam = "&diet=" + diet
         }
         
-        let intolerance = PersonalData.getIntoleranceString()
+//        let intolerance = PersonalData.getIntoleranceString()
+        let intolerance = intolerancesString
         var intoleranceParam = ""
         if (intolerance != ""){
             intoleranceParam += "&intolerances" + intolerance
@@ -225,7 +234,10 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         scrollView.alwaysBounceVertical = true
         
         view.addSubview(dimmerView)
+        restrictionsString = PersonalData.getDietaryRestrictions()
+        intolerancesString = PersonalData.getIntoleranceString()
         searchOptionsView = SearchOptionsView(frame: .zero)
+        searchOptionsView?.searchOptionsCVDelegate = self
         guard let searchOptionsView = searchOptionsView else { return }
         view.addSubview(searchOptionsView)
         
@@ -298,6 +310,9 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        restrictionsString = PersonalData.getDietaryRestrictions()
+        intolerancesString = PersonalData.getIntoleranceString()
+        
         for view in self.view.subviews {
             view.removeFromSuperview()
         }
@@ -331,6 +346,16 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         }
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        for view in view.subviews {
+            if let scroll = view as? UIScrollView {
+                scroll.setContentOffset(.zero, animated: false)
+            }
+        }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -367,7 +392,12 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
 
 
 //MARK:- Search Options View
-class SearchOptionsView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class SearchOptionsView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SearchOptionsCollectionViewDelegate {
+    var searchOptionsCVDelegate: SearchOptionsViewDelegate?
+    func updateSearchOptions(newRestrictionsString: String?, newIntolerancesString: String?) {
+        searchOptionsCVDelegate?.updateSearchOptions(newRestrictionsString: newRestrictionsString, newIntolerancesString: newIntolerancesString)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let collectionView = collectionView as? SearchOptionsCollectionView {
             if collectionView.selectionType == .dietaryRestrictions {
@@ -427,9 +457,6 @@ class SearchOptionsView: UIView, UICollectionViewDataSource, UICollectionViewDel
                     cell.optionIsSelected = PersonalData.getLowSugar()
                 }
             }
-            else {
-                
-            }
         }
         return cell
     }
@@ -466,11 +493,13 @@ class SearchOptionsView: UIView, UICollectionViewDataSource, UICollectionViewDel
         addSubview(restrictionsDropdownHeader)
         let showRestrictionsGesture = UITapGestureRecognizer(target: self, action: #selector(self.toggleRestrictionsDropdown(_:)))
         restrictionsDropdownHeader.addGestureRecognizer(showRestrictionsGesture)
+        restrictionsList.searchOptionsCollectionViewDelegate = self
         addSubview(restrictionsList)
         
         addSubview(allergiesDropdownHeader)
         let showAllergiesGesture = UITapGestureRecognizer(target: self, action: #selector(self.toggleAllergiesDropdown(_:)))
         allergiesDropdownHeader.addGestureRecognizer(showAllergiesGesture)
+        allergiesList.searchOptionsCollectionViewDelegate = self
         addSubview(allergiesList)
         
         addSubview(dividerView1)
@@ -592,6 +621,7 @@ enum SearchOptionType {
     case ingredients
 }
 class SearchOptionsCollectionView: UICollectionView, SearchOptionDelegate {
+    var searchOptionsCollectionViewDelegate: SearchOptionsCollectionViewDelegate?
     var selectionType: SearchOptionType
     func toggleOption(index: IndexPath) {
         if let sender = cellForItem(at: index) as? SearchOption {
@@ -600,7 +630,83 @@ class SearchOptionsCollectionView: UICollectionView, SearchOptionDelegate {
                     if let cell = cell as? SearchOption, cell != sender {
                         cell.optionIsSelected = false
                     }
+                    else if let cell = cell as? SearchOption, cell == sender {
+                        var newRString = ""
+                        switch cell.optionName.text {
+                        case "VEGETARIAN": newRString = "Vegetarian"
+                        case "VEGAN": newRString = "Vegan"
+                        default: newRString = "Paleo"
+                        }
+                        searchOptionsCollectionViewDelegate?.updateSearchOptions(newRestrictionsString: newRString, newIntolerancesString: nil)
+                    }
                 }
+            }
+            else {
+                var intolerancesChosen: [String:Bool] = [:]
+                for cell in visibleCells {
+                    if let cell = cell as? SearchOption {
+                        switch cell.optionName.text {
+                        case "DAIRY": intolerancesChosen["Dairy"] = cell.optionIsSelected
+                        case "EGG": intolerancesChosen["Egg"] = cell.optionIsSelected
+                        case "GLUTEN": intolerancesChosen["Gluten"] = cell.optionIsSelected
+                        case "PEANUT": intolerancesChosen["Peanut"] = cell.optionIsSelected
+                        case "WHEAT": intolerancesChosen["Wheat"] = cell.optionIsSelected
+                        case "SHELLFISH": intolerancesChosen["Shellfish"] = cell.optionIsSelected
+                        default: intolerancesChosen["Sugar"] = cell.optionIsSelected
+                        }
+                    }
+                }
+                var string = ""
+                if (intolerancesChosen["Dairy"] ?? false) { string = "Dairy" }
+                if (intolerancesChosen["Gluten"] ?? false) {
+                    if string == "" {
+                        string = "Gluten"
+                    }
+                    else {
+                        string += ",Gluten"
+                    }
+                }
+                if (intolerancesChosen["Wheat"] ?? false) {
+                    if string == "" {
+                        string = "Wheat"
+                    }
+                    else {
+                        string += ",Wheat"
+                    }
+                }
+                if (intolerancesChosen["Sugar"] ?? false) {
+                    if string == "" {
+                        string = "Sugar"
+                    }
+                    else {
+                        string += ",Sugar"
+                    }
+                }
+                if (intolerancesChosen["Egg"] ?? false) {
+                    if string == "" {
+                        string = "Egg"
+                    }
+                    else {
+                        string += ",Egg"
+                    }
+                }
+                if (intolerancesChosen["Peanut"] ?? false) {
+                    if string == "" {
+                        string = "Peanut"
+                    }
+                    else {
+                        string += ",Peanut"
+                    }
+                }
+                if (intolerancesChosen["Shellfish"] ?? false) {
+                    if string == "" {
+                        string = "Shellfish"
+                    }
+                    else {
+                        string += ",Shellfish"
+                    }
+                }
+                searchOptionsCollectionViewDelegate?.updateSearchOptions(newRestrictionsString: nil, newIntolerancesString: string)
             }
         }
     }
@@ -678,4 +784,10 @@ class SearchOption: BaseCell {
 
 protocol SearchOptionDelegate {
     func toggleOption(index: IndexPath)
+}
+protocol SearchOptionsCollectionViewDelegate {
+    func updateSearchOptions(newRestrictionsString: String?, newIntolerancesString: String?)
+}
+protocol SearchOptionsViewDelegate {
+    func updateSearchOptions(newRestrictionsString: String?, newIntolerancesString: String?)
 }
