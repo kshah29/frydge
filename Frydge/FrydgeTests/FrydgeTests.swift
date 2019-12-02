@@ -22,9 +22,9 @@ class FrydgeTests: XCTestCase {
     private var pantryViewController = PantryViewController()
 
     override func setUp() {
-        recipe1 = Recipe(id: 100, title: "Recipe Title 1", ingredientList: [Ingredient(name: "i1", amount: 1), Ingredient(name: "i2", amount: 2)], process: "process1", image: "imageUrl1");
-        recipe2 = Recipe(id: 200, title: "Recipe Title 2", ingredientList: [Ingredient(name: "i1", amount: 1), Ingredient(name: "i2", amount: 2)], process: "process2", image: "imageUrl2");
-        recipe3 = Recipe(id: 300, title: "Recipe Title 3", ingredientList: [Ingredient(name: "i1", amount: 1), Ingredient(name: "i2", amount: 2)], process: "process3", image: "imageUrl3");
+        recipe1 = Recipe(id: 100, title: "Recipe Title 1", ingredientList: [Ingredient(name: "i1", amount: 1), Ingredient(name: "i2", amount: 2)], process: ["process1"], image: "imageUrl1", prepTime: 10, cookTime: 10);
+        recipe2 = Recipe(id: 200, title: "Recipe Title 2", ingredientList: [Ingredient(name: "i1", amount: 1), Ingredient(name: "i2", amount: 2)], process: ["process2"], image: "imageUrl2", prepTime: 10, cookTime: 10);
+        recipe3 = Recipe(id: 300, title: "Recipe Title 3", ingredientList: [Ingredient(name: "i1", amount: 1), Ingredient(name: "i2", amount: 2)], process: ["process3"], image: "imageUrl3", prepTime: 10, cookTime: 10);
         ingredient1 = Ingredient(name: "i1", amount: 1)
         ingredient2 = Ingredient(name: "i2", amount: 1)
     }

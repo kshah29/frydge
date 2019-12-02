@@ -44,6 +44,7 @@
 		9EDA9F992394B2610075DD0A /* PantryCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EAE59F238DB56400DC98DF /* PantryCells.swift */; };
 		9EDA9F9B2394C3A90075DD0A /* recipe.json in Resources */ = {isa = PBXBuildFile; fileRef = 9EDA9F9A2394C3A90075DD0A /* recipe.json */; };
 		9EDA9F9C2394C3A90075DD0A /* recipe.json in Resources */ = {isa = PBXBuildFile; fileRef = 9EDA9F9A2394C3A90075DD0A /* recipe.json */; };
+		9EDA9F9D2394FF6A0075DD0A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F988E238FC88900B810E9 /* LoginViewController.swift */; };
 		A705FA9A237CC1B300C7520F /* CookbookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A705FA98237CBDA600C7520F /* CookbookViewController.swift */; };
 		A705FAB2237D013000C7520F /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A705FAB1237D013000C7520F /* HeaderView.xib */; };
 		A705FAB7237DDC6700C7520F /* Comfortaa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A705FAB6237DDC6700C7520F /* Comfortaa.ttf */; };
@@ -367,6 +368,7 @@
 				4F1F9889237E862D00B810E9 /* RecipeViewController.swift in Sources */,
 				4F1F988A237E862D00B810E9 /* SceneDelegate.swift in Sources */,
 				4F1F988B237E862D00B810E9 /* ViewController.swift in Sources */,
+				9EDA9F9D2394FF6A0075DD0A /* LoginViewController.swift in Sources */,
 				9EDA9F992394B2610075DD0A /* PantryCells.swift in Sources */,
 				9EDA9F982394B23A0075DD0A /* IngredientViewController.swift in Sources */,
 				A705FABD237E491300C7520F /* FrydgeTests.swift in Sources */,
