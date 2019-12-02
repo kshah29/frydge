@@ -86,8 +86,11 @@ class FrydgeTests: XCTestCase {
         XCTAssertEqual(favoritedRecipes[0].title, "Recipe Title 1")
     }
     
-    func testMakeRequest (){
+    func testMakeRequestInRecipeSearch (){
+        recipeSearchViewController.dummyMakeRequest()
+        let recipesSearched = recipeSearchViewController.recipes
         
+        XCTAssertEqual(recipesSearched?.count, 10)
     }
     
 }
