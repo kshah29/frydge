@@ -1,0 +1,1276 @@
+{
+    "results": [
+        {
+            "vegetarian": true,
+            "vegan": true,
+            "glutenFree": true,
+            "dairyFree": true,
+            "veryHealthy": true,
+            "cheap": false,
+            "veryPopular": true,
+            "sustainable": false,
+            "weightWatcherSmartPoints": 1,
+            "gaps": "no",
+            "lowFodmap": false,
+            "ketogenic": false,
+            "whole30": false,
+            "preparationMinutes": 10,
+            "cookingMinutes": 5,
+            "sourceUrl": "http://ohmyveggies.com/recipe-citrus-sesame-kale/",
+            "spoonacularSourceUrl": "https://spoonacular.com/citrus-sesame-kale-495111",
+            "aggregateLikes": 7119,
+            "spoonacularScore": 100.0,
+            "healthScore": 100.0,
+            "creditsText": "Oh My Veggies",
+            "sourceName": "Oh My Veggies",
+            "pricePerServing": 51.22,
+            "id": 495111,
+            "title": "Citrus Sesame Kale",
+            "readyInMinutes": 15,
+            "servings": 4,
+            "image": "https://spoonacular.com/recipeImages/495111-312x231.jpg",
+            "imageType": "jpg",
+            "cuisines": [],
+            "dishTypes": [
+                "side dish"
+            ],
+            "diets": [
+                "gluten free",
+                "dairy free",
+                "lacto ovo vegetarian",
+                "vegan"
+            ],
+            "occasions": [],
+            "winePairing": {},
+            "analyzedInstructions": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "number": 1,
+                            "step": "Heat sesame oil in a large skillet or wok over medium heat.",
+                            "ingredients": [
+                                {
+                                    "id": 4058,
+                                    "name": "sesame oil",
+                                    "image": "sesame-oil.png"
+                                }
+                            ],
+                            "equipment": [
+                                {
+                                    "id": 404645,
+                                    "name": "frying pan",
+                                    "image": "pan.png"
+                                },
+                                {
+                                    "id": 404666,
+                                    "name": "wok",
+                                    "image": "wok.png"
+                                }
+                            ]
+                        },
+                        {
+                            "number": 2,
+                            "step": "Add ginger and garlic; cook for 30 seconds, or until fragrant, stirring constantly.",
+                            "ingredients": [
+                                {
+                                    "id": 11215,
+                                    "name": "garlic",
+                                    "image": "garlic.png"
+                                },
+                                {
+                                    "id": 11216,
+                                    "name": "ginger",
+                                    "image": "ginger.png"
+                                }
+                            ],
+                            "equipment": []
+                        },
+                        {
+                            "number": 3,
+                            "step": "Add kale and stir until coated with oil. Stir in soy sauce and orange juice; cover and cook for 3 minutes, or until kale is softened.Stir in sesame seeds and red pepper flakes (if using) and serve.",
+                            "ingredients": [
+                                {
+                                    "id": 9206,
+                                    "name": "orange juice",
+                                    "image": "orange-juice.jpg"
+                                },
+                                {
+                                    "id": 12023,
+                                    "name": "sesame seeds",
+                                    "image": "sesame-seeds.png"
+                                },
+                                {
+                                    "id": 16124,
+                                    "name": "soy sauce",
+                                    "image": "soy-sauce.jpg"
+                                },
+                                {
+                                    "id": 11233,
+                                    "name": "kale",
+                                    "image": "kale.jpg"
+                                }
+                            ],
+                            "equipment": [],
+                            "length": {
+                                "number": 3,
+                                "unit": "minutes"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "vegetarian": true,
+            "vegan": true,
+            "glutenFree": false,
+            "dairyFree": true,
+            "veryHealthy": true,
+            "cheap": false,
+            "veryPopular": true,
+            "sustainable": false,
+            "weightWatcherSmartPoints": 13,
+            "gaps": "no",
+            "lowFodmap": false,
+            "ketogenic": false,
+            "whole30": false,
+            "preparationMinutes": 5,
+            "cookingMinutes": 10,
+            "sourceUrl": "http://www.twopeasandtheirpod.com/creamy-avocado-pasta/",
+            "spoonacularSourceUrl": "https://spoonacular.com/creamy-avocado-pasta-547775",
+            "aggregateLikes": 67131,
+            "spoonacularScore": 100.0,
+            "healthScore": 100.0,
+            "creditsText": "Two Peas and Their Pod",
+            "sourceName": "Two Peas and Their Pod",
+            "pricePerServing": 171.39,
+            "id": 547775,
+            "title": "Creamy Avocado Pasta",
+            "readyInMinutes": 15,
+            "servings": 2,
+            "image": "https://spoonacular.com/recipeImages/547775-312x231.jpg",
+            "imageType": "jpg",
+            "cuisines": [],
+            "dishTypes": [
+                "lunch",
+                "main course",
+                "main dish",
+                "dinner"
+            ],
+            "diets": [
+                "dairy free",
+                "lacto ovo vegetarian",
+                "vegan"
+            ],
+            "occasions": [],
+            "winePairing": {
+                "pairedWines": [],
+                "pairingText": "No one wine will suit every pasta dish. Pasta in a tomato-based sauce will usually work well with a medium-bodied red, such as a montepulciano or chianti. Pasta with seafood or pesto will fare better with a light-bodied white, such as a pinot grigio. Cheese-heavy pasta can pair well with red or white - you might try a sangiovese wine for hard cheeses and a chardonnay for soft cheeses. We may be able to make a better recommendation if you ask again with a specific pasta dish.",
+                "productMatches": []
+            },
+            "analyzedInstructions": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "number": 1,
+                            "step": "Bring water to a boil in a medium sized pot. Salt the water and add in your pasta, reduce heat to medium, and cook until Al Dente, about 8-10 minutes.",
+                            "ingredients": [
+                                {
+                                    "id": 2047,
+                                    "name": "salt",
+                                    "image": "salt.jpg"
+                                }
+                            ],
+                            "equipment": [
+                                {
+                                    "id": 404752,
+                                    "name": "pot",
+                                    "image": "stock-pot.jpg"
+                                }
+                            ],
+                            "length": {
+                                "number": 10,
+                                "unit": "minutes"
+                            }
+                        },
+                        {
+                            "number": 2,
+                            "step": "While the pasta is cooking, make the sauce by placing the avocado, garlic, lime juice, cilantro, salt and pepper into a food processor or blender. Process until smooth and creamy.",
+                            "ingredients": [
+                                {
+                                    "id": 1102047,
+                                    "name": "salt and pepper",
+                                    "image": "salt-and-pepper.jpg"
+                                },
+                                {
+                                    "id": 9160,
+                                    "name": "lime juice",
+                                    "image": "lime-juice.png"
+                                },
+                                {
+                                    "id": 11165,
+                                    "name": "cilantro",
+                                    "image": "cilantro.png"
+                                },
+                                {
+                                    "id": 9037,
+                                    "name": "avocado",
+                                    "image": "avocado.jpg"
+                                },
+                                {
+                                    "id": 11215,
+                                    "name": "garlic",
+                                    "image": "garlic.png"
+                                }
+                            ],
+                            "equipment": [
+                                {
+                                    "id": 404771,
+                                    "name": "food processor",
+                                    "image": "food-processor.png"
+                                },
+                                {
+                                    "id": 404726,
+                                    "name": "blender",
+                                    "image": "blender.png"
+                                }
+                            ]
+                        },
+                        {
+                            "number": 3,
+                            "step": "When pasta is done cooking, drain and place pasta into a large bowl.",
+                            "ingredients": [],
+                            "equipment": [
+                                {
+                                    "id": 404783,
+                                    "name": "bowl",
+                                    "image": "bowl.jpg"
+                                }
+                            ]
+                        },
+                        {
+                            "number": 4,
+                            "step": "Add the sauce to the pasta and toss until pasta is well coated. Season with additional salt and pepper, if desired.",
+                            "ingredients": [
+                                {
+                                    "id": 1102047,
+                                    "name": "salt and pepper",
+                                    "image": "salt-and-pepper.jpg"
+                                }
+                            ],
+                            "equipment": []
+                        },
+                        {
+                            "number": 5,
+                            "step": "Serve immediately.Note: This pasta dish is best eaten the day it is made.",
+                            "ingredients": [],
+                            "equipment": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "vegetarian": true,
+            "vegan": true,
+            "glutenFree": true,
+            "dairyFree": true,
+            "veryHealthy": true,
+            "cheap": false,
+            "veryPopular": true,
+            "sustainable": false,
+            "weightWatcherSmartPoints": 3,
+            "gaps": "no",
+            "lowFodmap": false,
+            "ketogenic": false,
+            "whole30": false,
+            "preparationMinutes": 15,
+            "cookingMinutes": 0,
+            "sourceUrl": "http://natashaskitchen.com/2014/05/30/mexican-salad-with-lime-dressing/",
+            "spoonacularSourceUrl": "https://spoonacular.com/mexican-salad-with-lime-dressing-582897",
+            "aggregateLikes": 16628,
+            "spoonacularScore": 100.0,
+            "healthScore": 100.0,
+            "creditsText": "Natashas Kitchen",
+            "sourceName": "Natashas Kitchen",
+            "pricePerServing": 171.01,
+            "id": 582897,
+            "title": "Mexican Salad with Lime Dressing",
+            "readyInMinutes": 15,
+            "servings": 4,
+            "image": "https://spoonacular.com/recipeImages/582897-312x231.jpg",
+            "imageType": "jpg",
+            "cuisines": [
+                "Mexican"
+            ],
+            "dishTypes": [
+                "salad"
+            ],
+            "diets": [
+                "gluten free",
+                "dairy free",
+                "lacto ovo vegetarian",
+                "vegan"
+            ],
+            "occasions": [],
+            "winePairing": {
+                "pairedWines": [
+                    "pinot noir",
+                    "riesling",
+                    "sparkling rose"
+                ],
+                "pairingText": "Pinot Noir, Riesling, and Sparkling rosé are great choices for Mexican. Acidic white wines like riesling or low-tannin reds like pinot noir can work well with Mexican dishes. Sparkling rosé is a safe pairing too. The Siduri Sta. Rita Hills Pinot Noir with a 4.2 out of 5 star rating seems like a good match. It costs about 33 dollars per bottle.",
+                "productMatches": [
+                    {
+                        "id": 454206,
+                        "title": "Siduri Sta. Rita Hills Pinot Noir",
+                        "description": "The 2014 Sta. Rita Hills Pinot Noir is a blend of fruit from the John Sebastiano, Clos Pepe, Cargasacchi, and Lindley Vineyards. The actual blend is 64% John Sebastiano Vineyard Pinot Noir, 22% Clos Pepe, 9% Lindley, and 6% Cargasacchi. Clonally, this wine is a blend of 8 different clones which also provides for a wide range of flavors within one wine. The 2014 Pinot Noir Sta. Rita Hills should be a classic expression of the region, showing lots of spice, red fruit and dried soils aromas and flavors. Balanced, polished and elegant with plenty of fruit, it should certainly be an outstanding wine, and at the price, is an excellent value in Pinot Noir.",
+                        "price": "$32.99",
+                        "imageUrl": "https://spoonacular.com/productImages/454206-312x231.jpg",
+                        "averageRating": 0.8400000000000001,
+                        "ratingCount": 7.0,
+                        "score": 0.7945454545454547,
+                        "link": "https://click.linksynergy.com/deeplink?id=*QCiIS6t4gA&mid=2025&murl=https%3A%2F%2Fwww.wine.com%2Fproduct%2Fsiduri-sta-rita-hills-pinot-noir-2014%2F168102"
+                    }
+                ]
+            },
+            "analyzedInstructions": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "number": 1,
+                            "step": "Combine all salad dressing ingredients and shake or whisk them together then set aside.Chop all salad ingredients and combine in a large salad bowl.Shake salad dressing again prior to serving and drizzle the top with as much salad dressing as you prefer. Toss salad together and enjoy!",
+                            "ingredients": [],
+                            "equipment": [
+                                {
+                                    "id": 404661,
+                                    "name": "whisk",
+                                    "image": "whisk.png"
+                                },
+                                {
+                                    "id": 404783,
+                                    "name": "bowl",
+                                    "image": "bowl.jpg"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "vegetarian": true,
+            "vegan": true,
+            "glutenFree": true,
+            "dairyFree": true,
+            "veryHealthy": true,
+            "cheap": false,
+            "veryPopular": true,
+            "sustainable": false,
+            "weightWatcherSmartPoints": 6,
+            "gaps": "no",
+            "lowFodmap": false,
+            "ketogenic": false,
+            "whole30": false,
+            "preparationMinutes": 25,
+            "cookingMinutes": 25,
+            "sourceUrl": "http://blog.fatfreevegan.com/2013/06/kale-and-quinoa-salad-with-black-beans.html",
+            "spoonacularSourceUrl": "https://spoonacular.com/kale-and-quinoa-salad-with-black-beans-592479",
+            "aggregateLikes": 50078,
+            "spoonacularScore": 100.0,
+            "healthScore": 100.0,
+            "creditsText": "Fat Free Vegan",
+            "sourceName": "Fat Free Vegan",
+            "pricePerServing": 101.23,
+            "id": 592479,
+            "title": "Kale and Quinoa Salad with Black Beans",
+            "readyInMinutes": 50,
+            "servings": 6,
+            "image": "https://spoonacular.com/recipeImages/592479-312x231.jpg",
+            "imageType": "jpg",
+            "cuisines": [],
+            "dishTypes": [
+                "side dish"
+            ],
+            "diets": [
+                "gluten free",
+                "dairy free",
+                "lacto ovo vegetarian",
+                "vegan"
+            ],
+            "occasions": [],
+            "winePairing": {},
+            "analyzedInstructions": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "number": 1,
+                            "step": "Heat a saucepan.",
+                            "ingredients": [],
+                            "equipment": [
+                                {
+                                    "id": 404669,
+                                    "name": "sauce pan",
+                                    "image": "sauce-pan.jpg"
+                                }
+                            ]
+                        },
+                        {
+                            "number": 2,
+                            "step": "Add the rinsed and drained quinoa and the garlic and toast it until almost dry.",
+                            "ingredients": [
+                                {
+                                    "id": 11215,
+                                    "name": "garlic",
+                                    "image": "garlic.png"
+                                },
+                                {
+                                    "id": 20035,
+                                    "name": "quinoa",
+                                    "image": "uncooked-quinoa.png"
+                                }
+                            ],
+                            "equipment": []
+                        },
+                        {
+                            "number": 3,
+                            "step": "Add the vegetable broth, bring to a boil, reduce heat, and cover. Simmer until all the water is absorbed, about 20 minutes.",
+                            "ingredients": [
+                                {
+                                    "id": 6615,
+                                    "name": "vegetable broth",
+                                    "image": "chicken-broth.png"
+                                }
+                            ],
+                            "equipment": [],
+                            "length": {
+                                "number": 20,
+                                "unit": "minutes"
+                            }
+                        },
+                        {
+                            "number": 4,
+                            "step": "Remove from heat and allow to cool. While the quinoa is cooking, make the dressing in a small bowl or measuring cup: whisk together the lemon juice, 3 tablespoons broth, chia/flax seeds, chile powders, cumin, and salt. Allow to stand until the chia seeds start to thicken the dressing.",
+                            "ingredients": [
+                                {
+                                    "id": 9152,
+                                    "name": "lemon juice",
+                                    "image": "lemon-juice.jpg"
+                                },
+                                {
+                                    "id": 10012220,
+                                    "name": "flaxseed",
+                                    "image": "flax-seeds.png"
+                                },
+                                {
+                                    "id": 20035,
+                                    "name": "quinoa",
+                                    "image": "uncooked-quinoa.png"
+                                },
+                                {
+                                    "id": 1006615,
+                                    "name": "broth",
+                                    "image": "chicken-broth.png"
+                                },
+                                {
+                                    "id": 1002014,
+                                    "name": "cumin",
+                                    "image": "ground-cumin.jpg"
+                                },
+                                {
+                                    "id": 2047,
+                                    "name": "salt",
+                                    "image": "salt.jpg"
+                                }
+                            ],
+                            "equipment": [
+                                {
+                                    "id": 404766,
+                                    "name": "measuring cup",
+                                    "image": "measuring-cup.jpg"
+                                },
+                                {
+                                    "id": 404661,
+                                    "name": "whisk",
+                                    "image": "whisk.png"
+                                },
+                                {
+                                    "id": 404783,
+                                    "name": "bowl",
+                                    "image": "bowl.jpg"
+                                }
+                            ]
+                        },
+                        {
+                            "number": 5,
+                            "step": "Place the kale in a large serving bowl.",
+                            "ingredients": [
+                                {
+                                    "id": 11233,
+                                    "name": "kale",
+                                    "image": "kale.jpg"
+                                }
+                            ],
+                            "equipment": [
+                                {
+                                    "id": 404783,
+                                    "name": "bowl",
+                                    "image": "bowl.jpg"
+                                }
+                            ]
+                        },
+                        {
+                            "number": 6,
+                            "step": "Add half of the dressing and massage it into the kale using a wringing motion until the kale is very tender. Two minutes of massaging should do it, but the longer, the better.",
+                            "ingredients": [
+                                {
+                                    "id": 11233,
+                                    "name": "kale",
+                                    "image": "kale.jpg"
+                                }
+                            ],
+                            "equipment": [],
+                            "length": {
+                                "number": 2,
+                                "unit": "minutes"
+                            }
+                        },
+                        {
+                            "number": 7,
+                            "step": "Add the quinoa, black beans, carrot, and bell pepper, along with the remaining dressing.",
+                            "ingredients": [
+                                {
+                                    "id": 10211821,
+                                    "name": "bell pepper",
+                                    "image": "bell-pepper-orange.png"
+                                },
+                                {
+                                    "id": 16015,
+                                    "name": "black beans",
+                                    "image": "black-beans.jpg"
+                                },
+                                {
+                                    "id": 11124,
+                                    "name": "carrot",
+                                    "image": "sliced-carrot.png"
+                                },
+                                {
+                                    "id": 20035,
+                                    "name": "quinoa",
+                                    "image": "uncooked-quinoa.png"
+                                }
+                            ],
+                            "equipment": []
+                        },
+                        {
+                            "number": 8,
+                            "step": "Mix well and refrigerate until ready to serve. Just before serving, check the seasoning and add more lemon juice, chile powder, cumin, and salt, as needed. Stir in chopped avocado, if desired, or serve with slices of avocado on the side.",
+                            "ingredients": [
+                                {
+                                    "id": 2009,
+                                    "name": "chili powder",
+                                    "image": "chili-powder.jpg"
+                                },
+                                {
+                                    "id": 9152,
+                                    "name": "lemon juice",
+                                    "image": "lemon-juice.jpg"
+                                },
+                                {
+                                    "id": 9037,
+                                    "name": "avocado",
+                                    "image": "avocado.jpg"
+                                },
+                                {
+                                    "id": 1002014,
+                                    "name": "cumin",
+                                    "image": "ground-cumin.jpg"
+                                },
+                                {
+                                    "id": 2047,
+                                    "name": "salt",
+                                    "image": "salt.jpg"
+                                }
+                            ],
+                            "equipment": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "vegetarian": false,
+            "vegan": false,
+            "glutenFree": true,
+            "dairyFree": false,
+            "veryHealthy": true,
+            "cheap": false,
+            "veryPopular": true,
+            "sustainable": false,
+            "weightWatcherSmartPoints": 11,
+            "gaps": "no",
+            "lowFodmap": false,
+            "ketogenic": false,
+            "whole30": false,
+            "preparationMinutes": 10,
+            "cookingMinutes": 0,
+            "sourceUrl": "http://foodbabe.com/2013/05/08/melt-in-your-mouth-kale-salad/",
+            "spoonacularSourceUrl": "https://spoonacular.com/melt-in-your-mouth-kale-salad-689502",
+            "aggregateLikes": 231494,
+            "spoonacularScore": 100.0,
+            "healthScore": 96.0,
+            "creditsText": "Food Babe",
+            "sourceName": "Food Babe",
+            "pricePerServing": 279.17,
+            "id": 689502,
+            "title": "Melt In Your Mouth Kale Salad",
+            "readyInMinutes": 10,
+            "servings": 2,
+            "image": "https://spoonacular.com/recipeImages/689502-312x231.jpg",
+            "imageType": "jpg",
+            "cuisines": [],
+            "dishTypes": [
+                "salad"
+            ],
+            "diets": [
+                "gluten free",
+                "primal"
+            ],
+            "occasions": [],
+            "winePairing": {},
+            "analyzedInstructions": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "number": 1,
+                            "step": "In a food processor, process kale into small chopped pieces",
+                            "ingredients": [
+                                {
+                                    "id": 11233,
+                                    "name": "kale",
+                                    "image": "kale.jpg"
+                                }
+                            ],
+                            "equipment": [
+                                {
+                                    "id": 404771,
+                                    "name": "food processor",
+                                    "image": "food-processor.png"
+                                }
+                            ]
+                        },
+                        {
+                            "number": 2,
+                            "step": "To make dressing, stir lemon juice, olive oil, honey, salt and pepper together in a large bowl",
+                            "ingredients": [
+                                {
+                                    "id": 1102047,
+                                    "name": "salt and pepper",
+                                    "image": "salt-and-pepper.jpg"
+                                },
+                                {
+                                    "id": 9152,
+                                    "name": "lemon juice",
+                                    "image": "lemon-juice.jpg"
+                                },
+                                {
+                                    "id": 4053,
+                                    "name": "olive oil",
+                                    "image": "olive-oil.jpg"
+                                },
+                                {
+                                    "id": 19296,
+                                    "name": "honey",
+                                    "image": "honey.png"
+                                }
+                            ],
+                            "equipment": [
+                                {
+                                    "id": 404783,
+                                    "name": "bowl",
+                                    "image": "bowl.jpg"
+                                }
+                            ]
+                        },
+                        {
+                            "number": 3,
+                            "step": "Add chopped kale, currants, pine nuts and parmesan to bowl with dressing",
+                            "ingredients": [
+                                {
+                                    "id": 12147,
+                                    "name": "pine nuts",
+                                    "image": "pine-nuts.png"
+                                },
+                                {
+                                    "id": 9085,
+                                    "name": "currants",
+                                    "image": "currants.jpg"
+                                },
+                                {
+                                    "id": 1033,
+                                    "name": "parmesan",
+                                    "image": "parmesan.jpg"
+                                },
+                                {
+                                    "id": 11233,
+                                    "name": "kale",
+                                    "image": "kale.jpg"
+                                }
+                            ],
+                            "equipment": [
+                                {
+                                    "id": 404783,
+                                    "name": "bowl",
+                                    "image": "bowl.jpg"
+                                }
+                            ]
+                        },
+                        {
+                            "number": 4,
+                            "step": "Stir all ingredients together and serve(Optional - Save some pine nuts and/or parmesan cheese for top of salad before serving for presentation purposes)",
+                            "ingredients": [
+                                {
+                                    "id": 1033,
+                                    "name": "parmesan",
+                                    "image": "parmesan.jpg"
+                                },
+                                {
+                                    "id": 12147,
+                                    "name": "pine nuts",
+                                    "image": "pine-nuts.png"
+                                }
+                            ],
+                            "equipment": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "vegetarian": false,
+            "vegan": false,
+            "glutenFree": true,
+            "dairyFree": false,
+            "veryHealthy": true,
+            "cheap": false,
+            "veryPopular": true,
+            "sustainable": false,
+            "weightWatcherSmartPoints": 2,
+            "gaps": "no",
+            "lowFodmap": false,
+            "ketogenic": false,
+            "whole30": false,
+            "preparationMinutes": 5,
+            "cookingMinutes": 10,
+            "sourceUrl": "http://homemadehooplah.com/recipes/garlic-parmesan-broccoli/",
+            "spoonacularSourceUrl": "https://spoonacular.com/weekly-meal-plan-17-777037",
+            "aggregateLikes": 179942,
+            "spoonacularScore": 100.0,
+            "healthScore": 75.0,
+            "creditsText": "Homemade Hooplah",
+            "sourceName": "Homemade Hooplah",
+            "pricePerServing": 45.18,
+            "id": 777037,
+            "title": "Weekly Meal Plan #17",
+            "readyInMinutes": 15,
+            "servings": 6,
+            "image": "https://spoonacular.com/recipeImages/777037-312x231.jpg",
+            "imageType": "jpg",
+            "cuisines": [],
+            "dishTypes": [
+                "side dish"
+            ],
+            "diets": [
+                "gluten free"
+            ],
+            "occasions": [],
+            "winePairing": {},
+            "analyzedInstructions": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "number": 1,
+                            "step": "Preheat oven to 425 degrees F.",
+                            "ingredients": [],
+                            "equipment": [
+                                {
+                                    "id": 404784,
+                                    "name": "oven",
+                                    "image": "oven.jpg",
+                                    "temperature": {
+                                        "number": 425.0,
+                                        "unit": "Fahrenheit"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "number": 2,
+                            "step": "Drizzle a little olive oil on a large baking sheet, then use a paper towel to rub the pan down.In a large bowl, add broccoli, olive oil, garlic, and salt to taste. Toss broccoli with a spoon until it's completely coated.",
+                            "ingredients": [
+                                {
+                                    "id": 4053,
+                                    "name": "olive oil",
+                                    "image": "olive-oil.jpg"
+                                },
+                                {
+                                    "id": 11090,
+                                    "name": "broccoli",
+                                    "image": "broccoli.jpg"
+                                },
+                                {
+                                    "id": 11215,
+                                    "name": "garlic",
+                                    "image": "garlic.png"
+                                },
+                                {
+                                    "id": 2047,
+                                    "name": "salt",
+                                    "image": "salt.jpg"
+                                }
+                            ],
+                            "equipment": [
+                                {
+                                    "id": 404727,
+                                    "name": "baking sheet",
+                                    "image": "baking-sheet.jpg"
+                                },
+                                {
+                                    "id": 405895,
+                                    "name": "paper towels",
+                                    "image": "paper-towels.jpg"
+                                },
+                                {
+                                    "id": 404783,
+                                    "name": "bowl",
+                                    "image": "bowl.jpg"
+                                },
+                                {
+                                    "id": 404645,
+                                    "name": "frying pan",
+                                    "image": "pan.png"
+                                }
+                            ]
+                        },
+                        {
+                            "number": 3,
+                            "step": "Pour broccoli on the prepared baking sheet, spreading out into an even layer. Scoop out any garlic & oil left in the bowl and sprinkle it over the broccoli.",
+                            "ingredients": [
+                                {
+                                    "id": 11090,
+                                    "name": "broccoli",
+                                    "image": "broccoli.jpg"
+                                },
+                                {
+                                    "id": 11215,
+                                    "name": "garlic",
+                                    "image": "garlic.png"
+                                }
+                            ],
+                            "equipment": [
+                                {
+                                    "id": 404727,
+                                    "name": "baking sheet",
+                                    "image": "baking-sheet.jpg"
+                                },
+                                {
+                                    "id": 404783,
+                                    "name": "bowl",
+                                    "image": "bowl.jpg"
+                                }
+                            ]
+                        },
+                        {
+                            "number": 4,
+                            "step": "Bake for 10-12 minutes, or until broccoli is cooked through.Sprinkle broccoli with parmesan cheese before serving.",
+                            "ingredients": [
+                                {
+                                    "id": 1033,
+                                    "name": "parmesan",
+                                    "image": "parmesan.jpg"
+                                },
+                                {
+                                    "id": 11090,
+                                    "name": "broccoli",
+                                    "image": "broccoli.jpg"
+                                }
+                            ],
+                            "equipment": [],
+                            "length": {
+                                "number": 12,
+                                "unit": "minutes"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "vegetarian": true,
+            "vegan": true,
+            "glutenFree": true,
+            "dairyFree": true,
+            "veryHealthy": true,
+            "cheap": false,
+            "veryPopular": true,
+            "sustainable": false,
+            "weightWatcherSmartPoints": 1,
+            "gaps": "no",
+            "lowFodmap": false,
+            "ketogenic": false,
+            "whole30": false,
+            "preparationMinutes": 10,
+            "cookingMinutes": 0,
+            "sourceUrl": "http://www.feastingathome.com/matcha-green-tea-and-pineapple-smoothie/",
+            "spoonacularSourceUrl": "https://spoonacular.com/matcha-green-tea-and-pineapple-smoothie-801710",
+            "aggregateLikes": 11496,
+            "spoonacularScore": 100.0,
+            "healthScore": 100.0,
+            "creditsText": "Feasting at Home",
+            "sourceName": "Feasting at Home",
+            "pricePerServing": 156.22,
+            "id": 801710,
+            "title": "Matcha Green Tea and Pineapple Smoothie",
+            "readyInMinutes": 10,
+            "servings": 1,
+            "image": "https://spoonacular.com/recipeImages/801710-312x231.jpg",
+            "imageType": "jpg",
+            "cuisines": [],
+            "dishTypes": [
+                "side dish"
+            ],
+            "diets": [
+                "gluten free",
+                "dairy free",
+                "lacto ovo vegetarian",
+                "vegan"
+            ],
+            "occasions": [],
+            "winePairing": {
+                "pairedWines": [],
+                "pairingText": "",
+                "productMatches": []
+            },
+            "analyzedInstructions": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "number": 1,
+                            "step": "Blend all in a blender until very smooth. Enjoy!!",
+                            "ingredients": [],
+                            "equipment": [
+                                {
+                                    "id": 404726,
+                                    "name": "blender",
+                                    "image": "blender.png"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "vegetarian": false,
+            "vegan": false,
+            "glutenFree": true,
+            "dairyFree": false,
+            "veryHealthy": true,
+            "cheap": false,
+            "veryPopular": true,
+            "sustainable": false,
+            "weightWatcherSmartPoints": 2,
+            "gaps": "no",
+            "lowFodmap": false,
+            "ketogenic": false,
+            "whole30": false,
+            "preparationMinutes": 5,
+            "cookingMinutes": 0,
+            "sourceUrl": "http://www.bunsinmyoven.com/2015/03/23/low-carb-frosty-protein-shake/",
+            "spoonacularSourceUrl": "https://spoonacular.com/low-carb-frosty-812966",
+            "aggregateLikes": 8835,
+            "spoonacularScore": 100.0,
+            "healthScore": 100.0,
+            "creditsText": "Buns in My Oven",
+            "sourceName": "Buns in My Oven",
+            "pricePerServing": 142.83,
+            "id": 812966,
+            "title": "Low Carb Frosty",
+            "readyInMinutes": 5,
+            "servings": 1,
+            "image": "https://spoonacular.com/recipeImages/812966-312x231.jpg",
+            "imageType": "jpg",
+            "cuisines": [],
+            "dishTypes": [],
+            "diets": [
+                "gluten free"
+            ],
+            "occasions": [],
+            "winePairing": {},
+            "analyzedInstructions": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "number": 1,
+                            "step": "Add everything to a blender and process until smooth. Drink immediately or freezer for later.",
+                            "ingredients": [],
+                            "equipment": [
+                                {
+                                    "id": 404726,
+                                    "name": "blender",
+                                    "image": "blender.png"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "vegetarian": true,
+            "vegan": false,
+            "glutenFree": false,
+            "dairyFree": true,
+            "veryHealthy": true,
+            "cheap": false,
+            "veryPopular": true,
+            "sustainable": false,
+            "weightWatcherSmartPoints": 7,
+            "gaps": "no",
+            "lowFodmap": false,
+            "ketogenic": false,
+            "whole30": false,
+            "preparationMinutes": 5,
+            "cookingMinutes": 5,
+            "sourceUrl": "http://www.twopeasandtheirpod.com/avocado-toast-with-eggs-spinach-and-tomatoes/",
+            "spoonacularSourceUrl": "https://spoonacular.com/avocado-toast-with-eggs-spinach-and-tomatoes-818941",
+            "aggregateLikes": 142071,
+            "spoonacularScore": 100.0,
+            "healthScore": 95.0,
+            "creditsText": "Two Peas and Their Pod",
+            "sourceName": "Two Peas and Their Pod",
+            "pricePerServing": 160.46,
+            "id": 818941,
+            "title": "Avocado Toast with Eggs, Spinach, and Tomatoes",
+            "readyInMinutes": 10,
+            "servings": 1,
+            "image": "https://spoonacular.com/recipeImages/818941-312x231.jpg",
+            "imageType": "jpg",
+            "cuisines": [],
+            "dishTypes": [
+                "side dish"
+            ],
+            "diets": [
+                "dairy free",
+                "lacto ovo vegetarian"
+            ],
+            "occasions": [],
+            "winePairing": {
+                "pairedWines": [],
+                "pairingText": "",
+                "productMatches": []
+            },
+            "analyzedInstructions": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "number": 1,
+                            "step": "Spray a small skillet with non-stick cooking spray.",
+                            "ingredients": [],
+                            "equipment": [
+                                {
+                                    "id": 404645,
+                                    "name": "frying pan",
+                                    "image": "pan.png"
+                                }
+                            ]
+                        },
+                        {
+                            "number": 2,
+                            "step": "Add the shallot and spinach and cook over medium heat until spinach is wilted.",
+                            "ingredients": [
+                                {
+                                    "id": 11677,
+                                    "name": "shallot",
+                                    "image": "shallots.jpg"
+                                },
+                                {
+                                    "id": 10011457,
+                                    "name": "spinach",
+                                    "image": "spinach.jpg"
+                                }
+                            ],
+                            "equipment": []
+                        },
+                        {
+                            "number": 3,
+                            "step": "Place in a small bowl and set aside.Spray the pan again.",
+                            "ingredients": [],
+                            "equipment": [
+                                {
+                                    "id": 404783,
+                                    "name": "bowl",
+                                    "image": "bowl.jpg"
+                                },
+                                {
+                                    "id": 404645,
+                                    "name": "frying pan",
+                                    "image": "pan.png"
+                                }
+                            ]
+                        },
+                        {
+                            "number": 4,
+                            "step": "Pour beaten egg whites or egg into the pan and season with salt and black pepper, to taste. Cook over medium heat until soft-scrambled, about 2 minutes.Mash the avocado with a fork and spread evenly on piece of toast. Top the avocado toast with spinach, scrambled eggs, and tomato slices. Season with salt and pepper, to taste.",
+                            "ingredients": [
+                                {
+                                    "id": 1102047,
+                                    "name": "salt and pepper",
+                                    "image": "salt-and-pepper.jpg"
+                                },
+                                {
+                                    "id": 1124,
+                                    "name": "egg whites",
+                                    "image": "egg-white.jpg"
+                                },
+                                {
+                                    "id": 9037,
+                                    "name": "avocado",
+                                    "image": "avocado.jpg"
+                                },
+                                {
+                                    "id": 10011457,
+                                    "name": "spinach",
+                                    "image": "spinach.jpg"
+                                }
+                            ],
+                            "equipment": [
+                                {
+                                    "id": 404645,
+                                    "name": "frying pan",
+                                    "image": "pan.png"
+                                }
+                            ],
+                            "length": {
+                                "number": 2,
+                                "unit": "minutes"
+                            }
+                        },
+                        {
+                            "number": 5,
+                            "step": "Serve immediately.Note-to make this gluten-free, use gluten-free bread.",
+                            "ingredients": [],
+                            "equipment": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "vegetarian": false,
+            "vegan": false,
+            "glutenFree": true,
+            "dairyFree": false,
+            "veryHealthy": true,
+            "cheap": false,
+            "veryPopular": true,
+            "sustainable": false,
+            "weightWatcherSmartPoints": 8,
+            "gaps": "no",
+            "lowFodmap": false,
+            "ketogenic": false,
+            "whole30": false,
+            "preparationMinutes": 3,
+            "cookingMinutes": 1,
+            "sourceUrl": "http://www.wellplated.com/kale-pineapple-smoothie/",
+            "spoonacularSourceUrl": "https://spoonacular.com/kale-pineapple-smoothie-837136",
+            "aggregateLikes": 184372,
+            "spoonacularScore": 100.0,
+            "healthScore": 92.0,
+            "creditsText": "Well Plated",
+            "sourceName": "Well Plated",
+            "pricePerServing": 188.97,
+            "id": 837136,
+            "title": "Kale Pineapple Smoothie",
+            "readyInMinutes": 4,
+            "servings": 1,
+            "image": "https://spoonacular.com/recipeImages/837136-312x231.jpg",
+            "imageType": "jpg",
+            "cuisines": [],
+            "dishTypes": [],
+            "diets": [
+                "gluten free"
+            ],
+            "occasions": [],
+            "winePairing": {},
+            "analyzedInstructions": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "number": 1,
+                            "step": "Place all ingredients (kale, almond milk, banana, yogurt, pineapple, peanut butter, and honey) in a blender in the order listed. Blend until smooth.",
+                            "ingredients": [
+                                {
+                                    "id": 16098,
+                                    "name": "peanut butter",
+                                    "image": "peanut-butter.png"
+                                },
+                                {
+                                    "id": 93607,
+                                    "name": "almond milk",
+                                    "image": "almond-milk.png"
+                                },
+                                {
+                                    "id": 9266,
+                                    "name": "pineapple",
+                                    "image": "pineapple.jpg"
+                                },
+                                {
+                                    "id": 9040,
+                                    "name": "banana",
+                                    "image": "bananas.jpg"
+                                },
+                                {
+                                    "id": 19296,
+                                    "name": "honey",
+                                    "image": "honey.png"
+                                },
+                                {
+                                    "id": 11233,
+                                    "name": "kale",
+                                    "image": "kale.jpg"
+                                }
+                            ],
+                            "equipment": [
+                                {
+                                    "id": 404726,
+                                    "name": "blender",
+                                    "image": "blender.png"
+                                }
+                            ]
+                        },
+                        {
+                            "number": 2,
+                            "step": "Add more milk as needed to reach desired consistency. Enjoy immediately.",
+                            "ingredients": [],
+                            "equipment": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "offset": 0,
+    "number": 10,
+    "totalResults": 293728
+}
