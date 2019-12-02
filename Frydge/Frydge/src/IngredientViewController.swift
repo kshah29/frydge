@@ -53,20 +53,6 @@ class IngredientViewController: UIViewController {
         return button
     } ()
     
-    @objc private func plusButtonHandler(_ sender:UIButton!){
-        ingredient.amount += 1
-        amount.text = String(ingredient.amount)
-        pantryVC.getIngredientsList().increaseIngredientAmount(index: index)
-        if pantryVC.checkShowingShoppingList() {
-            pantryVC.getShoppingList().copy(other: pantryVC.getIngredientsList())
-        }
-        else{
-            pantryVC.getPantryList().copy(other: pantryVC.getIngredientsList())
-        }
-        pantryVC.collectionView?.reloadData()
-        view.reloadInputViews()
-    }
-    
     private let minusButton: UIButton = {
         let button = UIButton(type: .system)
         let image = UIImage(named: "minus_icon.png")
@@ -74,25 +60,6 @@ class IngredientViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     } ()
-    
-    @objc private func minusButtonHandler(_ sender:UIButton!){
-        if(ingredient.amount <= 1){
-            ingredient.amount = 1
-        }
-        else{
-            ingredient.amount -= 1
-        }
-        amount.text = String(ingredient.amount)
-        pantryVC.getIngredientsList().decreaseIngredientAmount(index: index)
-        if pantryVC.checkShowingShoppingList() {
-            pantryVC.getShoppingList().copy(other: pantryVC.getIngredientsList())
-        }
-        else{
-            pantryVC.getPantryList().copy(other: pantryVC.getIngredientsList())
-        }
-        pantryVC.collectionView?.reloadData()
-        view.reloadInputViews()
-    }
     
     private let deleteButton: UIButton = {
         let button = UIButton(type: .system)
@@ -102,11 +69,6 @@ class IngredientViewController: UIViewController {
         return button
     } ()
     
-    @objc private func deleteButtonHandler(_ sender:UIButton!){
-        pantryVC.removeIngredient(index: index)
-    }
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -152,6 +114,43 @@ class IngredientViewController: UIViewController {
         deleteButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 50.0).isActive = true
         deleteButton.addTarget(self, action: #selector(self.deleteButtonHandler(_:)), for: .touchUpInside)
         
+    }
+    
+    @objc private func plusButtonHandler(_ sender:UIButton!){
+        ingredient.amount += 1
+        amount.text = String(ingredient.amount)
+        pantryVC.getIngredientsList().increaseIngredientAmount(index: index)
+        if pantryVC.checkShowingShoppingList() {
+            pantryVC.getShoppingList().copy(other: pantryVC.getIngredientsList())
+        }
+        else{
+            pantryVC.getPantryList().copy(other: pantryVC.getIngredientsList())
+        }
+        pantryVC.collectionView?.reloadData()
+        view.reloadInputViews()
+    }
+    
+    @objc private func minusButtonHandler(_ sender:UIButton!){
+        if(ingredient.amount <= 1){
+            ingredient.amount = 1
+        }
+        else{
+            ingredient.amount -= 1
+        }
+        amount.text = String(ingredient.amount)
+        pantryVC.getIngredientsList().decreaseIngredientAmount(index: index)
+        if pantryVC.checkShowingShoppingList() {
+            pantryVC.getShoppingList().copy(other: pantryVC.getIngredientsList())
+        }
+        else{
+            pantryVC.getPantryList().copy(other: pantryVC.getIngredientsList())
+        }
+        pantryVC.collectionView?.reloadData()
+        view.reloadInputViews()
+    }
+    
+    @objc private func deleteButtonHandler(_ sender:UIButton!){
+        pantryVC.removeIngredient(index: index)
     }
 }
     

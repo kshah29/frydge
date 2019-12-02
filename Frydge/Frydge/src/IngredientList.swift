@@ -7,8 +7,13 @@
 //
 
 class IngredientList {
-    var ingredientList: [Ingredient] = []
-    var selectedList: [Bool] = []
+    private var ingredientList: [Ingredient] = []
+    private var selectedList: [Bool] = []
+    
+    func copy(other: IngredientList){
+        ingredientList = other.ingredientList
+        selectedList = other.selectedList
+    }
     
     func getIngredientsListForSearch() -> [String]{
         var ingredientsListOfNames: [String] = []
@@ -18,17 +23,8 @@ class IngredientList {
         return ingredientsListOfNames
     }
     
-    func decreaseIngredientAmount(index:Int){
-        if ingredientList[index].amount <= 1 {
-            ingredientList[index].amount = 1
-        }
-        else{
-            ingredientList[index].amount -= 1
-        }
-    }
-    
-    func increaseIngredientAmount(index:Int){
-        ingredientList[index].amount += 1
+    func getIngredient(index: Int) -> Ingredient{
+        return ingredientList[index]
     }
     
     func getIngredientName(index: Int) -> String{
@@ -39,18 +35,31 @@ class IngredientList {
         return ingredientList[index].amount
     }
     
-    func getIngredient(index: Int) -> Ingredient{
-        return ingredientList[index]
-    }
-    
     func getSelect(index: Int) -> Bool{
         return selectedList[index]
+    }
+    
+    func getSelectedIngredients() -> IngredientList{
+        let selectedIngredientList = IngredientList()
+        if ingredientList.count == 0{
+            return selectedIngredientList
+        }
+        for i in 0..<(ingredientList.count){
+            if selectedList[i] == true {
+                selectedIngredientList.addIngredient(ingredient: ingredientList[i])
+            }
+        }
+        return selectedIngredientList
+    }
+    
+    func anySelected() -> Bool {
+        return selectedList.contains(true)
     }
     
     func switchSelect(index:Int){
         selectedList[index] = !selectedList[index]
     }
-    
+
     func addIngredient(ingredient: Ingredient){
         ingredientList.append(ingredient)
         selectedList.append(false)
@@ -73,27 +82,21 @@ class IngredientList {
         selectedList.removeAll(where: { $0 == true })
     }
     
-    
     func ingredientListCount() -> Int{
         return ingredientList.count
     }
     
-    func getSelectedIngredients() -> IngredientList{
-        let selectedIngredientList = IngredientList()
-        if ingredientList.count == 0{
-            return selectedIngredientList
-        }
-        for i in 0..<(ingredientList.count){
-            if selectedList[i] == true {
-                selectedIngredientList.addIngredient(ingredient: ingredientList[i])
-            }
-        }
-        return selectedIngredientList
+    func increaseIngredientAmount(index:Int){
+        ingredientList[index].amount += 1
     }
     
-    func copy(other: IngredientList){
-        ingredientList = other.ingredientList
-        selectedList = other.selectedList
+    func decreaseIngredientAmount(index:Int){
+        if ingredientList[index].amount <= 1 {
+            ingredientList[index].amount = 1
+        }
+        else{
+            ingredientList[index].amount -= 1
+        }
     }
     
 }

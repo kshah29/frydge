@@ -145,7 +145,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     }
     
     func showHeader(){
-        if ingredientsList.selectedList.contains(true){
+        if ingredientsList.anySelected(){
             header?.selectedMode()
         }
         else{
