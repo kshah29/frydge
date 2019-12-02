@@ -95,13 +95,15 @@ class LoginViewController: UIViewController {
         let userInput = loginCard.userField.text
         let passInput = loginCard.passField.text
         if userInput != "" && passInput != "" {
-            if let userList = validLogins["Users"] as? [[String:String]] {
+            if let userList = validLogins["Users"] as? [[String:Any]] {
                 for user in userList {
-                    if user["Username"] == userInput && user["Password"] == passInput {
-                        handleSuccessfulLogin(loginCompletion: {
-                            self.loginCard.stopActivityIndicator()
-                        })
-                        return
+                    if let username = user["Username"] as? String, let password = user["Password"] as? String {
+                        if username == userInput && password == passInput {
+                            handleSuccessfulLogin(username: username, userList: userList, loginCompletion: {
+                                self.loginCard.stopActivityIndicator()
+                            })
+                            return
+                        }
                     }
                 }
                 // Did not find a matching login
@@ -115,7 +117,8 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func handleSuccessfulLogin(loginCompletion: @escaping () -> ()) {
+    func handleSuccessfulLogin(username: String, userList: [[String : Any]], loginCompletion: @escaping () -> ()) {
+        PersonalData.setPersonalDataFromSuccessfulLogin(username: username)
         let mainVC = MainTabBarController()
         self.navigationController?.pushViewController(viewController: mainVC, animated: true, completion: {
             loginCompletion()
@@ -320,6 +323,62 @@ func readPropertyList(path: String) -> [String:AnyObject]? {
         print("Error reading plist: \(error), format: \(propertyListFormat)")
         return nil
     }
+}
+
+// From https://github.com/soonin/IOS-Swift-PlistReadAndWrite/blob/master/IOS-Swift-PlistReadAndWrite/PlistReadAndWrite.swift
+func writePlist(namePlist: String, key: String, data: AnyObject){
+    let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
+    let documentsDirectory = paths.object(at: 0) as! NSString
+    let path = documentsDirectory.appendingPathComponent(namePlist+".plist")
+    
+    if let dict = NSMutableDictionary(contentsOfFile: path){
+        dict.setObject(data, forKey: key as NSCopying)
+        if dict.write(toFile: path, atomically: true){
+            print("plist_write")
+        }else{
+            print("plist_write_error")
+        }
+    }else{
+        if let privPath = Bundle.main.path(forResource: namePlist, ofType: "plist"){
+            if let dict = NSMutableDictionary(contentsOfFile: privPath){
+                dict.setObject(data, forKey: key as NSCopying)
+                if dict.write(toFile: path, atomically: true){
+                    print("plist_write")
+                }else{
+                    print("plist_write_error")
+                }
+            }else{
+                print("plist_write")
+            }
+        }else{
+            print("error_find_plist")
+        }
+    }
+}
+func readPlist(namePlist: String, key: String) -> AnyObject{
+    let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
+    let documentsDirectory = paths.object(at: 0) as! NSString
+    let path = documentsDirectory.appendingPathComponent(namePlist+".plist")
+    
+    var output:AnyObject = false as AnyObject
+    
+    if let dict = NSMutableDictionary(contentsOfFile: path){
+        output = dict.object(forKey: key)! as AnyObject
+    }else{
+        if let privPath = Bundle.main.path(forResource: namePlist, ofType: "plist"){
+            if let dict = NSMutableDictionary(contentsOfFile: privPath){
+                output = dict.object(forKey: key)! as AnyObject
+            }else{
+                output = false as AnyObject
+                print("error_read")
+            }
+        }else{
+            output = false as AnyObject
+            print("error_read")
+        }
+    }
+//    print("plist_read \(output)")
+    return output
 }
 
 extension UINavigationController {

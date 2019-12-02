@@ -9,36 +9,246 @@
 			<string>iancostello</string>
 			<key>Password</key>
 			<string>password</string>
+			<key>Personal Data</key>
+			<dict>
+				<key>Name</key>
+				<string>Ian Costello</string>
+				<key>Date Joined</key>
+				<string>December 2, 2019</string>
+				<key>Dietary Restrictions</key>
+				<dict>
+					<key>Vegan</key>
+					<false/>
+					<key>Vegetarian</key>
+					<false/>
+					<key>Paleo</key>
+					<false/>
+				</dict>
+				<key>Allergies</key>
+				<dict>
+					<key>Dairy</key>
+					<false/>
+					<key>Egg</key>
+					<false/>
+					<key>Gluten</key>
+					<false/>
+					<key>Peanut</key>
+					<false/>
+					<key>Wheat</key>
+					<false/>
+					<key>Shellfish</key>
+					<false/>
+					<key>Sugar</key>
+					<false/>
+				</dict>
+			</dict>
+			<key>Favorites</key>
+			<array/>
 		</dict>
 		<dict>
 			<key>Username</key>
 			<string>meganhong</string>
 			<key>Password</key>
 			<string>password</string>
+			<key>Personal Data</key>
+			<dict>
+				<key>Name</key>
+				<string>Megan Hong</string>
+				<key>Date Joined</key>
+				<string>December 2, 2019</string>
+				<key>Dietary Restrictions</key>
+				<dict>
+					<key>Vegan</key>
+					<false/>
+					<key>Vegetarian</key>
+					<false/>
+					<key>Paleo</key>
+					<false/>
+				</dict>
+				<key>Allergies</key>
+				<dict>
+					<key>Dairy</key>
+					<false/>
+					<key>Egg</key>
+					<false/>
+					<key>Gluten</key>
+					<false/>
+					<key>Peanut</key>
+					<false/>
+					<key>Wheat</key>
+					<false/>
+					<key>Shellfish</key>
+					<false/>
+					<key>Sugar</key>
+					<false/>
+				</dict>
+			</dict>
+			<key>Favorites</key>
+			<array/>
 		</dict>
 		<dict>
 			<key>Username</key>
 			<string>davidlee</string>
 			<key>Password</key>
 			<string>password</string>
+			<key>Personal Data</key>
+			<dict>
+				<key>Name</key>
+				<string>David Lee</string>
+				<key>Date Joined</key>
+				<string>December 2, 2019</string>
+				<key>Dietary Restrictions</key>
+				<dict>
+					<key>Vegan</key>
+					<false/>
+					<key>Vegetarian</key>
+					<false/>
+					<key>Paleo</key>
+					<false/>
+				</dict>
+				<key>Allergies</key>
+				<dict>
+					<key>Dairy</key>
+					<false/>
+					<key>Egg</key>
+					<false/>
+					<key>Gluten</key>
+					<false/>
+					<key>Peanut</key>
+					<false/>
+					<key>Wheat</key>
+					<false/>
+					<key>Shellfish</key>
+					<false/>
+					<key>Sugar</key>
+					<false/>
+				</dict>
+			</dict>
+			<key>Favorites</key>
+			<array/>
 		</dict>
 		<dict>
 			<key>Username</key>
 			<string>natashasarkar</string>
 			<key>Password</key>
 			<string>password</string>
+			<key>Personal Data</key>
+			<dict>
+				<key>Name</key>
+				<string>Natasha Sarkar</string>
+				<key>Date Joined</key>
+				<string>December 2, 2019</string>
+				<key>Dietary Restrictions</key>
+				<dict>
+					<key>Vegan</key>
+					<false/>
+					<key>Vegetarian</key>
+					<false/>
+					<key>Paleo</key>
+					<false/>
+				</dict>
+				<key>Allergies</key>
+				<dict>
+					<key>Dairy</key>
+					<false/>
+					<key>Egg</key>
+					<false/>
+					<key>Gluten</key>
+					<false/>
+					<key>Peanut</key>
+					<false/>
+					<key>Wheat</key>
+					<false/>
+					<key>Shellfish</key>
+					<false/>
+					<key>Sugar</key>
+					<false/>
+				</dict>
+			</dict>
+			<key>Favorites</key>
+			<array/>
 		</dict>
 		<dict>
 			<key>Username</key>
 			<string>kanishashah</string>
 			<key>Password</key>
 			<string>password</string>
+			<key>Personal Data</key>
+			<dict>
+				<key>Name</key>
+				<string>Kanisha Shah</string>
+				<key>Date Joined</key>
+				<string>December 2, 2019</string>
+				<key>Dietary Restrictions</key>
+				<dict>
+					<key>Vegan</key>
+					<false/>
+					<key>Vegetarian</key>
+					<false/>
+					<key>Paleo</key>
+					<false/>
+				</dict>
+				<key>Allergies</key>
+				<dict>
+					<key>Dairy</key>
+					<false/>
+					<key>Egg</key>
+					<false/>
+					<key>Gluten</key>
+					<false/>
+					<key>Peanut</key>
+					<false/>
+					<key>Wheat</key>
+					<false/>
+					<key>Shellfish</key>
+					<false/>
+					<key>Sugar</key>
+					<false/>
+				</dict>
+			</dict>
+			<key>Favorites</key>
+			<array/>
 		</dict>
 		<dict>
 			<key>Username</key>
 			<string>briannatanusi</string>
 			<key>Password</key>
 			<string>password</string>
+			<key>Personal Data</key>
+			<dict>
+				<key>Name</key>
+				<string>Brianna Tanusi</string>
+				<key>Date Joined</key>
+				<string>December 2, 2019</string>
+				<key>Dietary Restrictions</key>
+				<dict>
+					<key>Vegan</key>
+					<false/>
+					<key>Vegetarian</key>
+					<false/>
+					<key>Paleo</key>
+					<false/>
+				</dict>
+				<key>Allergies</key>
+				<dict>
+					<key>Dairy</key>
+					<false/>
+					<key>Egg</key>
+					<false/>
+					<key>Gluten</key>
+					<false/>
+					<key>Peanut</key>
+					<false/>
+					<key>Wheat</key>
+					<false/>
+					<key>Shellfish</key>
+					<false/>
+					<key>Sugar</key>
+					<false/>
+				</dict>
+			</dict>
+			<key>Favorites</key>
+			<array/>
 		</dict>
 	</array>
 </dict>
