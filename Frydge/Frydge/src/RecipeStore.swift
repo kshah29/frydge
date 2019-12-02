@@ -43,6 +43,7 @@ class RecipeStore{
         }
         guard let recipes = userRecipes else { return }
         
+        recipeList = []
         self.username = username
         for recipe in recipes {
             if let r_id = recipe["id"] as? Int, let r_title = recipe["title"] as? String, let r_process = recipe["process"] as? [String] {
