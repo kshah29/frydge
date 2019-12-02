@@ -22,6 +22,8 @@
 		4F1F9889237E862D00B810E9 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F04DBA8237E2F4E0047083F /* RecipeViewController.swift */; };
 		4F1F988A237E862D00B810E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EEE952373E0E5000319CE /* SceneDelegate.swift */; };
 		4F1F988B237E862D00B810E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EEE972373E0E5000319CE /* ViewController.swift */; };
+		4F1F988F238FC88900B810E9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F988E238FC88900B810E9 /* LoginViewController.swift */; };
+		4F1F9891238FDED800B810E9 /* ExampleUsers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F1F9890238FDED800B810E9 /* ExampleUsers.plist */; };
 		4F5EEE942373E0E5000319CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EEE932373E0E5000319CE /* AppDelegate.swift */; };
 		4F5EEE962373E0E5000319CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EEE952373E0E5000319CE /* SceneDelegate.swift */; };
 		4F5EEE982373E0E5000319CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EEE972373E0E5000319CE /* ViewController.swift */; };
@@ -68,6 +70,8 @@
 		3A0F9040237E379D00CF6A1B /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		4F04DBA8237E2F4E0047083F /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		4F0D98CF237E6ADA00ECCB6B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4F1F988E238FC88900B810E9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4F1F9890238FDED800B810E9 /* ExampleUsers.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ExampleUsers.plist; sourceTree = "<group>"; };
 		4F5EEE902373E0E5000319CE /* Frydge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frydge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F5EEE932373E0E5000319CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F5EEE952373E0E5000319CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 			children = (
 				4F5EEE932373E0E5000319CE /* AppDelegate.swift */,
 				A705FA98237CBDA600C7520F /* CookbookViewController.swift */,
+				4F1F9890238FDED800B810E9 /* ExampleUsers.plist */,
 				4F5EEEAA2373E19F000319CE /* MainTabBarController.swift */,
 				82621004237E41A800C1D3ED /* PantryViewController.swift */,
 				82EAE59F238DB56400DC98DF /* PantryCells.swift */,
@@ -165,6 +170,7 @@
 				9E60AF32237CD2D500FB7D44 /* RecipeStore.swift */,
 				4F04DBA8237E2F4E0047083F /* RecipeViewController.swift */,
 				4F5EEE952373E0E5000319CE /* SceneDelegate.swift */,
+				4F1F988E238FC88900B810E9 /* LoginViewController.swift */,
 				4F5EEE972373E0E5000319CE /* ViewController.swift */,
 				A705FAB1237D013000C7520F /* HeaderView.xib */,
 				4F5EEEAC2373E30A000319CE /* Main.storyboard */,
@@ -289,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A705FAB2237D013000C7520F /* HeaderView.xib in Resources */,
+				4F1F9891238FDED800B810E9 /* ExampleUsers.plist in Resources */,
 				4F5EEEAD2373E30A000319CE /* Main.storyboard in Resources */,
 				A705FACE2390E05300C7520F /* heart.png in Resources */,
 				A705FAD02390E0F900C7520F /* user.png in Resources */,
@@ -330,6 +337,7 @@
 				4F04DBA9237E2F4E0047083F /* RecipeViewController.swift in Sources */,
 				82EAE59E238DB52F00DC98DF /* IngredientList.swift in Sources */,
 				3A05489A237D54F700B44E35 /* ProfileViewController.swift in Sources */,
+				4F1F988F238FC88900B810E9 /* LoginViewController.swift in Sources */,
 				82EAE5A0238DB56400DC98DF /* PantryCells.swift in Sources */,
 				4F5EEE962373E0E5000319CE /* SceneDelegate.swift in Sources */,
 				9E60AF33237CD2D500FB7D44 /* RecipeStore.swift in Sources */,
