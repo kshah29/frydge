@@ -116,4 +116,14 @@ class CookbookViewController: UIViewController {
         header.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 64.0).isActive = true
         
         }
+ 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        for view in view.subviews {
+            if let scroll = view as? UIScrollView {
+                scroll.setContentOffset(.zero, animated: false)
+            }
+        }
+    }
  }
