@@ -12,8 +12,8 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     
     private var showingShoppingList = true
     private var ingredientsList = IngredientList()
-    private var shoppingList = IngredientList()
-    private var pantryList = IngredientList()
+    public var shoppingList = IngredientList()
+    public var pantryList = IngredientList()
     private var header : PantryListHeader?
     
     public func checkShowingShoppingList() -> Bool{

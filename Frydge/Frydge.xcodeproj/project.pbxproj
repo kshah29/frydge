@@ -37,6 +37,9 @@
 		82EAE5A0238DB56400DC98DF /* PantryCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EAE59F238DB56400DC98DF /* PantryCells.swift */; };
 		9E60AF31237CD27D00FB7D44 /* PersonalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60AF30237CD27D00FB7D44 /* PersonalData.swift */; };
 		9E60AF33237CD2D500FB7D44 /* RecipeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60AF32237CD2D500FB7D44 /* RecipeStore.swift */; };
+		9EDA9F972394B2360075DD0A /* IngredientList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EAE59D238DB52F00DC98DF /* IngredientList.swift */; };
+		9EDA9F982394B23A0075DD0A /* IngredientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EAE599238A31A800DC98DF /* IngredientViewController.swift */; };
+		9EDA9F992394B2610075DD0A /* PantryCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EAE59F238DB56400DC98DF /* PantryCells.swift */; };
 		A705FA9A237CC1B300C7520F /* CookbookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A705FA98237CBDA600C7520F /* CookbookViewController.swift */; };
 		A705FAB2237D013000C7520F /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A705FAB1237D013000C7520F /* HeaderView.xib */; };
 		A705FAB7237DDC6700C7520F /* Comfortaa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A705FAB6237DDC6700C7520F /* Comfortaa.ttf */; };
@@ -345,10 +348,13 @@
 				4F1F9885237E862D00B810E9 /* ProfileViewController.swift in Sources */,
 				4F1F9886237E862D00B810E9 /* Recipe.swift in Sources */,
 				4F1F9887237E862D00B810E9 /* RecipeSearchViewController.swift in Sources */,
+				9EDA9F972394B2360075DD0A /* IngredientList.swift in Sources */,
 				4F1F9888237E862D00B810E9 /* RecipeStore.swift in Sources */,
 				4F1F9889237E862D00B810E9 /* RecipeViewController.swift in Sources */,
 				4F1F988A237E862D00B810E9 /* SceneDelegate.swift in Sources */,
 				4F1F988B237E862D00B810E9 /* ViewController.swift in Sources */,
+				9EDA9F992394B2610075DD0A /* PantryCells.swift in Sources */,
+				9EDA9F982394B23A0075DD0A /* IngredientViewController.swift in Sources */,
 				A705FABD237E491300C7520F /* FrydgeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

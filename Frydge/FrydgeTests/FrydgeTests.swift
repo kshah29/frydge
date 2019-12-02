@@ -85,4 +85,9 @@ class FrydgeTests: XCTestCase {
         
         XCTAssertEqual(favoritedRecipes[0].title, "Recipe Title 1")
     }
+    
+    func testMakeRequest (){
+        
+    }
+    
 }
