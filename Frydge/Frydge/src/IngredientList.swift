@@ -79,7 +79,7 @@ class IngredientList {
     }
     
     func getSelectedIngredients() -> IngredientList{
-        var selectedIngredientList = IngredientList()
+        let selectedIngredientList = IngredientList()
         if ingredientList.count == 0{
             return selectedIngredientList
         }

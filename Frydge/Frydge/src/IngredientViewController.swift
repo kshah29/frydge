@@ -7,11 +7,9 @@ import UIKit
 
 class IngredientViewController: UIViewController {
     
-    var ingredient: Ingredient
-    var pantryVC: PantryViewController
-    var index: Int
-    var backgroundImage: UIImageView?
-    var titleView: UIView?
+    private var ingredient: Ingredient
+    private var pantryVC: PantryViewController
+    private var index: Int
     
     init(input: Ingredient, pantry: PantryViewController, index: Int) {
         self.ingredient = input
@@ -24,7 +22,7 @@ class IngredientViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let header: UILabel = {
+    private let header: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.text = "Sample Text"
@@ -34,7 +32,7 @@ class IngredientViewController: UIViewController {
         return label
     }()
     
-    let amount: UILabel = {
+    private let amount: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.text = "1"
@@ -44,7 +42,7 @@ class IngredientViewController: UIViewController {
         return label
     }()
     
-    let plusButton: UIButton = {
+    private let plusButton: UIButton = {
         let button = UIButton(type: .system)
         button.layer.cornerRadius = button.frame.size.height/2
         button.clipsToBounds = true
@@ -55,21 +53,21 @@ class IngredientViewController: UIViewController {
         return button
     } ()
     
-    @objc func plusButtonHandler(_ sender:UIButton!){
+    @objc private func plusButtonHandler(_ sender:UIButton!){
         ingredient.amount += 1
         amount.text = String(ingredient.amount)
-        pantryVC.ingredients.increaseIngredientAmount(index: index)
-        if pantryVC.isShoppingList {
-            shoppingList.copy(other: pantryVC.ingredients)
+        pantryVC.getIngredientsList().increaseIngredientAmount(index: index)
+        if pantryVC.checkShowingShoppingList() {
+            pantryVC.getShoppingList().copy(other: pantryVC.getIngredientsList())
         }
         else{
-            pantryList.copy(other: pantryVC.ingredients)
+            pantryVC.getPantryList().copy(other: pantryVC.getIngredientsList())
         }
         pantryVC.collectionView?.reloadData()
         view.reloadInputViews()
     }
     
-    let minusButton: UIButton = {
+    private let minusButton: UIButton = {
         let button = UIButton(type: .system)
         let image = UIImage(named: "minus_icon.png")
         button.setBackgroundImage(image, for: .normal)
@@ -77,7 +75,7 @@ class IngredientViewController: UIViewController {
         return button
     } ()
     
-    @objc func minusButtonHandler(_ sender:UIButton!){
+    @objc private func minusButtonHandler(_ sender:UIButton!){
         if(ingredient.amount <= 1){
             ingredient.amount = 1
         }
@@ -85,18 +83,18 @@ class IngredientViewController: UIViewController {
             ingredient.amount -= 1
         }
         amount.text = String(ingredient.amount)
-        pantryVC.ingredients.decreaseIngredientAmount(index: index)
-        if pantryVC.isShoppingList {
-            shoppingList.copy(other: pantryVC.ingredients)
+        pantryVC.getIngredientsList().decreaseIngredientAmount(index: index)
+        if pantryVC.checkShowingShoppingList() {
+            pantryVC.getShoppingList().copy(other: pantryVC.getIngredientsList())
         }
         else{
-            pantryList.copy(other: pantryVC.ingredients)
+            pantryVC.getPantryList().copy(other: pantryVC.getIngredientsList())
         }
         pantryVC.collectionView?.reloadData()
         view.reloadInputViews()
     }
     
-    let deleteButton: UIButton = {
+    private let deleteButton: UIButton = {
         let button = UIButton(type: .system)
         let image = UIImage(named: "trash_icon.png")
         button.setBackgroundImage(image, for: .normal)
@@ -104,9 +102,8 @@ class IngredientViewController: UIViewController {
         return button
     } ()
     
-    @objc func deleteButtonHandler(_ sender:UIButton!){
+    @objc private func deleteButtonHandler(_ sender:UIButton!){
         pantryVC.removeIngredient(index: index)
-        pantryVC.collectionView?.reloadData()
     }
     
 
@@ -132,30 +129,25 @@ class IngredientViewController: UIViewController {
         NSLayoutConstraint.activate(list)
         header.text = ingredient.name
         view.addSubview(header)
-        //header.translatesAutoresizingMaskIntoConstraints = false
         header.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0.0).isActive = true
         header.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -250.0).isActive = true
         
         amount.text = String(ingredient.amount)
         view.addSubview(amount)
-        //amount.translatesAutoresizingMaskIntoConstraints = false
         amount.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0.0).isActive = true
         amount.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -100.0).isActive = true
         
         view.addSubview(plusButton)
-        //plusButton.translatesAutoresizingMaskIntoConstraints = false
         plusButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 100.0).isActive = true
         plusButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -100.0).isActive = true
         plusButton.addTarget(self, action: #selector(self.plusButtonHandler(_:)), for: .touchUpInside)
         
         view.addSubview(minusButton)
-        //minusButton.translatesAutoresizingMaskIntoConstraints = false
         minusButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: -100.0).isActive = true
         minusButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -100.0).isActive = true
         minusButton.addTarget(self, action: #selector(self.minusButtonHandler(_:)), for: .touchUpInside)
         
         view.addSubview(deleteButton)
-       // deleteButton.translatesAutoresizingMaskIntoConstraints = false
         deleteButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0.0).isActive = true
         deleteButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 50.0).isActive = true
         deleteButton.addTarget(self, action: #selector(self.deleteButtonHandler(_:)), for: .touchUpInside)
