@@ -12,7 +12,7 @@ class PantryListHeader: BaseCell {
     
     var pantryViewController: PantryViewController?
 
-    let title: UILabel = {
+    private let title: UILabel = {
         let label = UILabel()
         label.text = "Ingredients"
         label.font = UIFont(name: "Comfortaa", size: 42)
@@ -20,7 +20,7 @@ class PantryListHeader: BaseCell {
         return label
     }()
     
-    let ingredientNameTextField: UITextField = {
+    private let ingredientNameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter Ingredient Name"
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -28,7 +28,7 @@ class PantryListHeader: BaseCell {
         return textField
     }()
     
-    let addIngredientButton: UIButton = {
+    private let addIngredientButton: UIButton = {
         let button = UIButton(type: .system)
         let image = UIImage(named: "add_icon.png")
         button.setBackgroundImage(image, for: .normal)
@@ -36,7 +36,7 @@ class PantryListHeader: BaseCell {
         return button
     } ()
     
-    let shoppingListButton: UIButton = {
+    private let shoppingListButton: UIButton = {
         let button = UIButton(type: .system)
         button.layer.borderWidth = 2
         button.layer.borderColor = UIColor.black.cgColor
@@ -48,7 +48,7 @@ class PantryListHeader: BaseCell {
         return button
     } ()
     
-    let pantryListButton: UIButton = {
+    private let pantryListButton: UIButton = {
         let button = UIButton(type: .system)
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0).cgColor
@@ -60,7 +60,7 @@ class PantryListHeader: BaseCell {
         return button
     } ()
     
-    let moveButton: UIButton = {
+    private let moveButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitle("MOVE ITEM(S) TO PANTRY LIST", for: .normal)
         button.setTitle("MOVE ITEM(S) TO SHOPPING LIST", for: .selected)
@@ -75,7 +75,7 @@ class PantryListHeader: BaseCell {
         return button
     } ()
     
-    let searchButton: UIButton = {
+    private let searchButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("SEARCH WITH ITEM(S)", for: .normal)
         button.layer.borderWidth = 1
@@ -89,7 +89,6 @@ class PantryListHeader: BaseCell {
     } ()
     
     override func setupViews(){
-        
         addSubview(title)
         addSubview(shoppingListButton)
         addSubview(pantryListButton)
@@ -101,7 +100,7 @@ class PantryListHeader: BaseCell {
         shoppingListButton.addTarget(self, action: #selector(PantryListHeader.showShoppingList(_:)), for: .touchUpInside)
         pantryListButton.addTarget(self, action: #selector(PantryListHeader.showPantryList(_:)), for: .touchUpInside)
         addIngredientButton.addTarget(self, action: #selector(PantryListHeader.addIngredient(_:)), for: .touchUpInside)
-        moveButton.addTarget(self, action: #selector(PantryListHeader.move(_:)), for: .touchUpInside)
+        moveButton.addTarget(self, action: #selector(PantryListHeader.moveIngredients(_:)), for: .touchUpInside)
         searchButton.addTarget(self, action: #selector(PantryListHeader.search(_:)), for: .touchUpInside)
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-10-[v1(30)]-22-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":ingredientNameTextField, "v1":addIngredientButton ]))
@@ -121,7 +120,7 @@ class PantryListHeader: BaseCell {
         
     }
     
-    @objc func addIngredient(_ sender:UIButton!){
+    @objc private func addIngredient(_ sender:UIButton!){
         if ingredientNameTextField.text!.isEmpty{
             return
         }
@@ -129,7 +128,7 @@ class PantryListHeader: BaseCell {
         ingredientNameTextField.text = ""
     }
     
-    @objc func showShoppingList(_ sender:UIButton!){
+    @objc private func showShoppingList(_ sender:UIButton!){
         if !moveButton.isSelected{
             return
         }
@@ -141,7 +140,7 @@ class PantryListHeader: BaseCell {
         pantryViewController?.showShoppingList()
     }
     
-    @objc func showPantryList(_ sender:UIButton!){
+    @objc private func showPantryList(_ sender:UIButton!){
         if moveButton.isSelected{
             return
         }
@@ -153,11 +152,11 @@ class PantryListHeader: BaseCell {
         pantryViewController?.showPantryList()
     }
     
-    @objc func move(_ sender:UIButton!){
-        pantryViewController?.move()
+    @objc private func moveIngredients(_ sender:UIButton!){
+        pantryViewController?.moveIngredients()
     }
     
-    @objc func search(_ sender:UIButton!){
+    @objc private func search(_ sender:UIButton!){
         pantryViewController?.searchWithPantry()
     }
     
@@ -190,7 +189,11 @@ class PantryListCell: BaseCell {
     
     var pantryViewController: PantryViewController?
     
-    var listIndex: Int = 0
+    private var listIndex: Int = 0
+    
+    func setListIndex(index: Int){
+        listIndex = index
+    }
 
     let nameLabel: UILabel = {
         let label = UILabel()
@@ -201,7 +204,7 @@ class PantryListCell: BaseCell {
         return label
     }()
     
-    let optionsButton: UIButton = {
+    private let optionsButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         let image = UIImage(named: "options_icon.png")
@@ -235,10 +238,10 @@ class PantryListCell: BaseCell {
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-12-[v0(25)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":selectIngredientButton]))
     }
     
-    @objc func optionsIngredient(_ sender:UIButton!){
+    @objc private func optionsIngredient(_ sender:UIButton!){
         pantryViewController?.showIngredientViewController(index: listIndex)
     }
-    @objc func selectIngredient(_ sender:UIButton!){
+    @objc private func selectIngredient(_ sender:UIButton!){
         if selectIngredientButton.isSelected == true {
             selectIngredientButton.isSelected = false
         }

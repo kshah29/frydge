@@ -8,14 +8,29 @@
 
 import UIKit
 
-var shoppingList = IngredientList()
-var pantryList = IngredientList()
-
 class PantryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var isShoppingList = true
-    var ingredients = IngredientList()
-    var header : PantryListHeader?
+    private var showingShoppingList = true
+    private var ingredientsList = IngredientList()
+    public var shoppingList = IngredientList()
+    public var pantryList = IngredientList()
+    private var header : PantryListHeader?
+    
+    public func checkShowingShoppingList() -> Bool{
+        return showingShoppingList
+    }
+    
+    public func getIngredientsList() -> IngredientList{
+        return ingredientsList
+    }
+    
+    public func getShoppingList() -> IngredientList{
+        return shoppingList
+    }
+    
+    public func getPantryList() -> IngredientList{
+        return pantryList
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +56,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ingredients.ingredientListCount()
+        return ingredientsList.ingredientListCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -55,10 +70,10 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     //display list
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! PantryListCell
-        listCell.nameLabel.text = ingredients.getIngredientName(index:indexPath.item) + " - " + String(ingredients.getIngredientAmount(index: indexPath.item))
+        listCell.nameLabel.text = ingredientsList.getIngredientName(index:indexPath.item) + " - " + String(ingredientsList.getIngredientAmount(index: indexPath.item))
         listCell.pantryViewController = self
-        listCell.listIndex = indexPath.item
-        listCell.selectIngredientButton.isSelected = ingredients.getSelect(index: indexPath.item)
+        listCell.setListIndex(index: indexPath.item)
+        listCell.selectIngredientButton.isSelected = ingredientsList.getSelect(index: indexPath.item)
         return listCell
     }
     
@@ -68,7 +83,7 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     
     //display header
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! PantryListHeader
+        header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as? PantryListHeader
         header?.pantryViewController = self
         header?.backgroundColor = UIColor.white
         return header!
@@ -80,27 +95,27 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     
     //change lists
     func addNewIngredient(ingredientName: String){
-        if(isShoppingList){
+        if(showingShoppingList){
             shoppingList.addIngredient(ingredient: Ingredient(name: ingredientName, amount: 1))
-            ingredients.copy(other: shoppingList)
+            ingredientsList.copy(other: shoppingList)
         }
         else{
             pantryList.addIngredient(ingredient: Ingredient(name: ingredientName, amount: 1))
-            ingredients.copy(other: pantryList)
+            ingredientsList.copy(other: pantryList)
         }
         collectionView?.reloadData()
     }
     
-    func move(){
+    func moveIngredients(){
         //if we're currently looking at shopping list
-        if(isShoppingList){
+        if(showingShoppingList){
             for i in 0..<(shoppingList.ingredientListCount()){
                 if shoppingList.getSelect(index: i){
                     pantryList.addIngredient(ingredient: shoppingList.getIngredient(index: i))
                 }
             }
             shoppingList.removeSelectedIngredients()
-            ingredients.copy(other: shoppingList)
+            ingredientsList.copy(other: shoppingList)
         }
         else{
             for i in 0..<(pantryList.ingredientListCount()){
@@ -109,27 +124,28 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
                 }
             }
             pantryList.removeSelectedIngredients()
-            ingredients.copy(other: pantryList)
+            ingredientsList.copy(other: pantryList)
         }
         showHeader()
         collectionView?.reloadData()
     }
     
     func removeIngredient(index: Int){
-        if(isShoppingList){
+        if(showingShoppingList){
             shoppingList.removeIngredient(index: index)
-            ingredients.copy(other: shoppingList)
+            ingredientsList.copy(other: shoppingList)
         }
         else{
             pantryList.removeIngredient(index: index)
-            ingredients.copy(other: pantryList)
+            ingredientsList.copy(other: pantryList)
         }
+        showHeader()
         collectionView?.reloadData()
         dismiss(animated: true, completion: nil)
     }
     
     func showHeader(){
-        if ingredients.selectedList.contains(true){
+        if ingredientsList.anySelected(){
             header?.selectedMode()
         }
         else{
@@ -138,42 +154,41 @@ class PantryViewController: UICollectionViewController, UICollectionViewDelegate
     }
     
     func selectIngredient(index: Int){
-        if(isShoppingList){
+        if(showingShoppingList){
             shoppingList.switchSelect(index: index)
-            ingredients.copy(other: shoppingList)
+            ingredientsList.copy(other: shoppingList)
         }
         else{
             pantryList.switchSelect(index: index)
-            ingredients.copy(other: pantryList)
+            ingredientsList.copy(other: pantryList)
         }
         showHeader()
         collectionView?.reloadData()
     }
     
     func showShoppingList(){
-        pantryList.copy(other: ingredients)
-        ingredients.copy(other: shoppingList)
-        isShoppingList = true
+        pantryList.copy(other: ingredientsList)
+        ingredientsList.copy(other: shoppingList)
+        showingShoppingList = true
         showHeader()
         collectionView?.reloadData()
     }
     
     func showPantryList(){
-        shoppingList.copy(other: ingredients)
-        ingredients.copy(other: pantryList)
-        isShoppingList = false
+        shoppingList.copy(other: ingredientsList)
+        ingredientsList.copy(other: pantryList)
+        showingShoppingList = false
         showHeader()
         collectionView?.reloadData()
     }
     
     func showIngredientViewController(index: Int) {
-        let ingredientVC = IngredientViewController(input: ingredients.getIngredient(index: index), pantry: self, index: index)
+        let ingredientVC = IngredientViewController(input: ingredientsList.getIngredient(index: index), pantry: self, index: index)
         present(ingredientVC, animated: true, completion: nil)
     }
     
     func searchWithPantry(){
-        let searchList = ingredients.getSelectedIngredients().getIngredientsListForSearch()
-        print(searchList)
+        let searchList = ingredientsList.getSelectedIngredients().getIngredientsListForSearch()
         let rsVC = RecipeSearchViewController()
         var input = ""
         for i in searchList{
