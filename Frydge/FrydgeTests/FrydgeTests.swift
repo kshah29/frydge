@@ -90,7 +90,24 @@ class FrydgeTests: XCTestCase {
         recipeSearchViewController.dummyMakeRequest()
         let recipesSearched = recipeSearchViewController.recipes
         
-        XCTAssertEqual(recipesSearched?.count, 10)
+        XCTAssertEqual(recipesSearched?.count, 11)
     }
     
+    func testParseJSONinRecipeSearch (){
+        
+        if let file = Bundle.main.url(forResource: "recipe", withExtension: "json") {
+            print(file)
+            do {
+                let data = try Data(contentsOf: file)
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                recipeSearchViewController.parseRecipeJSON(recipeJSON: json as! [String : Any])
+                let recipesSearched = recipeSearchViewController.recipes
+                
+                XCTAssertEqual(recipesSearched?.count, 11)
+            }
+            catch {
+                
+            }
+        }
+    }
 }
