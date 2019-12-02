@@ -96,10 +96,12 @@ class FrydgeTests: XCTestCase {
     func testParseJSONinRecipeSearch (){
         
         if let file = Bundle.main.url(forResource: "recipe", withExtension: "json") {
-            print(file)
+            XCTAssertNotNil(file)
             do {
                 let data = try Data(contentsOf: file)
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
+                XCTAssertNotNil(json)
+                
                 recipeSearchViewController.parseRecipeJSON(recipeJSON: json as! [String : Any])
                 let recipesSearched = recipeSearchViewController.recipes
                 
