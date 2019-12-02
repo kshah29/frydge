@@ -91,13 +91,13 @@ class CookbookViewController: UIViewController {
         for (index, recipeView) in recipeViews.enumerated() {
             scrollView.addSubview(recipeView)
 
-            let top = (220 * i)
+            let top = (220 * i + 20)
             list.append(recipeView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: CGFloat(top)))
             list.append(recipeView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor))
             list.append(recipeView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.9))
             list.append(recipeView.heightAnchor.constraint(equalToConstant: 200))
             
-            let scrollContentHeight = CGFloat(220 * recipeViews.count)
+            let scrollContentHeight = CGFloat(220 * recipeViews.count + 20)
             scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: scrollContentHeight)
 
             i = i + 1

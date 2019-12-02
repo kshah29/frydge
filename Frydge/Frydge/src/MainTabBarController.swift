@@ -24,7 +24,12 @@ class MainTabBarController: UITabBarController {
         profileVC.tabBarItem.image = UIImage(named: "user.pdf")?.resizedImage(for: CGSize(width: tabBarHeight - 30, height: tabBarHeight - 30))
         
         let cookbookVC = CookbookViewController() // cookbook
-        cookbookVC.tabBarItem.image = UIImage(named: "heart.pdf")?.resizedImage(for: CGSize(width: tabBarHeight - 30, height: tabBarHeight - 30))
+        let heartImageSize = UIImage(named: "heart.pdf")?.size
+        var heartWidth: CGFloat?
+        if let heartImageSize = heartImageSize {
+            heartWidth = (tabBarHeight - 30) * heartImageSize.width / heartImageSize.height
+        }
+        cookbookVC.tabBarItem.image = UIImage(named: "heart.pdf")?.resizedImage(for: CGSize(width: heartWidth ?? tabBarHeight - 30, height: tabBarHeight - 30))
         
         let pantryVC = PantryViewController(collectionViewLayout: UICollectionViewFlowLayout())
         pantryVC.tabBarItem.image = UIImage(named: "pantry2.pdf")?.resizedImage(for: CGSize(width: tabBarHeight - 22, height: tabBarHeight - 22))

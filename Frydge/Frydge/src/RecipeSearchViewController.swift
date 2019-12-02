@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     
     let searchbarBackgroundView = UIView(frame: .zero)
@@ -18,6 +17,8 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     var recipeViews: [UIView] = []
     var compiledRecipes: Bool = false
     var backgroundImage = UIImageView(image: #imageLiteral(resourceName: "marble"))
+    var offset = 0;
+    var query = "";
     
     let dimmerView: UIView = {
         let view = UIView()
@@ -38,14 +39,19 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     
     var searchOptionsViewPositions: [String : NSLayoutConstraint]?
     
-    public func getRecipes(query: String) {
+
+    @objc public func getRecipes() {
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
+        
         self.recipes = []
         self.compiledRecipes = false
-        makeRequest(ingredientList: query.components(separatedBy: " "))
+        makeRequest(ingredientList: self.query.components(separatedBy: " "))
         while (self.compiledRecipes == false){
             // DO nothing - wait for it to populate
         }
-        populateRecipes()
+        populateRecipes();
     }
     
     
@@ -60,27 +66,27 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     
     func dummyMakeRequest() {
         let ingredients = [Ingredient(name: "some kind of dough", amount: 1), Ingredient(name: "roasted red grapes", amount: 1), Ingredient(name: "double cream Brie", amount: 1), Ingredient(name: "caramelized onions", amount: 1), Ingredient(name: "Parmesan", amount: 1), Ingredient(name: "fresh wild arugula", amount: 1)]
-        let process = """
-            1. Prepare dough.
-            2. Assemble ingredients.
-            3. Cook.
-            4. Plate.
-            """
+        let process = [
+            "Prepare dough.",
+            "Assemble ingredients.",
+            "Cook.",
+            "Plate."
+        ]
         
         let ingredients2: [Ingredient] = []
-        let process2 = ""
+        let process2: [String] = []
 
         var recipes = [
             Recipe(id: 0, title: "Grilled Chicken Sonoma Flatbread", ingredientList: ingredients, process: process,
-                   image: "https://assets.kraftfoods.com/recipe_images/opendeploy/193146_640x428.jpg"),
+                   image: "https://assets.kraftfoods.com/recipe_images/opendeploy/193146_640x428.jpg", prepTime: nil, cookTime: nil),
             Recipe(id: 1, title: "Untitled Thing 2", ingredientList: ingredients2, process: process2,
-                   image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg")
+                   image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg", prepTime: nil, cookTime: nil)
         ]
         
         for i in 2...10 {
             recipes.append(
                 Recipe(id: i, title: "Another Thing", ingredientList: ingredients2, process: process2,
-                   image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg")
+                   image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg", prepTime: nil, cookTime: nil)
             )
         }
             
@@ -100,32 +106,30 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
                 let nid = element["id"] as? Int
                 print(nid)
                 
-                let prepTime = element["preparationMinutes"]
+                let prepTime: Int? = element["preparationMinutes"] as? Int
                 print(prepTime)
-                let cookTime = element["cookingMinutes"]
+                let cookTime: Int? = element["cookingMinutes"] as? Int
                 print(cookTime)
                 
                 let imageURL = element["image"]
                 print(imageURL)
                 
                 let instruction = element["analyzedInstructions"] as? [Any]
-                let procedure = instruction?[0] as? [String:Any]
-                
-                let steps = procedure?["steps"] as? [Any] ?? []
-                var num : Int = 1
-                var process : String = ""
-                for eachStep in steps{
-                    if let eachStep = eachStep as? [String:Any]{
-                        let step = eachStep["step"] as? String
-                        let pre = String(num) + ". "
-                        let end = step! + "\n"
-                        process = process + pre + end
+                var process: [String] = []
+                if instruction?.count ?? 0 > 0 {
+                    let procedure = instruction?[0] as? [String:Any]
+                    
+                    let steps = procedure?["steps"] as? [Any] ?? []
+                    for eachStep in steps{
+                        if let eachStep = eachStep as? [String:Any]{
+                            let step = eachStep["step"] as? String
+                            if let step = step { process.append(step) }
+                        }
                     }
-                    num = num + 1
+                    print(process)
                 }
-                print(process)
                 
-                self.recipes?.append(Recipe(id: nid ?? 0, title: title as! String, ingredientList: [], process: process, image: imageURL as! String))
+                self.recipes?.append(Recipe(id: nid ?? 0, title: title as! String, ingredientList: [], process: process, image: imageURL as! String, prepTime: prepTime, cookTime: cookTime))
             }
         }
         
@@ -134,7 +138,7 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
     
     private func makeRequest (ingredientList : [String]) -> Void {
         let foodAPIURL = "https://api.spoonacular.com/recipes/complexSearch"
-        let apiKey : String = "b8bc0943e3784d28ae91cbe52ed432c9"
+        let apiKey : String = "481b16a5a75a43a8b446d33210dd6de6"
         var ingredientString : String = ""
         
         for ingredient in ingredientList {
@@ -162,7 +166,7 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         let procedureParam = "&instructionsRequired=true"
         let recipeInfo = "&addRecipeInformation=true"
         
-        let urlWithParams = foodAPIURL + "?apiKey=" + apiKey  + dietParam + intoleranceParam + "&includeIngredients=" + ingredientString + procedureParam + recipeInfo + "&number=" + queryNumber
+        let urlWithParams = foodAPIURL + "?apiKey=" + apiKey  + dietParam + intoleranceParam + "&includeIngredients=" + ingredientString + procedureParam + recipeInfo + "&number=" + queryNumber + "&offset=" + String(self.offset)
         print(urlWithParams)
         
         
@@ -189,6 +193,7 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
             }
         }
         task.resume()
+        self.offset = self.offset + 10;
     }
     
     func populateRecipes() {
@@ -197,6 +202,10 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         }
         
 //        super.viewDidLoad()
+        
+        searchbar.barTintColor = UIColor(named: "blue")
+        searchbar.delegate = self
+//        view.addSubview(searchbar)
         
         let scrollView: UIScrollView = {
             let v = UIScrollView()
@@ -253,7 +262,7 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
             
             // add the recipe to the view
             scrollView.addSubview(recipeView)
-            let top = (220 * i)
+            let top = (220 * i + 20)
             list.append(recipeView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: CGFloat(top)))
             list.append(recipeView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor))
             list.append(recipeView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.9))
@@ -261,18 +270,24 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
             
             // add the favorite button to the view, tagged with the recipe's id
             let current_recipe = (self.recipes)![i]
-            let y_coord = (220 * i) + 10
             
             recipeView.tag = current_recipe.id
             let tapRecipeGesture = UITapGestureRecognizer(target: self, action: #selector(self.showRecipeViewController(_:)))
             recipeView.addGestureRecognizer(tapRecipeGesture)
             
-            let scrollContentHeight = CGFloat(220 * recipeViews.count)
+            let scrollContentHeight = CGFloat(220 * recipeViews.count + 70)
             scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height: scrollContentHeight)
             
             i = i + 1
         }
-    
+        
+        let load_more_button = UIButton(frame: CGRect(x: 20, y: 2220, width: 200, height: 30))
+        load_more_button.backgroundColor = UIColor(red: 166/256, green: 165/256, blue: 162/256, alpha: 0.5)
+        
+        load_more_button.setTitle("...load more recipes", for: .normal)
+        load_more_button.addTarget(self, action: #selector(getRecipes), for: .touchUpInside)
+        
+        scrollView.addSubview(load_more_button)
         NSLayoutConstraint.activate(list)
     }
     
@@ -302,19 +317,22 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate {
         view.addSubview(searchbar)
         
         if searchbar.text != nil {
-            getRecipes(query: searchbar.text!)
+            self.query = searchbar.text!
+            getRecipes()
         }
         else{
-            getRecipes(query: "")
+            getRecipes()
         }
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.offset = 0
         searchBar.resignFirstResponder()
         if searchBar.text != nil {
-            getRecipes(query: searchBar.text!)
+            self.query = searchBar.text!
+            getRecipes()
         }
     }
     
