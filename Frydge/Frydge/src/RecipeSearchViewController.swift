@@ -100,7 +100,7 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate, SearchO
         self.recipes = recipes
     }
 
-    private func parseRecipeJSON (recipeJSON : [String: Any]){
+    public func parseRecipeJSON (recipeJSON : [String: Any]){
         let results = recipeJSON["results"] as? [Any]
         
         for element in results ?? [] {
@@ -149,9 +149,9 @@ class RecipeSearchViewController: UIViewController, UISearchBarDelegate, SearchO
         compiledRecipes = true
     }
     
-    private func makeRequest (ingredientList : [String]) -> Void {
+    public func makeRequest (ingredientList : [String]) -> Void {
         let foodAPIURL = "https://api.spoonacular.com/recipes/complexSearch"
-        let apiKey : String = "d8023f61c8ff467abbb87c3de75aa735"
+        let apiKey : String = "78eaab53fe1f4270932a90b65f805c64"
         var ingredientString : String = ""
         
         for ingredient in ingredientList {

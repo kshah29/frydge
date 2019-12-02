@@ -42,6 +42,9 @@
 		9EDA9F972394B2360075DD0A /* IngredientList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EAE59D238DB52F00DC98DF /* IngredientList.swift */; };
 		9EDA9F982394B23A0075DD0A /* IngredientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EAE599238A31A800DC98DF /* IngredientViewController.swift */; };
 		9EDA9F992394B2610075DD0A /* PantryCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EAE59F238DB56400DC98DF /* PantryCells.swift */; };
+		9EDA9F9B2394C3A90075DD0A /* recipe.json in Resources */ = {isa = PBXBuildFile; fileRef = 9EDA9F9A2394C3A90075DD0A /* recipe.json */; };
+		9EDA9F9C2394C3A90075DD0A /* recipe.json in Resources */ = {isa = PBXBuildFile; fileRef = 9EDA9F9A2394C3A90075DD0A /* recipe.json */; };
+		9EDA9F9D2394FF6A0075DD0A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F988E238FC88900B810E9 /* LoginViewController.swift */; };
 		A705FA9A237CC1B300C7520F /* CookbookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A705FA98237CBDA600C7520F /* CookbookViewController.swift */; };
 		A705FAB2237D013000C7520F /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A705FAB1237D013000C7520F /* HeaderView.xib */; };
 		A705FAB7237DDC6700C7520F /* Comfortaa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A705FAB6237DDC6700C7520F /* Comfortaa.ttf */; };
@@ -90,6 +93,7 @@
 		82EAE59F238DB56400DC98DF /* PantryCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryCells.swift; sourceTree = "<group>"; };
 		9E60AF30237CD27D00FB7D44 /* PersonalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalData.swift; sourceTree = "<group>"; };
 		9E60AF32237CD2D500FB7D44 /* RecipeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStore.swift; sourceTree = "<group>"; };
+		9EDA9F9A2394C3A90075DD0A /* recipe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recipe.json; sourceTree = "<group>"; };
 		A705FA98237CBDA600C7520F /* CookbookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookbookViewController.swift; sourceTree = "<group>"; };
 		A705FAA5237CFC5300C7520F /* FrydgeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrydgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A705FAA7237CFC5300C7520F /* FrydgeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrydgeTests.swift; sourceTree = "<group>"; };
@@ -206,6 +210,7 @@
 		A705FAA6237CFC5300C7520F /* FrydgeTests */ = {
 			isa = PBXGroup;
 			children = (
+				9EDA9F9A2394C3A90075DD0A /* recipe.json */,
 				A705FAA7237CFC5300C7520F /* FrydgeTests.swift */,
 				A705FAA9237CFC5300C7520F /* Info.plist */,
 			);
@@ -298,6 +303,7 @@
 				4F1F9891238FDED800B810E9 /* ExampleUsers.plist in Resources */,
 				4F5EEEAD2373E30A000319CE /* Main.storyboard in Resources */,
 				A705FACE2390E05300C7520F /* heart.png in Resources */,
+				9EDA9F9B2394C3A90075DD0A /* recipe.json in Resources */,
 				A705FAD02390E0F900C7520F /* user.png in Resources */,
 				4F5EEEA32373E0E9000319CE /* LaunchScreen.storyboard in Resources */,
 				4F5EEEA02373E0E9000319CE /* Assets.xcassets in Resources */,
@@ -314,6 +320,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EDA9F9C2394C3A90075DD0A /* recipe.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +368,7 @@
 				4F1F9889237E862D00B810E9 /* RecipeViewController.swift in Sources */,
 				4F1F988A237E862D00B810E9 /* SceneDelegate.swift in Sources */,
 				4F1F988B237E862D00B810E9 /* ViewController.swift in Sources */,
+				9EDA9F9D2394FF6A0075DD0A /* LoginViewController.swift in Sources */,
 				9EDA9F992394B2610075DD0A /* PantryCells.swift in Sources */,
 				9EDA9F982394B23A0075DD0A /* IngredientViewController.swift in Sources */,
 				A705FABD237E491300C7520F /* FrydgeTests.swift in Sources */,

@@ -130,10 +130,6 @@ class PersonalData{
         return isPeanutFree
     }
     
-//    static public func getTreeNutFree() -> Bool {
-//        return isTreeNutFree
-//    }
-    
     static public func getfishFree() -> Bool {
         return isFishFree
     }
@@ -173,10 +169,6 @@ class PersonalData{
     static public func setPeanutFree(peanutFree: Bool){
         isPeanutFree = peanutFree
     }
-    
-//    static public func setTreeNutFree(treeNutFree: Bool){
-//        isTreeNutFree = treeNutFree
-//    }
     
     static public func setfishFree(fishFree: Bool){
         isFishFree = fishFree
@@ -228,14 +220,6 @@ class PersonalData{
                 intolerances += ",Peanut"
             }
         }
-//        if (isTreeNutFree){
-//            if intolerances == "" {
-//                intolerances = "TreeNut"
-//            }
-//            else {
-//                intolerances += ",TreeNut"
-//            }
-//        }
         if (isFishFree){
             if intolerances == "" {
                 intolerances = "Shellfish"
